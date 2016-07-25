@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 
+//测试时使用数据
 int wind = 0;//初始风速大小
 double tem = 17;//初始温度
 int max_tem = 25;//最大温度
