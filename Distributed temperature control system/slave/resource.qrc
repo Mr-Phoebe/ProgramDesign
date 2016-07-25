@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="low">icon/低风速.jpg</file>
+        <file alias="hot">icon/制热.jpg</file>
+        <file alias="mid">icon/中风速.jpg</file>
+        <file alias="high">icon/高风速.jpg</file>
+        <file alias="off">icon/关.jpg</file>
+        <file alias="on">icon/开.jpg</file>
+        <file alias="cold">icon/制冷.jpg</file>
+    </qresource>
+</RCC>
