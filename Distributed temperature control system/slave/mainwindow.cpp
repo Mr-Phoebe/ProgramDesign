@@ -13,21 +13,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->price->setEnabled(false);
     ui->rate->setEnabled(false);
     ui->start_button->setEnabled(false);
+
     //tcp
     tcpSocket = new QTcpSocket(this);
-    // connect(tcpSocket, SIGNAL(clicked()), this, SLOT(requestNewFortune()));
     connect(tcpSocket, SIGNAL(readyRead()), this, SLOT(readFortune()));
     connect(tcpSocket, SIGNAL(error(QAbstractSocket::SocketError)),
             this, SLOT(displayError(QAbstractSocket::SocketError)));
-
-    //新建一个QTimer对象
-    //timer = new QTimer();
-    //设置定时器每个多少毫秒发送一个timeout()信号
-    //timer->setInterval(1000);
-    //启动定时器
-    //timer->start();
-    //信号和槽
-    //connect(timer, SIGNAL(timeout()), this, SLOT(onTimerOut()));
 }
 
 MainWindow::~MainWindow()
