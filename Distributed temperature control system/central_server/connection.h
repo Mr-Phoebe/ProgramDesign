@@ -15,6 +15,7 @@ static bool createConnection()
         return false;
     }
 
+    //没有判断是否存在，如果执行失败，没有错误判断
     QSqlQuery query;
     query.exec("create table room1("
                "year int,"
