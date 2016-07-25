@@ -6,3 +6,5 @@ My application designs for courses.
 [Gobang-AI](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Intelligent%20management-gobang-AI)
 ## DATABASE SYSTEM CONCEPTS
 [Student Score Manage System](https://github.com/Mr-Phoebe/StuSys)
+## SOFTWARE ENGINEERING
+[Distributed temperature control system](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Distributed%20temperature%20control%20system)
