@@ -81,7 +81,7 @@ void Server::dispatch(int kind)
             inwork[number[i]] = 1;
         }
     }
-    else                    //时间片轮转
+    else                    //时间片轮转，这个代码有一些问题
     {
         int num = 0;
         for(int i = 0; i < cnt; i++)
