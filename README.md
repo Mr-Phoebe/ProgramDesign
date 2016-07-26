@@ -1,5 +1,5 @@
 # ProgramDesign
-My application designs for courses.
+My program designs for some courses.
 ## DATA STRUCTURES AND ALGORITHM ANALYSIS
 [HotelManagementSystem](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/HotelManagementSystem)
 ## INTELLIGENT MANAGEMENT
