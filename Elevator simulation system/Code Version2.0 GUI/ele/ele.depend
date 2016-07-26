@@ -1,0 +1,93 @@
+# depslib dependency file v1.0
+1401983975 source:c:\users\admin\desktop\大一下\电梯控制系统\第一版本代码 - 副本\main.c
+	"elevator struct.h"
+
+1401888927 c:\users\admin\desktop\大一下\电梯控制系统\第一版本代码 - 副本\elevator struct.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	<math.h>
+	<windows.h>
+	"egg.h"
+
+1130903270 c:\users\admin\desktop\大一下\电梯控制系统\第一版本代码 - 副本\egg.h
+	<windows.h>
+	<limits.h>
+
+1399814584 source:c:\users\admin\desktop\大一下\电梯控制系统\第一版本代码 - 副本\先来先服务.c
+	"elevator struct.h"
+
+1399814584 source:c:\users\admin\desktop\大一下\电梯控制系统\第一版本代码 - 副本\最快响应策略.c
+	"elevator struct.h"
+
+1399813616 source:c:\users\admin\desktop\大一下\电梯控制系统\第一版本代码 - 副本\最短平均等待时间响应策略.c
+	"elevator struct.h"
+
+1401928826 source:c:\users\admin\desktop\大一下\电梯控制系统\第一版本代码 - 副本\界面.c
+	"elevator struct.h"
+
+1401718565 source:c:\users\admin\desktop\大一下\电梯控制系统\第一版本代码 - 副本\界面2.c
+	"elevator struct.h"
+
+1399632569 source:c:\users\admin\desktop\大一下\电梯控制系统\第一版本代码 - 副本\顺便服务策略.c
+	"elevator struct.h"
+
+1401983975 source:c:\users\admin\desktop\大一下\电梯控制系统\第一版本代码 - 副本\egg_celue.c
+	"elevator struct.h"
+
+1401983975 source:c:\users\admin\desktop\大一下\电梯控制系统\第一版本代码 - 副本\egg_order.c
+	"elevator struct.h"
+
+1401931211 source:c:\users\admin\desktop\大一下\电梯控制系统\第一版本代码 - 副本\mouse_input.c
+	"elevator struct.h"
+
+1401887773 source:c:\users\admin\desktop\大一下\电梯控制系统\第一版本代码 - 副本\move_lift.c
+	"elevator struct.h"
+
+1401983975 source:c:\users\admin\desktop\大一下\电梯控制系统\第二版本代码\egg_celue.c
+	"elevator struct.h"
+
+1402737128 c:\users\admin\desktop\大一下\电梯控制系统\第二版本代码\elevator struct.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	<math.h>
+	<windows.h>
+	"egg.h"
+
+1130903270 c:\users\admin\desktop\大一下\电梯控制系统\第二版本代码\egg.h
+	<windows.h>
+	<limits.h>
+
+1402736608 source:c:\users\admin\desktop\大一下\电梯控制系统\第二版本代码\egg_order.c
+	"elevator struct.h"
+
+1402737128 source:c:\users\admin\desktop\大一下\电梯控制系统\第二版本代码\main.c
+	"elevator struct.h"
+
+1402736583 source:c:\users\admin\desktop\大一下\电梯控制系统\第二版本代码\mouse_input.c
+	"elevator struct.h"
+
+1402737128 source:c:\users\admin\desktop\大一下\电梯控制系统\第二版本代码\move_lift.c
+	"elevator struct.h"
+
+1399814584 source:c:\users\admin\desktop\大一下\电梯控制系统\第二版本代码\先来先服务.c
+	"elevator struct.h"
+
+1399814584 source:c:\users\admin\desktop\大一下\电梯控制系统\第二版本代码\最快响应策略.c
+	"elevator struct.h"
+
+1399813616 source:c:\users\admin\desktop\大一下\电梯控制系统\第二版本代码\最短平均等待时间响应策略.c
+	"elevator struct.h"
+
+1402736583 source:c:\users\admin\desktop\大一下\电梯控制系统\第二版本代码\界面.c
+	"elevator struct.h"
+
+1402741112 source:c:\users\admin\desktop\大一下\电梯控制系统\第二版本代码\界面2.c
+	"elevator struct.h"
+
+1399632569 source:c:\users\admin\desktop\大一下\电梯控制系统\第二版本代码\顺便服务策略.c
+	"elevator struct.h"
+

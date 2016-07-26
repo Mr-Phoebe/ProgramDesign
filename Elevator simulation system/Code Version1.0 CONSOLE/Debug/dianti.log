@@ -1,0 +1,35 @@
+﻿生成启动时间为 2014/5/7 9:52:53。
+     1>项目“C:\Users\admin\Desktop\201021131603小组-全部文档及代码\2010211316小组-全部文档及代码\第一版本代码\dianti\dianti.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /Gy- /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Debug\\" /Fd".\Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt main.c
+         main.c
+     1>c:\users\admin\desktop\201021131603小组-全部文档及代码\2010211316小组-全部文档及代码\第一版本代码\dianti\elevator struct.h(64): warning C4005: “max”: 宏重定义
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(893) : 参见“max”的前一个定义
+     1>c:\users\admin\desktop\201021131603小组-全部文档及代码\2010211316小组-全部文档及代码\第一版本代码\dianti\elevator struct.h(65): warning C4005: “min”: 宏重定义
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(894) : 参见“min”的前一个定义
+     1>c:\users\admin\desktop\201021131603小组-全部文档及代码\2010211316小组-全部文档及代码\第一版本代码\dianti\main.c(92): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(290) : 参见“scanf”的声明
+     1>c:\users\admin\desktop\201021131603小组-全部文档及代码\2010211316小组-全部文档及代码\第一版本代码\dianti\main.c(100): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(290) : 参见“scanf”的声明
+     1>c:\users\admin\desktop\201021131603小组-全部文档及代码\2010211316小组-全部文档及代码\第一版本代码\dianti\main.c(173): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(261) : 参见“gets”的声明
+     1>c:\users\admin\desktop\201021131603小组-全部文档及代码\2010211316小组-全部文档及代码\第一版本代码\dianti\main.c(223): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>c:\users\admin\desktop\201021131603小组-全部文档及代码\2010211316小组-全部文档及代码\第一版本代码\dianti\main.c(530): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(290) : 参见“scanf”的声明
+     1>c:\users\admin\desktop\201021131603小组-全部文档及代码\2010211316小组-全部文档及代码\第一版本代码\dianti\main.c(544): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(290) : 参见“scanf”的声明
+     1>c:\users\admin\desktop\201021131603小组-全部文档及代码\2010211316小组-全部文档及代码\第一版本代码\dianti\main.c(558): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(290) : 参见“scanf”的声明
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Debug\dianti.exe" /INCREMENTAL /NOLOGO odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:".\Debug\dianti.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Debug\dianti.lib" /MACHINE:X86 /SAFESEH .\Debug\main.obj
+         ".\Debug\先来先服务.obj"
+         ".\Debug\最快响应策略.obj"
+         ".\Debug\最短平均等待时间响应策略.obj"
+         ".\Debug\顺便服务策略.obj"
+         dianti.vcxproj -> C:\Users\admin\Desktop\201021131603小组-全部文档及代码\2010211316小组-全部文档及代码\第一版本代码\dianti\.\Debug\dianti.exe
+     1>已完成生成项目“C:\Users\admin\Desktop\201021131603小组-全部文档及代码\2010211316小组-全部文档及代码\第一版本代码\dianti\dianti.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.78
