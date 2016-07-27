@@ -14,6 +14,8 @@ My program designs for some courses.
 ## THE PRACTICE OF PROGRAMMING 01/14/16
 [ChatRoom](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/ChatRoom)
 ## SOFTWARE ENGINEERING 06/06/16
-[Distributed temperature control system](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Distributed%20temperature%20control%20system)
+[Distributed temperature control system(Qt C++)](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Distributed%20temperature%20control%20system)
+[Distributed temperature control system(Django Python)](https://github.com/Mr-Phoebe/AirSlave)
 ## DATABASE SYSTEM CONCEPTS 07/14/16
-[Student Score Manage System](https://github.com/Mr-Phoebe/StuSys)
+[Student Score Manage System(Django Python 2016)](https://github.com/Mr-Phoebe/StuSys)
+[Student Score Manage System(Django Python 2015)](https://github.com/Mr-Phoebe/StuGra)
