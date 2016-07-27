@@ -1,2 +1,3 @@
 # Elevator simulation system
-Floder document contains the guides and introduction.
+<br>Floder document contains the guides and introduction.</br>
+<br>We use Egg to create the GUI.</br>
