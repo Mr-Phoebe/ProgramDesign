@@ -5,7 +5,7 @@ My program designs for some courses.
 [Elevator simulation system](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Elevator%20simulation%20system)
 ## DATA STRUCTURES AND ALGORITHM ANALYSIS 06/18/15
 [HotelManagementSystem](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/HotelManagementSystem)
-## INTELLIGENT management 11/20/15
+## INTELLIGENT MANGAEMENT 11/20/15
 [Gobang-AI](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Intelligent%20management-gobang-AI)
 ## MICROCOMPUTER INTERFACE TECHNOLOGY 12/27/15
 [Student achievement management system](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Student%20achievement%20management%20system)
