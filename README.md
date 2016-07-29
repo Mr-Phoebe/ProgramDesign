@@ -1,8 +1,11 @@
 # ProgramDesign
 My program designs for some courses.
 
-## INTRODUCTION TO COMPUTER SCIENCE 06/14/14
-[Elevator simulation system](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Elevator%20simulation%20system)
+## INTRODUCTION TO COMPUTER SCIENCE 08/28/13 - 06/14/14
+<br>[C Programing Example 08/28/13](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/C%20Programing%20Example)</br>
+<br>[Elevator simulation system 06/14/14](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Elevator%20simulation%20system)</br>
+## OBJECT-ORIENTED PROGRAMMING:C++ 09/26/14
+[C++ Programing Example](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/C%2B%2B%20Programing%20Example)
 ## DATA STRUCTURES AND ALGORITHM ANALYSIS 06/18/15
 [HotelManagementSystem](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/HotelManagementSystem)
 ## INTELLIGENT MANGAEMENT 11/20/15
@@ -12,7 +15,7 @@ My program designs for some courses.
 ## MICROCOMPUTER INTERFACE TECHNOLOGY 12/27/15
 [Student achievement management system](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Student%20achievement%20management%20system)
 ## OBJECT-ORIENTED PROGRAMMING:C++ 01/05/16
-[Questions and Answers System](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Question%26Answer3.2)
+[Questions and Answers System](hhttps://github.com/Mr-Phoebe/ProgramDesign/tree/master/Question%26Answer2)
 ## THE PRACTICE OF PROGRAMMING 01/14/16
 [ChatRoom](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/ChatRoom)
 ## SOFTWARE ENGINEERING 06/06/16
