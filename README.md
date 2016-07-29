@@ -7,7 +7,8 @@ My program designs for some courses.
 ## OBJECT-ORIENTED PROGRAMMING:C++ 09/26/14
 [C++ Programing Example](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/C%2B%2B%20Programing%20Example)
 ## DATA STRUCTURES AND ALGORITHM ANALYSIS 06/18/15
-[HotelManagementSystem](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/HotelManagementSystem)
+<br>[HotelManagementSystem](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/HotelManagementSystem)</br>
+<br>[Notepad](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Notepad)</br>
 ## INTELLIGENT MANGAEMENT 11/20/15
 [Gobang-AI](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Intelligent%20management-gobang-AI)
 ##OBJECT-ORIENTED PROGRAMMING:Java 12/18/15
