@@ -1,0 +1,94 @@
+package cn.miniword.view;
+
+import java.awt.Canvas;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GraphicsConfiguration;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
+
+import cn.miniword.biz.MiniwordController;
+import cn.miniword.biz.actionListener.CanvasKeyListener;
+import cn.miniword.biz.actionListener.CanvasMouseListener;
+import cn.miniword.biz.actionListener.FindListener;
+import cn.miniword.biz.actionListener.NewFileListener;
+import cn.miniword.biz.actionListener.OpenFileListener;
+import cn.miniword.biz.actionListener.QuitListener;
+import cn.miniword.biz.actionListener.SaveAsListener;
+import cn.miniword.biz.actionListener.SaveFileListener;
+import cn.miniword.biz.actionListener.WindowClosingListener;
+
+
+ public class MiniWordFrame extends JFrame{
+	private static final long serialVersionUID = 1L;
+	private JMenu menu1;//菜单
+    private JMenuItem mt1, mt2, mt3, mt4, mt31; //子菜单
+    private Canvas textArea = null;
+	private JScrollPane scroll;
+	private JMenu menu2;
+	private JMenuItem mt5;
+	public static final int PREFER_X = 500;
+	public static final int PREFER_Y = 500;
+    public MiniWordFrame() {
+        super("Miniword");
+        /**
+         * 菜单栏
+         */
+        JMenuBar menuBar = new JMenuBar();
+        menu1 = new JMenu("文件",true);
+        mt1 = new JMenuItem("新建");
+        mt1.addActionListener(new NewFileListener());
+        mt2 = new JMenuItem("打开");
+        mt2.addActionListener(new OpenFileListener());
+        mt3 = new JMenuItem("保存");
+        mt3.addActionListener(new SaveFileListener());
+        mt31 = new JMenuItem("另存为...");
+        mt31.addActionListener(new SaveAsListener());
+        mt4 = new JMenuItem("退出");
+        mt4.addActionListener(new QuitListener());
+        
+        this.setJMenuBar(menuBar);
+        menuBar.add(menu1);
+        menu1.add(mt1);
+        menu1.add(mt2);
+        menu1.add(mt3);
+        menu1.add(mt31);
+        menu1.addSeparator();
+        menu1.add(mt4);
+        
+        menu2 = new JMenu("编辑",true);
+        mt5 = new JMenuItem("查找");
+        mt5.addActionListener(new FindListener());
+        menu2.add(mt5);
+        menuBar.add(menu2);
+        
+        //we us canvas to act as textArea.
+        Font f = new Font("TimesRoman", Font.PLAIN, 18);
+        textArea = new Canvas();
+        textArea.setFont(f);
+        textArea.addMouseListener(new CanvasMouseListener());
+        textArea.addKeyListener(new CanvasKeyListener());
+        this.add("Center", textArea);
+        scroll = new JScrollPane(textArea);
+        add(scroll);
+        textArea.setPreferredSize(new Dimension(PREFER_X, PREFER_Y));
+        Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        this.setSize(600, 600);
+        this.setLocation(screenSize.width/2-this.getWidth()/2,screenSize.height/2-this.getHeight()/2);
+        this.setVisible(true);
+        this.addWindowListener(new WindowClosingListener());
+    }
+
+	public Canvas getTextArea() {
+		return textArea;
+	}
+	
+	public static void main(String[] args)
+	{
+		MiniwordController.getInstance().init();
+	}
+}

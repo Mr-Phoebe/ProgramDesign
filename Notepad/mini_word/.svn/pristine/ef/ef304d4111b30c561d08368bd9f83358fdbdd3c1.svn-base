@@ -1,0 +1,130 @@
+package cn.miniword.biz;
+
+import java.awt.Dimension;
+import java.awt.FileDialog;
+import java.awt.TextArea;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+import cn.miniword.biz.file.OpenFile;
+import cn.miniword.biz.file.SaveFile;
+
+
+public class MiniWord extends JFrame implements ActionListener{
+	private static final long serialVersionUID = 1L;
+	JMenu menu1, menu2, menu3, menu4;//菜单
+    JMenuItem mt1, mt2, mt3, mt4, mt31; //子菜单
+    TextArea textArea; //文本域
+    FileWriter fw;
+    BufferedWriter bw;
+    FileReader fr;
+    BufferedReader br;
+    String oldFile;
+    String oldFolder;
+    
+    public MiniWord() {
+        super("记事本");
+       
+        /**
+         * 菜单栏
+         */
+        JMenuBar menuBar = new JMenuBar();
+        menu1 = new JMenu("文件(F)",true);
+        menu1.setMnemonic('F');
+        mt1 = new JMenuItem("新建(N)",'N');
+        mt1.setMnemonic('N');
+        mt2 = new JMenuItem("打开(O)",'O');
+        mt2.addActionListener(this);
+        mt2.setMnemonic('O');
+        mt3 = new JMenuItem("保存(S)",'S');
+        mt3.addActionListener(this);
+        mt3.setMnemonic('S');
+        mt31 = new JMenuItem("另存为...");
+        mt31.addActionListener(this);
+        mt4 = new JMenuItem("退出(X)",'X');
+        mt4.addActionListener(this);
+        mt4.setMnemonic('X');
+        
+        menu2 = new JMenu("编辑(E)",true);
+        
+        
+        this.setJMenuBar(menuBar);
+        menuBar.add(menu1);
+        menuBar.add(menu2);
+        menu1.add(mt1);
+        menu1.add(mt2);
+        menu1.add(mt3);
+        menu1.add(mt31);
+        menu1.addSeparator();
+        menu1.add(mt4);
+        
+        /**
+         * 文本域
+         */
+        textArea = new TextArea("", 10, 10, TextArea.SCROLLBARS_VERTICAL_ONLY);
+        add(textArea);
+        textArea.setEditable(false);
+        
+        Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        this.setSize(600, 600);
+        this.setLocation(screenSize.width/2-this.getWidth()/2,screenSize.height/2-this.getHeight()/2);
+        this.setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        /**
+         * 打开文件
+         */
+        if (e.getSource().equals(mt2)) {
+            OpenFile of = new OpenFile();
+            File file = of.open();
+            oldFile = of.getOpenFileName();
+            oldFolder = of.getOpenFolderName();
+          //do something with file
+        }
+        /**
+         * 保存文件
+         */
+        if (e.getSource().equals(mt3)) {
+            SaveFile sf = new SaveFile();
+            //save operation
+//            sf.save(oldFile, oldFolder, );
+        }
+        /**
+         * 文件另存为
+         */
+        if (e.getSource().equals(mt31)) {
+        	SaveFile sf = new SaveFile();
+        	//SaveAs operation
+//        	sf.saveAs(content);
+        }
+        /**
+         * 退出
+         */
+        if (e.getSource().equals(mt4)) {
+            exit();
+        }
+    }
+
+    /**
+     * 退出记事本
+     */
+    private void exit() {
+        System.exit(0);
+    }
+    
+    public static void main(String[] args) {
+        new MiniWord();
+    }
+}

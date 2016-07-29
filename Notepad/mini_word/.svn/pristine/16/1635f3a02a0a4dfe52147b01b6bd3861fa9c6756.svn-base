@@ -1,0 +1,8 @@
+package cn.miniword.util;
+
+
+/**
+ * 一些可以公用的工具方法。
+ */
+public class MiniWordUtility {
+}

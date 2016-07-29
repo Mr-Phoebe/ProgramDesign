@@ -1,0 +1,12 @@
+package cn.miniword.view;
+
+import java.util.List;
+
+public interface ITextAreaManager {
+	//刷新操作
+	public void refresh();
+	//清屏操作
+	public void clear();
+	//显示字符串
+	public void showText(List<String> content);
+}

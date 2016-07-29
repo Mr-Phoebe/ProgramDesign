@@ -1,0 +1,11 @@
+package cn.miniword.biz.actionListener;
+
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+public class WindowClosingListener extends WindowAdapter {
+	public void windowClosing(WindowEvent evt) {
+        // Exit the application
+        System.exit(0);
+    }
+}

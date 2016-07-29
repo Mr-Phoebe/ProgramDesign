@@ -1,0 +1,194 @@
+package cn.miniword.model.edit;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.miniword.model.Coordinate;
+
+
+public class EditList {
+	
+	int num = 0;										//链表编号
+	Array data = null;									//字符数组
+	EditList next = null;								//下一节点
+
+	Coordinate mouse = null;
+	List<String> buffer = new ArrayList<String>();
+	//默认方法，创建链表节点
+	public EditList (){		
+		data = new Array();
+		if (data == null){
+			;//空间申请失败
+		}		
+	}//List()
+	
+	/*根据x找到插入的行，将插入位置y和字符ch传给Array进行插入操作*/
+	
+	public void addChar (int x, int y, char ch){
+		
+		EditList current = this;
+		
+		while (x > current.num && current.next != null){			
+			current = current.next;						
+		}//while
+		if (x > current.num){					
+			current.next = new EditList();
+			current.next.num = x;
+			current = current.next;					
+		}//if(x > num)	
+		/*将Tab符当做空格处理*/
+		if (ch == '\t'){
+			ch = ' ';
+		}
+		//检查是否是回车符，若是则增加链表ta
+		if (ch == '\n'){
+			EditList temp = new EditList();
+			/*若在插入的字符不在数组尾部则新建链表将回车符后面的字符数组拷贝给新链表*/
+			if (y <= current.data.sit){
+				int i = y;
+				for ( ; i <= current.data.sit; i++){
+					temp.data.str[i-y] = current.data.str[i];
+					current.data.str[i] = '\0';
+				}//for
+				temp.data.sit = i-y;				//重置数组长度
+				current.data.sit = y-1;
+			}//if(current)
+			/*否则新建空链表*/
+			temp.next = current.next;
+			current.next = temp;
+			/*更新链表编号*/
+			while (temp != null){
+				temp.num++;
+				temp = temp.next;				
+			}//while(temp != null)
+			this.mouse = new Coordinate(x+1,0);
+		}//if(ch == '\n')
+		else if (ch == '\b'){
+			/*若删除的字符在数组头部则删除链表将字符接到上一链表尾*/
+			if (y == 0){
+				if (x == 0){
+					this.mouse = new Coordinate(0,0);
+				}
+				else{
+					EditList temp = this;
+					while (temp.num < current.num - 1){
+						temp = temp.next;
+					}//while
+					/*若空间不够则重新申请，将数字接到上一链表尾*/
+					if (temp.data.leng <= temp.data.sit + current.data.sit){
+						char t[] = temp.data.str;
+						temp.data.leng = 80 * ((temp.data.sit + current.data.sit)/80 + 1);
+						temp.data.str = new char[temp.data.leng];
+					
+						/*若申请空间不足则输出提示语句并退出*/
+						if (temp.data.str == null){					
+							;//申请空间失败
+						}
+					
+						/*数组拷贝*/
+						for (int i = 0; i < t.length; i++){					
+							temp.data.str[i] = t[i];					
+						}//for 				
+					}//if(leng < sit + sit)
+					for (int i = 0; i < current.data.sit; i++){
+						temp.data.str[++temp.data.sit] = current.data.str[i];
+					}//for
+					/*删除链表节点*/
+					temp.next = current.next;
+					/*更新链表编号*/
+					while (temp.next != null){
+						temp = temp.next;	
+						temp.num--;
+					}//while(temp != null)
+				}//else
+			}//if(y == 0)
+			/*否则删除一个字符*/
+			else{
+				for (int i = y-1; i < current.data.sit; i++){
+					current.data.str[i] = current.data.str[i+1];
+				}//for
+				current.data.str[current.data.sit--] = '\0';
+			}//else
+		}//else if (ch == '\b')
+		current.data.add(x,y,ch);
+	}//List(int,int,char)
+	
+	public static void main(String[] args)
+	{		
+		EditList ap = new EditList();		
+		for (int i = 0; i <= 79; i++)
+			ap.addChar(0, i, 'a');
+
+		ap.addChar(0, 40, '\n');
+		//ap.addChar(0, 80, 'b');
+		//ap.addChar(0, 81, 'b');
+		ap.addChar(1, 0, 'n');
+		ap.addChar(1, 0, '\b');
+		ap.addChar(1, 0, 'n');
+
+		ap.addChar(1, 0, '\b');
+		ap.addChar(0, 1, '\b');
+	//	ap.addChar(1, 1, '\b');
+	//	ap.addChar(1, 0, '\b');
+	//	ap.addChar(1, 0, '\b');
+
+//		ap.addChar(1, 0, '\b');
+		//List<String> strList = new ArrayList<String>();
+		while (ap != null){
+			for(int j = 0; j <= ap.data.getSit(); j++)
+				System.out.print(ap.data.getStr()[j]);
+			System.out.println();
+			ap = ap.getNext();
+		}
+	}
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public Array getData() {
+		return data;
+	}
+
+	public void setData(Array data) {
+		this.data = data;
+	}
+
+	public EditList getNext() {
+		return next;
+	}
+
+	public void setNext(EditList next) {
+		this.next = next;
+	}
+
+	public Coordinate getMouse() {
+		return mouse;
+	}
+
+	public void setMouse(Coordinate mouse) {
+		this.mouse = mouse;
+	}
+
+	public List<String> getBuffer() {
+		/*返回字符串链*/
+		EditList current = this;
+		String tmp = "";
+		
+		while(current != null){
+			tmp = new String(current.data.str);
+			buffer.add(tmp);
+			current = current.next;
+		}//while(current != null)
+		return buffer;
+	}
+
+	public void setBuffer(List<String> buffer) {
+		this.buffer = buffer;
+	}
+
+}

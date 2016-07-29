@@ -1,0 +1,117 @@
+package cn.miniword.view;
+
+import java.awt.Canvas;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.TextArea;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+import cn.miniword.biz.actionListener.CanvasKeyListener;
+import cn.miniword.biz.actionListener.CanvasMouseListener;
+import cn.miniword.biz.actionListener.OpenFileListener;
+import cn.miniword.biz.actionListener.QuitListener;
+import cn.miniword.biz.actionListener.SaveAsListener;
+import cn.miniword.biz.actionListener.SaveFileListener;
+import cn.miniword.biz.actionListener.WindowClosingListener;
+
+
+public class MiniWordFrame extends JFrame implements ITextAreaManager{
+	private static final long serialVersionUID = 1L;
+	private JMenu menu1;//菜单
+    private JMenuItem mt1, mt2, mt3, mt4, mt31; //子菜单
+    private Canvas textArea = null;
+	private List<String> content;
+	private static final int X_BASE = 10;
+	private static final int Y_BASE = 20;
+	private Font f = new Font("TimesRoman", Font.PLAIN, 18);
+    
+    public MiniWordFrame() {
+        super("Miniword");
+        /**
+         * 菜单栏
+         */
+        JMenuBar menuBar = new JMenuBar();
+        menu1 = new JMenu("文件(F)",true);
+        menu1.setMnemonic('F');
+        mt1 = new JMenuItem("新建(N)",'N');
+        mt1.setMnemonic('N');
+        mt2 = new JMenuItem("打开(O)",'O');
+        mt2.addActionListener(new OpenFileListener());
+        mt2.setMnemonic('O');
+        mt3 = new JMenuItem("保存(S)",'S');
+        mt3.addActionListener(new SaveFileListener());
+        mt3.setMnemonic('S');
+        mt31 = new JMenuItem("另存为...");
+        mt31.addActionListener(new SaveAsListener());
+        mt4 = new JMenuItem("退出(X)",'X');
+        mt4.addActionListener(new QuitListener());
+        mt4.setMnemonic('X');
+        
+        this.setJMenuBar(menuBar);
+        menuBar.add(menu1);
+        menu1.add(mt1);
+        menu1.add(mt2);
+        menu1.add(mt3);
+        menu1.add(mt31);
+        menu1.addSeparator();
+        menu1.add(mt4);
+        
+        //we us canvas to act as textArea.
+        textArea = new Canvas();
+        textArea.addMouseListener(new CanvasMouseListener());
+        textArea.addKeyListener(new CanvasKeyListener());
+        this.add("Center", textArea);
+        Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        this.setSize(600, 600);
+        this.setLocation(screenSize.width/2-this.getWidth()/2,screenSize.height/2-this.getHeight()/2);
+        this.setVisible(true);
+        this.addWindowListener(new WindowClosingListener());
+    }
+
+	@Override
+	public void refresh() {
+		clear();
+		showText(content);
+	}
+
+	@Override
+	public void clear() {
+		Dimension frameSize = getSize();
+		textArea.getGraphics().clearRect(0, 0, frameSize.width, frameSize.height);
+	}
+
+	@Override
+	public void showText(List<String> content) {
+		Graphics g = textArea.getGraphics();
+		int height = g.getFontMetrics().getHeight();
+		for(int lineNum = 0; lineNum < content.size(); lineNum++)
+		{
+			String lineContent = content.get(lineNum);
+			textArea.getGraphics().drawString(lineContent, X_BASE, Y_BASE + height * lineNum);
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		List<String> content = new ArrayList<String>();
+		MiniWordFrame frame = new MiniWordFrame();
+		content.add("你好，");
+		content.add("  你觉不觉的灿灿好二");
+		frame.showText(content);
+		while(true)
+		{
+			System.out.println(" ");
+		}
+	}
+}

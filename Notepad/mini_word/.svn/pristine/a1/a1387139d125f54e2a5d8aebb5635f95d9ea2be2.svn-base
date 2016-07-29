@@ -1,0 +1,14 @@
+package cn.miniword.model;
+
+import cn.miniword.model.edit.EditList;
+
+public class InterFacePort {
+
+	int pixX;									//字符像素行位置
+	int pixY;									//字符像素列位置
+	int phyX;									//字符物理行位置
+	int phyY;									//字符物理列位置
+	char data;									//字符型
+	EditList freash = null;						//更新的链表
+	int operate;								//操作种类
+}

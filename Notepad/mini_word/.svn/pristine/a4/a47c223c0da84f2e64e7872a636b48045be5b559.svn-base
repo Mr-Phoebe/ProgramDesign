@@ -1,0 +1,16 @@
+package cn.miniword.biz.actionListener;
+
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+import cn.miniword.biz.MiniwordController;
+import cn.miniword.biz.MiniwordController.EventType;
+
+public class CanvasKeyListener extends KeyAdapter {
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		MiniwordController.getInstance().setInputChar(e.getKeyChar());
+		MiniwordController.getInstance().handleEvent(EventType.KEY_TYPED);
+	}
+}

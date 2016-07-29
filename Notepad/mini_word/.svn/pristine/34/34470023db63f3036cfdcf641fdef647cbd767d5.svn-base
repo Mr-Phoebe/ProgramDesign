@@ -1,0 +1,82 @@
+package cn.miniword.view;
+
+import java.awt.Canvas;
+import java.awt.Dimension;
+import java.awt.Font;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+import cn.miniword.biz.MiniwordController;
+import cn.miniword.biz.actionListener.CanvasKeyListener;
+import cn.miniword.biz.actionListener.CanvasMouseListener;
+import cn.miniword.biz.actionListener.NewFileListener;
+import cn.miniword.biz.actionListener.OpenFileListener;
+import cn.miniword.biz.actionListener.QuitListener;
+import cn.miniword.biz.actionListener.SaveAsListener;
+import cn.miniword.biz.actionListener.SaveFileListener;
+import cn.miniword.biz.actionListener.WindowClosingListener;
+
+
+ public class MiniWordFrame extends JFrame{
+	private static final long serialVersionUID = 1L;
+	private JMenu menu1;//菜单
+    private JMenuItem mt1, mt2, mt3, mt4, mt31; //子菜单
+    private Canvas textArea = null;
+    public MiniWordFrame() {
+        super("Miniword");
+        /**
+         * 菜单栏
+         */
+        JMenuBar menuBar = new JMenuBar();
+        menu1 = new JMenu("文件(F)",true);
+        menu1.setMnemonic('F');
+        mt1 = new JMenuItem("新建(N)",'N');
+        mt1.setMnemonic('N');
+        mt1.addActionListener(new NewFileListener());
+        mt2 = new JMenuItem("打开(O)",'O');
+        mt2.addActionListener(new OpenFileListener());
+        mt2.setMnemonic('O');
+        mt3 = new JMenuItem("保存(S)",'S');
+        mt3.addActionListener(new SaveFileListener());
+        mt3.setMnemonic('S');
+        mt31 = new JMenuItem("另存为...");
+        mt31.addActionListener(new SaveAsListener());
+        mt4 = new JMenuItem("退出(X)",'X');
+        mt4.addActionListener(new QuitListener());
+        mt4.setMnemonic('X');
+        
+        this.setJMenuBar(menuBar);
+        menuBar.add(menu1);
+        menu1.add(mt1);
+        menu1.add(mt2);
+        menu1.add(mt3);
+        menu1.add(mt31);
+        menu1.addSeparator();
+        menu1.add(mt4);
+        
+        //we us canvas to act as textArea.
+        Font f = new Font("TimesRoman", Font.PLAIN, 18);
+        textArea = new Canvas();
+        textArea.setFont(f);
+        textArea.addMouseListener(new CanvasMouseListener());
+        textArea.addKeyListener(new CanvasKeyListener());
+        this.add("Center", textArea);
+        Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        this.setSize(600, 600);
+        this.setLocation(screenSize.width/2-this.getWidth()/2,screenSize.height/2-this.getHeight()/2);
+        this.setVisible(true);
+        this.addWindowListener(new WindowClosingListener());
+    }
+
+	public Canvas getTextArea() {
+		return textArea;
+	}
+	
+	public static void main(String[] args)
+	{
+		MiniwordController.getInstance().init();
+	}
+}

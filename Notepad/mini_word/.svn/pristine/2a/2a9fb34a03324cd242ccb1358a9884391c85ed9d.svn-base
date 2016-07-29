@@ -1,0 +1,96 @@
+package cn.miniword.biz;
+
+import java.awt.Dimension;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.util.List;
+
+import cn.miniword.model.Coordinate;
+import cn.miniword.view.MiniWordFrame;
+
+public class FrameController{
+	MiniWordFrame miniWordFrame = new MiniWordFrame();
+	public static final int X_BASE = 10;
+	public static final int Y_BASE = 20;
+	private static final int PADDING = 0;
+	public static final Coordinate COO_BASE = new Coordinate(X_BASE,Y_BASE);
+	
+	public FrameController getInstance()
+	{
+		return new FrameController();
+	}
+	
+	public void clear() {
+		Dimension frameSize = miniWordFrame.getSize();
+		miniWordFrame.getTextArea().getGraphics().clearRect(0, 0, frameSize.width, frameSize.height);
+	}
+
+	public void showText(List<String> content) {
+		Graphics g = miniWordFrame.getTextArea().getGraphics();
+		int height = g.getFontMetrics().getHeight();
+		for(int lineNum = 0; lineNum < content.size(); lineNum++)
+		{
+			String lineContent = content.get(lineNum);
+			miniWordFrame.getTextArea().getGraphics().drawString(lineContent, FrameController.X_BASE, FrameController.Y_BASE + height * lineNum);
+		}
+	}
+	
+	public void showCursor(Coordinate cursorPixel)
+	{
+		Graphics g = miniWordFrame.getTextArea().getGraphics();
+		FontMetrics fm = g.getFontMetrics();
+		g.drawLine(cursorPixel.getX() + PADDING, cursorPixel.getY() - fm.getAscent(),
+				cursorPixel.getX() + PADDING, cursorPixel.getY() + fm.getDescent());
+	}
+	
+	public  Coordinate transferPixel2String(Coordinate coo, List<String> buffer)
+	{
+		if(buffer == null || buffer.isEmpty())
+			return COO_BASE;
+		int x = coo.getX();
+		int y = coo.getY();
+		int relativeX = (x - FrameController.X_BASE < 0) ? 0 : x - FrameController.X_BASE;
+		int relativeY = (y - FrameController.Y_BASE < 0) ? 0 : y - FrameController.Y_BASE;
+		FontMetrics fm = miniWordFrame.getTextArea().getGraphics().getFontMetrics();
+		int height = fm.getHeight();
+		int lineNum = relativeY / height;
+		int lastLine = (buffer.size() - 1 < 0) ? 0 : (buffer.size() - 1);
+		int opLine = (lineNum <= lastLine) ? lineNum : lastLine;
+		String str = buffer.get(opLine);
+		int index;
+		for(index = str.length(); index > 0; index--)
+		{
+			int len = fm.stringWidth(str.substring(0, index));
+			if(len < relativeX){
+				if(index < str.length()){
+					len = len + fm.charWidth(str.charAt(index)) / 2;
+					if(len < relativeX)
+						index ++;
+				}
+				return new Coordinate(opLine, index);
+			}
+		}
+		return new Coordinate(opLine,0);
+	}
+	
+	public Coordinate transferString2Pixel(Coordinate coo, List<String> buffer)
+	{
+		if(buffer == null || buffer.isEmpty())
+			return COO_BASE;
+		FontMetrics fm = miniWordFrame.getTextArea().getGraphics().getFontMetrics();
+		int height = fm.getHeight();
+		int y = FrameController.Y_BASE + coo.getX() * height;
+		int x = FrameController.X_BASE + fm.stringWidth(buffer.get(coo.getX()).substring(0,coo.getY()));
+		return new Coordinate(x, y);
+	}
+	
+	public void setTitle(String title)
+	{
+		miniWordFrame.setTitle(title);
+	}
+	
+	public String getTitle()
+	{
+		return miniWordFrame.getTitle();
+	}
+}

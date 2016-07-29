@@ -1,0 +1,289 @@
+package cn.miniword.biz;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+import cn.miniword.model.Coordinate;
+import cn.miniword.model.edit.EditList;
+import cn.miniword.util.FileUtility;
+
+public class MiniwordController extends Thread{
+	private  String filePath = null;
+	private boolean notSaved = false;
+	private static final MiniwordController instance = new MiniwordController();
+	private Coordinate curSorPixelCoo = null;
+	private Coordinate curSorStringCoo = null;
+	private char inputChar ;
+	private FrameController frameController = null;
+	private List<String> content = null;
+	private boolean starFlag = false;
+	private static final String defaultTile = "无标题 - Miniword";
+	private EditList editor = new EditList();
+	public static enum EventType
+	{
+		NEW_FILE,SAVE_FILE,SAVE_AS,QUIT,OPEN_FILE,KEY_TYPED,MOUSE_CLICK
+	}
+
+	public void init()
+	{
+		frameController = new FrameController();
+		notSaved = false;
+		clear();
+		start();
+		handleEvent(EventType.NEW_FILE);
+	}
+	
+	public void clear()
+	{
+		content = new ArrayList<String>();
+		content.add("");
+		curSorPixelCoo = FrameController.COO_BASE;
+		curSorStringCoo = Coordinate.ZERO;
+	}
+	
+	public static MiniwordController getInstance()
+	{
+		return instance;
+	}
+	
+	public void handleEvent(EventType event)
+	{
+		switch(event)
+		{
+		case NEW_FILE:
+			newFile();
+			setNotSaveAndTitle(true, defaultTile);
+			break;
+			
+		case OPEN_FILE:
+			String fileName = openFile();
+			setNotSaveAndTitle(false, fileName);
+			break;
+			
+		case SAVE_FILE:
+			fileName = saveFile();
+			setNotSaveAndTitle(false, fileName);
+			break;
+			
+		case SAVE_AS:
+			fileName = saveAs();
+			setNotSaveAndTitle(false, fileName);
+			break;
+			
+		case QUIT:
+			quit();
+			break;
+			
+		case MOUSE_CLICK:
+			calCursorCharPos();
+			break;
+			
+		case KEY_TYPED:
+			getTextAfterKeyTyped();
+			setNotSaveAndTitle(true, null);
+			break;
+			
+		default:
+			System.err.println("unknown handle event");
+			break;
+		}
+	}
+
+	private void newFile()
+	{
+		if(querySave() != JOptionPane.CANCEL_OPTION){
+			frameController.clear();
+			clear();
+		}
+	}
+	/**
+	 * 打开文件
+	 */
+	private String openFile() {
+		if(querySave() != JOptionPane.CANCEL_OPTION){
+			File file = FileUtility.openFile();
+			if(file != null){
+				setFilePath(file.getAbsolutePath());
+				//读取文件内容并在界面上显示。
+				frameController.clear();
+				setContent(FileUtility.readFileContent(file));
+				frameController.showText(getContent());
+				return file.getName();
+			}
+		}
+		return null;
+	}
+
+	/**
+     * 保存文件
+     */
+	private String saveFile() {
+		return FileUtility.saveFile(filePath, getContent());
+	}
+
+	/**
+	 * 文件另存为
+	 */
+	private String saveAs() {
+		return FileUtility.saveAs(getContent());
+	}
+
+	/**
+	 * 退出系统，若退出前有未保存的编辑内容，需要先执行save操作再退出。
+	 */
+	private void quit() {
+		if(querySave() != JOptionPane.CANCEL_OPTION)
+			System.exit(0);
+		else
+			frameController.doNotCloseWindow();
+	}
+	
+	private int querySave()
+	{
+		if(!hasNotSaved())
+			return JOptionPane.NO_OPTION;
+		int usrChoice = confirmSave();
+		if(usrChoice == JOptionPane.YES_OPTION){
+			saveFile();
+			return JOptionPane.YES_OPTION;
+		}
+		return usrChoice;
+	}
+	
+	private int confirmSave()
+	{
+		 int rst =  JOptionPane.showConfirmDialog(null, "是否保存当前文件？"); 
+		 return rst;
+	}
+	
+	/**
+	 * @param c 鼠标点击的像素坐标
+	 * 计算鼠标的字符坐标
+	 * 刷新页面
+	 */
+	private void calCursorCharPos() {
+		//通过像素坐标计算字符坐标。
+		 curSorStringCoo = frameController.transferPixel2String(curSorStringCoo, content);
+		 //界面清屏。
+		 frameController.clear();
+		//界面显示。
+		 frameController.showText(content);
+		 curSorPixelCoo = frameController.transferString2Pixel(curSorStringCoo, content);
+		 frameController.showCursor(curSorPixelCoo);
+	}
+	
+	/**
+	 * 调用模型层得到输入后的文本内容以及光标位置
+	 */
+	private void getTextAfterKeyTyped()
+	{
+		//调用接口得到更新后的文本内容
+		editor.addChar(curSorStringCoo.getX(), curSorStringCoo.getY(), inputChar);
+		//更新数据内容
+		content = editor.getBuffer();
+		System.out.println(content);
+		//得到光标字符位置。
+		curSorStringCoo = editor.getMouse();
+		System.out.println("StringPos::" + curSorStringCoo);
+		//计算光标像素位置。
+		curSorPixelCoo = frameController.transferString2Pixel(curSorStringCoo, content);
+		//在界面显示内容
+		frameController.clear();
+		frameController.showText(content);
+		frameController.showCursor(curSorPixelCoo);
+	}
+	
+	private void setNotSaveAndTitle(boolean notSaved, String titleName)
+	{
+		if(titleName == null)
+			titleName = frameController.getTitle();
+		setNotSaved(notSaved);
+		if(hasNotSaved()){
+			if(starFlag == false)
+			{
+				starFlag = true;
+				frameController.setTitle(
+						addStar(titleName, starFlag));
+			}
+		}
+		else if(starFlag == true)
+		{
+			starFlag = false;
+			frameController.setTitle(
+					addStar(titleName, starFlag));
+		}
+	}
+	
+//	private 
+	
+	private String addStar(String str,boolean starFlag)
+	{
+		String rst = str;
+		if(starFlag)
+			rst = "*" + str;
+		else
+			if(str.startsWith("*"))
+				rst = str.substring(1);
+		return rst;
+	}
+
+	private boolean hasNotSaved() {
+		return notSaved;
+	}
+
+	private void setNotSaved(boolean notSaved) {
+		this.notSaved = notSaved;
+	}
+
+	private String getFilePath() {
+		return filePath;
+	}
+
+	private void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+	
+
+	private Coordinate getClickPos() {
+		return curSorStringCoo;
+	}
+
+	public void setClickPos(Coordinate clickPos) {
+		this.curSorStringCoo = clickPos;
+	}
+
+	private char getInputChar() {
+		return inputChar;
+	}
+
+	public void setInputChar(char inputChar) {
+		this.inputChar = inputChar;
+	}
+	
+	private List<String> getContent() {
+		return content;
+	}
+	
+	private void setContent(List<String> content) {
+		this.content = content;
+	}
+
+	public void run() {
+		boolean showCursor = true;
+		try {
+			while(true){
+				frameController.clear();
+				frameController.showText(content);
+				if(showCursor)
+					frameController.showCursor(curSorPixelCoo);
+				showCursor = !showCursor;
+				Thread.sleep(700);
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+}

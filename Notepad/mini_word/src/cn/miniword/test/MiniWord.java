@@ -1,0 +1,205 @@
+package cn.miniword.test;
+
+/*主函数，搭建窗体和画布框架*/
+/*每次运行程序时新建窗体新建画布*/
+
+/*主函数，搭建窗体和画布框架*/
+/*每次运行程序时新建窗体新建画布*/
+
+
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.text.StyledEditorKit.FontSizeAction;
+
+public class MiniWord
+	implements ActionListener,KeyListener,MouseListener,MouseMotionListener{
+	
+	JFrame frame = null;
+	Canvas draw = null;
+	String s ="";
+	JMenuBar menuBar = null;
+	JMenu menuFile, menuEdit;//菜单
+	JMenuItem mt1, mt2, mt3, mt4, mt31; //子菜单
+	
+	/*默认方法新建窗体和画布，添加按钮*/
+	public MiniWord(){
+		
+		
+		frame = new JFrame("MiniWord");
+		draw = new Canvas();
+		menuBar = new JMenuBar();
+
+		menuFile = new JMenu("文件(F)",true);
+        menuFile.setMnemonic('F');
+        mt1 = new JMenuItem("新建(N)",'N');
+        mt1.setMnemonic('N');
+        mt2 = new JMenuItem("打开(O)",'O');
+        mt2.addActionListener(this);
+        mt2.setMnemonic('O');
+        mt3 = new JMenuItem("保存(S)",'S');
+        mt3.addActionListener(this);
+        mt3.setMnemonic('S');
+        mt31 = new JMenuItem("另存为...");
+        mt31.addActionListener(this);
+        mt4 = new JMenuItem("退出(X)",'X');
+        mt4.addActionListener(this);
+        mt4.setMnemonic('X');
+        
+        menuEdit = new JMenu("编辑(E)",true);
+        
+        frame.setJMenuBar(menuBar);
+        menuBar.add(menuFile);
+        menuBar.add(menuEdit);
+        menuFile.add(mt1);
+        menuFile.add(mt2);
+        menuFile.add(mt3);
+        menuFile.add(mt31);
+        menuFile.addSeparator();
+        menuFile.add(mt4);
+        
+        draw.addMouseMotionListener(this);
+        draw.addMouseListener(this);
+      	draw.addKeyListener(this);
+		frame.add("Center", draw);
+		frame.setSize(500,500);//////////////////////////////////////////////大小设置有待更改
+		frame.setVisible(true);
+		
+	}
+	
+	public static void main(String[] args) {
+        new MiniWord();
+    }
+
+
+	public void actionPerformed(ActionEvent e) {
+        /**
+         * 打开文件
+         */
+        if (e.getSource().equals(mt2)) {
+          //do something with file
+        }
+        /**
+         * 保存文件
+         */
+        if (e.getSource().equals(mt3)) {
+            //save operation
+        }
+        /**
+         * 文件另存为
+         */
+        if (e.getSource().equals(mt31)) {
+        	//SaveAs operation
+        }
+        /**
+         * 退出
+         */
+        if (e.getSource().equals(mt4)) {
+            //exit
+        }
+    }
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("mouseClicked:::" + "(" + e.getY() 
+				+ "," + e.getX() + ")");
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("mouseClicked:::" + "(" + e.getY() 
+				+ "," + e.getX() + ")");
+	}
+
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("mouseDragged:::" + "(" + e.getY() 
+				+ "," + e.getX() + ")");
+	}
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("mouseMoved:::" );
+	}
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("mousePressed:::" + "(" + e.getY() 
+				+ "," + e.getX() + ")");
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("mouseReleased:::" + "(" + e.getY() 
+				+ "," + e.getX() + ")");
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("keyPressed:::" + "(" + e.getKeyCode() + ")");
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("keyReleased:::" + "(" + e.getKeyCode() + ")");
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		s+=e.getKeyChar();
+//		s="";
+//		for(int i = 0; i < 50;i++)
+//			s+="a";
+//		draw.getGraphics().setFont(Font.);
+		char ch = '我';
+
+		draw.getGraphics().fillRect(0, 0, 50, 50);
+		draw.getGraphics().drawRect(0, 0, 50, 100);
+		
+//		for(char ch = 'a' ; ch < 'z' ; ch++)
+//			System.out.println(ch +" (" +draw.getGraphics().getFontMetrics().charWidth(ch)+","+draw.getGraphics().getFontMetrics().getHeight()+")");
+		draw.getGraphics().drawString(s,0,20);
+		draw.getGraphics().drawLine(10 + 50, 20,10 + 50,20 + 50);
+	}
+	
+	 //绘制光标  
+    public void drawCursor(Graphics graphics, int x, int y, int width, int height, boolean cursorBlinkOn)  
+    {  
+        if(cursorBlinkOn)  
+        {   
+            graphics.setColor(Color.RED);  
+            graphics.drawLine(x+width,y,x+width,y+height);  
+        }  
+    }
+    
+    public void drawTextBox(Canvas canvas, Graphics graphics, String text, int x, int y, boolean cursorBlinkOn)  
+    {
+    	
+    }
+}

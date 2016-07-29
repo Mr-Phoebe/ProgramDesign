@@ -1,0 +1,94 @@
+package cn.miniword.model.edit;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.miniword.model.Coordinate;
+
+public class EditModule {
+
+	EditList freshList = null;								//链表作为接口
+	
+	Coordinate mouse = null;								//光标信息
+	List<String> buffer = new ArrayList<String>();			//链表存储的字符信息
+	
+	/*块选择*/
+	public void pitchModule(){
+		
+	}//pitchModule
+	
+	/*块删除*/
+	public void delModule(int x1, int y1, int x2, int y2){
+		int tmp = 0;
+		/*从末位不断加入回退符直到首位*/
+		for ( ;x2 >= x1 && y2 != y1; x2--){
+			for ( ; y2 >= 0; y2--){
+				if (y2 == y1 && x2 == x1){
+					break;
+				}//if(y2 == y1)
+				if (y2 == 0){
+					tmp = getRowSit(x2-1).data.sit+1;
+				}//if(y2 == 0)
+				freshList.addChar(x2, y2, '\b');
+			}//for
+			if (x2 > x1){
+				y2 = tmp;
+			}//if (x2 > x1)
+		}//while
+		
+	}//delModule
+	
+	/*块复制*/
+	public void copyModule (int x1, int y1, int x2, int y2){
+		
+	}//copyModule
+			
+	/*块剪切*/
+	public void cutModule (int x1, int y1, int x2, int y2){
+		
+	}//cutModule
+
+	/*块粘贴*/
+	public void pasteModule (int x, int y, char str[]){
+		//EditList current = getRowSit(x);
+		for (int i = 0; str[i] != '\0'; i++){
+			freshList.data.add(x, y, str[i]);
+		}//for
+		
+	}//pasteModule
+	
+	private EditList getRowSit(int x1) {
+
+		EditList current = freshList;
+		while (current.num != x1){
+			current = current.next;
+		}//while
+		return current;
+	}
+
+	/*根据x找到对应行操作方法*/
+	public EditList getFreshList(int x) {
+		return freshList;
+	}
+
+	public void setFreshList(EditList freshList) {
+		this.freshList = freshList;
+	}
+	
+	public Coordinate getMouse() {
+		return mouse;
+	}
+
+	public void setMouse(Coordinate mouse) {
+		this.mouse = mouse;
+	}
+
+	public List<String> getBuffer() {
+		return buffer;
+	}
+
+	public void setBuffer(List<String> buffer) {
+		this.buffer = buffer;
+	}
+
+}

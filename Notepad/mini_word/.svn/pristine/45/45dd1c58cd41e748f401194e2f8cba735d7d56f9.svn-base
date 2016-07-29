@@ -1,0 +1,18 @@
+package cn.miniword.biz.actionListener;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import cn.miniword.biz.MiniwordController;
+import cn.miniword.biz.MiniwordController.EventType;
+import cn.miniword.model.Coordinate;
+
+public class CanvasMouseListener extends MouseAdapter {
+	
+	@Override
+	public void mousePressed(MouseEvent e)
+	{
+		MiniwordController.getInstance().setClickPos(new Coordinate(e.getX(), e.getY()));
+		MiniwordController.getInstance().handleEvent(EventType.MOUSE_CLICK);
+	}
+}

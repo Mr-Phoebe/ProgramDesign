@@ -1,0 +1,67 @@
+package cn.miniword.model.edit;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.miniword.model.Coordinate;
+
+public class EditModule {
+
+	EditList freshList = null;								//链表作为接口
+	
+	Coordinate mouse = null;								//光标信息
+	List<String> buffer = new ArrayList<String>();			//链表存储的字符信息
+	
+	/*块删除*/
+	public void delModule(int x1, int y1, int x2, int y2){
+		/*找到对应行*/
+		
+		
+	}//delModule
+	
+	/*块复制*/
+	public void copyModule (int x1, int y1, int x2, int y2){
+		
+	}//copyModule
+			
+	/*块剪切*/
+	public void cutModule (int x1, int y1, int x2, int y2){
+		
+	}//cutModule
+
+	/*块粘贴*/
+	public void pasteModule (int x, int y){
+		
+	}//pasteModule
+	
+	private EditList getRowSit(int x1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/*根据x找到对应行操作方法*/
+	public EditList getFreshList(int x) {
+		return freshList;
+	}
+
+	public void setFreshList(EditList freshList) {
+		this.freshList = freshList;
+	}
+	
+	public Coordinate getMouse() {
+		return mouse;
+	}
+
+	public void setMouse(Coordinate mouse) {
+		this.mouse = mouse;
+	}
+
+	public List<String> getBuffer() {
+		return buffer;
+	}
+
+	public void setBuffer(List<String> buffer) {
+		this.buffer = buffer;
+	}
+
+}

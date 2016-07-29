@@ -1,0 +1,63 @@
+package cn.miniword.model.file;
+
+import java.awt.FileDialog;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.swing.JFrame;
+
+public class SaveFile extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private FileDialog save = new FileDialog(this, "保存文件对话框", FileDialog.SAVE); //保存、打开的窗口
+	
+	/**
+     * 另存为 操作
+     * @throws IOException 
+     */
+    public void saveAs(String content){
+        save.setVisible(true);
+        if (save.getFile() != null) {
+            File file = new File(save.getDirectory(),save.getFile());
+            writeFile(file,content);
+        }
+    }
+    
+    private void writeFile(File file,String content)
+    {
+    	FileWriter fw;
+		try {
+			fw = new FileWriter(file);
+			BufferedWriter bw = new BufferedWriter(fw);
+	        bw.write(content, 0, content.length());
+	        bw.flush();
+	        bw.close();
+	        fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+    
+    /**
+     * 保存操作
+     */
+    public void save(String fileName,String folder,String content) {
+        if (fileName != null && folder != null) {
+            File file = new File(folder,fileName);
+            if (file.exists()) {
+               try {
+				file.createNewFile();
+				writeFile(file, content);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+            }
+        } else 
+            saveAs(content);
+    }
+	
+}

@@ -1,0 +1,148 @@
+package cn.miniword.biz;
+
+import java.io.File;
+
+import cn.miniword.model.Coordinate;
+import cn.miniword.util.FileUtility;
+
+public class MiniwordController {
+
+	private  String filePath;
+	private boolean notSaved = false;
+	private static final MiniwordController instance = new MiniwordController();
+	private Coordinate clickPos;
+	private char inputChar;
+	
+	public static enum EventType
+	{
+		SAVE_FILE,SAVE_AS,QUIT,OPEN_FILE,KEY_TYPED,MOUSE_CLICK
+	}
+	
+	public static MiniwordController getInstance()
+	{
+		return instance;
+	}
+	
+	public void handleEvent(EventType event)
+	{
+		switch(event)
+		{
+		case OPEN_FILE:
+			openFile();
+			//刷新界面
+			break;
+			
+		case SAVE_FILE:
+			saveFile();
+			//刷新界面
+			break;
+			
+		case SAVE_AS:
+			saveAs();
+			//刷新界面
+			break;
+			
+		case QUIT:
+			quit();
+			break;
+			
+		case MOUSE_CLICK:
+			calCursorCharPos();
+			break;
+			
+		case KEY_TYPED:
+			break;
+			
+		default:
+			System.err.println("unknown handle event");
+			break;
+		}
+	}
+
+	/**
+	 * 打开文件
+	 */
+	private void openFile() {
+		File file = FileUtility.openFile();
+		if(file != null)
+			setFilePath(file.getAbsolutePath());
+        //读取文件内容。
+		//在界面显示文件内容.
+	}
+
+	/**
+     * 保存文件
+     */
+	private void saveFile() {
+		String content = "this should be save content";
+		FileUtility.saveFile(filePath, content);
+	}
+
+	/**
+	 * 文件另存为
+	 */
+	private void saveAs() {
+		String content = "this should be saveAs content";
+		FileUtility.saveAs(content);
+	}
+
+	/**
+	 * 退出系统，若退出前有未保存的编辑内容，需要先执行save操作再退出。
+	 */
+	private void quit() {
+		if(hasNotSaved())
+			saveFile();
+		System.exit(0);
+	}
+	
+	
+	/**
+	 * @param c 鼠标点击的像素坐标
+	 * 计算鼠标的字符坐标
+	 * 刷新页面
+	 */
+	private void calCursorCharPos() {
+		//通过像素坐标计算字符坐标。
+		//在合适位置插入光标
+		//界面显示。
+	}
+	
+	private void getTextAfterKeyTyped()
+	{
+		//调用接口得到更新后的文本内容
+		//在界面显示内容
+	}
+
+	private boolean hasNotSaved() {
+		return notSaved;
+	}
+
+	private void setNotSaved(boolean notSaved) {
+		this.notSaved = notSaved;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+	
+
+	public Coordinate getClickPos() {
+		return clickPos;
+	}
+
+	public void setClickPos(Coordinate clickPos) {
+		this.clickPos = clickPos;
+	}
+
+	public char getInputChar() {
+		return inputChar;
+	}
+
+	public void setInputChar(char inputChar) {
+		this.inputChar = inputChar;
+	}
+}

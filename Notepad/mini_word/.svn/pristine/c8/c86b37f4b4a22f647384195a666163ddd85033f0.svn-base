@@ -1,0 +1,105 @@
+package cn.miniword.biz.test;
+
+
+	import java.awt.Dimension;
+import java.awt.TextArea;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
+	/**
+	 * 2010-1-29
+	 * @author zhangruimin
+	 * Swing三级菜单例子
+	 */
+
+	public class TestJMenu extends JFrame implements ActionListener {
+	 /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+	private static final int WIDTH = 300;
+	 private static final int HEIGHT = 600;
+	 private JMenuItem jMenuItem2_4 = null;
+	private TextArea textArea;
+
+	 TestJMenu() {
+	  Toolkit kit = Toolkit.getDefaultToolkit();// 设置顶层容器框架为居中
+	  Dimension screenSize = kit.getScreenSize();
+	  int width = screenSize.width;
+	  int height = screenSize.height;
+	  int x = (width - WIDTH) / 2;
+	  int y = (height - HEIGHT) / 2;
+	  this.setLocation(x, y);
+	  setTitle("三级菜单");
+	  setSize(WIDTH, HEIGHT);
+	  init();
+	  this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	  setVisible(true);
+	 }
+
+	 private void init() {
+	  JMenuBar menuBar = new JMenuBar();
+	  JMenu jMenu1 = new JMenu("菜单1");
+	  JMenu jMenu2 = new JMenu("子菜单2");// 因为下面来有子菜单所以为JMenu类型
+
+	  JMenuItem jMenuItem2_1 = new JMenuItem("子菜单1");
+	  jMenu1.add(jMenuItem2_1);
+
+	  JMenuItem jMenuItem1 = new JMenuItem("二级菜单1");
+	  JMenuItem jMenuItem2 = new JMenuItem("二级菜单2");
+	  JMenu jMenuItem3 = new JMenu("二级菜单3");// 下面还有子菜单
+
+	  JMenuItem jMenuItem3_1 = new JMenuItem("三级菜单1");
+	  JMenuItem jMenuItem3_2 = new JMenuItem("三级菜单2");
+	  JMenuItem jMenuItem3_3 = new JMenuItem("三级菜单3");
+	  jMenuItem3.add(jMenuItem3_1);
+	  jMenuItem3.add(jMenuItem3_2);
+	  jMenuItem3.add(jMenuItem3_3);
+
+	  jMenu2.add(jMenuItem1);
+	  jMenu2.add(jMenuItem2);
+	  jMenu2.add(jMenuItem3);
+	  jMenu1.add(jMenu2);
+
+	  JMenuItem jMenuItem2_2 = new JMenuItem("子菜单3");
+	  jMenu1.add(jMenuItem2_2);
+	  JMenuItem jMenuItem2_3 = new JMenuItem("子菜单4");
+	  jMenu1.add(jMenuItem2_3);
+	  jMenu1.addSeparator();
+	  jMenuItem2_4 = new JMenuItem("退出");
+	  jMenu1.add(jMenuItem2_4);
+	  jMenuItem2_4.addActionListener(this);// 注册监听
+	  
+	  textArea = new TextArea("", 10, 10, TextArea.SCROLLBARS_VERTICAL_ONLY);
+	  add(textArea);
+
+	  menuBar.add(jMenu1);
+	  this.setJMenuBar(menuBar);// 将菜单加入到面板,不能用this.add(menuBar)
+	  this.setVisible(true);
+	 }
+
+	 @Override
+	 public void actionPerformed(ActionEvent e) {
+	  if (e.getSource() == jMenuItem2_4) {
+	   int flag = JOptionPane.showConfirmDialog(null, "确认退出吗！");
+	   System.out.println("flag=" + flag);
+	   if (flag == 0) {
+	    System.out.println("退出");
+	   } else if (flag == 1) {
+	    System.out.println("否");
+	   }
+	  }
+
+	 }
+
+	 public static void main(String[] args) {
+	  new TestJMenu();
+	 }
+}

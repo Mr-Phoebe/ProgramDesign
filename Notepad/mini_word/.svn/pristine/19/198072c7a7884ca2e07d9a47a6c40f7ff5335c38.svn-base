@@ -1,0 +1,73 @@
+package cn.miniword.biz.file;
+
+import java.awt.FileDialog;
+import java.io.File;
+
+import javax.swing.JFrame;
+
+import junit.framework.Assert;
+
+import org.junit.Test;
+
+import cn.miniword.biz.util.MiniWordUtility;
+
+public class OpenFile extends JFrame{
+	
+	private static final long serialVersionUID = 1L;
+	private FileDialog open;
+	private String openFileName;
+	private String openFolderName;
+
+	public OpenFile()
+	{
+		open = new FileDialog(this, "打开文件对话框", FileDialog.LOAD);
+	}
+	
+	/**
+     * 打开文件对话框
+     */
+    public File open() {
+    	File file = null;
+        open.setVisible(true);
+        /**
+         * 打开文件
+         */
+        if (open.getFile() != null) {
+            setOpenFileName(open.getFile());
+            setOpenFolderName(open.getDirectory());
+            file = new File(open.getDirectory(), open.getFile());
+        }
+        return file;
+    }
+
+	public String getOpenFileName() {
+		return openFileName;
+	}
+
+	public void setOpenFileName(String openFileName) {
+		this.openFileName = openFileName;
+	}
+
+	public String getOpenFolderName() {
+		return openFolderName;
+	}
+
+	public void setOpenFolderName(String openFolderName) {
+		this.openFolderName = openFolderName;
+	}
+	
+	@Test
+	public void TestOpenFile()
+	{
+		OpenFile of = new OpenFile();
+		File file = of.open();
+		System.out.println(of.getOpenFileName());
+		System.out.println(of.getOpenFolderName());
+		System.out.println(file.getName());
+		System.out.println(MiniWordUtility.getFolder(file.getAbsolutePath()));
+		Assert.assertTrue(of.getOpenFileName().equals(file.getName()));
+		Assert.assertTrue(of.getOpenFolderName().equals(MiniWordUtility.getFolder(file.getAbsolutePath())));
+	}
+}
+
+

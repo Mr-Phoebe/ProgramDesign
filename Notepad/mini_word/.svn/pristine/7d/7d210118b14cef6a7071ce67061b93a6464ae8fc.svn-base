@@ -1,0 +1,67 @@
+package cn.miniword.biz;
+
+import java.awt.Dimension;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.util.List;
+
+import cn.miniword.model.Coordinate;
+import cn.miniword.view.MiniWordFrame;
+
+public class FrameController{
+	MiniWordFrame miniWordFrame = new MiniWordFrame();
+	
+	public FrameController getInstance()
+	{
+		return new FrameController();
+	}
+	
+	public void clear() {
+		Dimension frameSize = miniWordFrame.getSize();
+		miniWordFrame.getTextArea().getGraphics().clearRect(0, 0, frameSize.width, frameSize.height);
+	}
+
+	public void showText(List<String> content) {
+		Graphics g = miniWordFrame.getTextArea().getGraphics();
+		int height = g.getFontMetrics().getHeight();
+		for(int lineNum = 0; lineNum < content.size(); lineNum++)
+		{
+			String lineContent = content.get(lineNum);
+			miniWordFrame.getTextArea().getGraphics().drawString(lineContent, MiniWordFrame.X_BASE, MiniWordFrame.Y_BASE + height * lineNum);
+		}
+	}	
+	
+	public  Coordinate transferPixel2String(Coordinate coo, List<String> buffer)
+	{
+		int x = coo.getX();
+		int y = coo.getY();
+		int relativeX = (x - MiniWordFrame.X_BASE < 0) ? 0 : x - MiniWordFrame.X_BASE;
+		int relativeY = (y - MiniWordFrame.Y_BASE < 0) ? 0 : y - MiniWordFrame.Y_BASE;
+		FontMetrics fm = miniWordFrame.getTextArea().getGraphics().getFontMetrics();
+		int height = fm.getHeight();
+		int lineNum = relativeY / height;
+		int lastLine = buffer.size() - 1;
+		int opLine = (lineNum <= lastLine) ? lineNum : lastLine;
+		String str = buffer.get(opLine);
+		int index;
+		for(index = str.length(); index > 0; index--)
+		{
+			int len = fm.stringWidth(str.substring(0, index));
+			if(len < relativeX){
+				System.out.println("(" + opLine + "," + len + ")");
+				return new Coordinate(opLine, len);
+			}
+		}
+		System.out.println("(" + opLine + "," + 0 + ")");
+		return new Coordinate(opLine,0);
+	}
+	
+	public Coordinate transferString2Pixel(Coordinate coo, List<String> buffer)
+	{
+		FontMetrics fm = miniWordFrame.getTextArea().getGraphics().getFontMetrics();
+		int height = fm.getHeight();
+		int y = MiniWordFrame.Y_BASE + coo.getY() * height;
+		int x = MiniWordFrame.X_BASE + coo.getX() * fm.stringWidth(buffer.get(coo.getY()).substring(0,coo.getX()));
+		return new Coordinate(x, y);
+	}
+}

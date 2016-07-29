@@ -1,0 +1,49 @@
+package cn.miniword.test;
+
+import java.util.List;
+
+import junit.framework.Assert;
+
+import org.junit.Test;
+
+import cn.miniword.biz.FrameController;
+import cn.miniword.model.Coordinate;
+import cn.miniword.model.edit.EditList;
+
+public class TestEditorList {
+	
+	private Coordinate curSorStringCoo = FrameController.COO_BASE;
+	private EditList editor;
+	private List<String> content;
+	
+	@Test
+	void test()
+	{
+		String testString = "aaa";
+		simulateInput(testString);
+		System.out.println(content);
+		System.out.println("StringPos::" + curSorStringCoo);
+//		Assert.assertSame(curSorStringCoo, new Coordinate(x, y));
+	}
+	
+	/**
+	 * 调用模型层得到输入后的文本内容以及光标位置
+	 */
+	private void getTextAfterKeyTyped(char inputChar)
+	{
+		//调用接口得到更新后的文本内容
+		editor.addChar(curSorStringCoo.getX(), curSorStringCoo.getY(), inputChar);
+		//更新数据内容
+		content = editor.getBuffer();
+//		System.out.println(content);
+		//得到光标字符位置。
+		curSorStringCoo = editor.getMouse();
+//		System.out.println("StringPos::" + curSorStringCoo);
+	}
+	
+	private void simulateInput(String str)
+	{
+		for(int i = 0; i < str.length(); i++)
+			getTextAfterKeyTyped(str.charAt(i));
+	}
+}

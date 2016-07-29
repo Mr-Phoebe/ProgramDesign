@@ -1,0 +1,58 @@
+package cn.miniword.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+public class StringFinder {
+	private List<String> buffer;
+	private String target;
+	private Coordinate cursor ;
+	
+	
+	public StringFinder(List<String> buffer, Coordinate cursor)
+	{
+		this.buffer = buffer;
+		this.cursor = cursor;
+	}
+	
+	private Coordinate find()
+	{
+		if(buffer == null || buffer.isEmpty())
+			return Coordinate.ZERO;
+		int start = cursor.getX();
+		int end = buffer.size() ;
+		int col = cursor.getY();
+		System.out.println(cursor);
+		System.out.println(buffer.get(start).substring(col));
+		int index = buffer.get(start).substring(col).indexOf(target);
+		if(index > -1)
+			return new Coordinate(start, col + index);
+		for(int i = start + 1; i < end; i++)
+		{
+			int pos = buffer.get(i).indexOf(target);
+			if(pos > -1)
+				return new Coordinate(i, pos); 
+		}
+		return null;
+	}
+	
+	public Coordinate findString()
+	{
+		String inputString = JOptionPane.showInputDialog("查找内容：");
+		if(inputString != null){
+			target = inputString;
+			return find();
+		}
+		return null;
+	}
+	
+	public static void main(String[] args)
+	{
+		List<String> buffer = new ArrayList<String>();
+		buffer.add("abcdefg");
+		Coordinate coo =  new StringFinder(buffer,new Coordinate(0, 1)).findString();
+		System.out.println(coo);
+	}
+}
