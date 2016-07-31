@@ -21,9 +21,9 @@ My program designs for some courses.
 [ChatRoom](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/ChatRoom)
 ## SOFTWARE ENGINEERING 06/06/16
 <br>[Distributed temperature control system(Qt C++)](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Distributed%20temperature%20control%20system)</br>
+<br>[Distributed temperature control system(Django Python)](https://github.com/Mr-Phoebe/AirSlave)</br>
 ## OPERATIONS SYSTEM PROGRAM DESIGN 06/16/16
 [Operation System Simulation](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Operation%20System%20Simulation)
-<br>[Distributed temperature control system(Django Python)](https://github.com/Mr-Phoebe/AirSlave)</br>
 ## DATABASE SYSTEM CONCEPTS PROGRAM DESIGN 07/14/16
 <br>[Student Score Manage System(Django Python 2016)](https://github.com/Mr-Phoebe/StuSys)</br>
 <br>[Student Score Manage System(Django Python 2015)](https://github.com/Mr-Phoebe/StuGra)</br>
