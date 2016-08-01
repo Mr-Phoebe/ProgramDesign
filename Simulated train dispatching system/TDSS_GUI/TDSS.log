@@ -1,0 +1,16 @@
+
+
+current time: 00:00:00
+current strategy: FAST_FIRST
+
+trainId    current track    current pos    remaining waiting time    current speed      dir      state
+
+A         0     (0.00, 0.00)      0        8.00      clockwise    run - non public
+B         1     (20.00, 20.00)      0        8.00      counterclockwise    run - non public
+C         2     (0.00, 0.00)      0        10.00      clockwise    run - non public
+D         3     (0.00, 0.00)      0        0.00      clockwise    stop - for start
+
+public 1 - 0 IDLE
+public 2 - 1 IDLE
+public 3 - 0 IDLE
+public 3 - 2 IDLE

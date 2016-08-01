@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/blankBackground.png</file>
+        <file>images/train.png</file>
+        <file>track.config</file>
+        <file>train.config</file>
+        <file>images/0.png</file>
+        <file>images/1.png</file>
+        <file>images/2.png</file>
+        <file>images/3.png</file>
+        <file>images/4.png</file>
+        <file>images/5.png</file>
+        <file>images/6.png</file>
+        <file>images/7.png</file>
+        <file>images/add.png</file>
+        <file>images/background.png</file>
+        <file>images/train0_right.png</file>
+        <file>images/train0_up.png</file>
+        <file>images/train1_right.png</file>
+        <file>images/train1_up.png</file>
+        <file>images/train2_right.png</file>
+        <file>images/train2_up.png</file>
+        <file>images/train3_right.png</file>
+        <file>images/train3_up.png</file>
+        <file>images/train4_right.png</file>
+        <file>images/train4_up.png</file>
+        <file>images/train5_right.png</file>
+        <file>images/train5_up.png</file>
+        <file>images/train6_right.png</file>
+        <file>images/train6_up.png</file>
+        <file>images/train7_right.png</file>
+        <file>images/train7_up.png</file>
+    </qresource>
+</RCC>
