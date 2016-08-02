@@ -2,9 +2,9 @@
 My program designs for some courses.
 
 ## INTRODUCTION TO COMPUTER SCIENCE 08/28/13 - 06/14/14
-[C Programing Example 08/28/13](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/C%20Programing%20Example)  
-[Elevator simulation system 06/14/14](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Elevator%20simulation%20system)  
-[Simulated train dispatching system 06/17/16](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Simulated%20train%20dispatching%20system)  
+[C Programing Example](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/C%20Programing%20Example)  
+[Elevator simulation system](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Elevator%20simulation%20system)  
+[Simulated train dispatching system](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Simulated%20train%20dispatching%20system)  
 ## OBJECT-ORIENTED PROGRAMMING:C++ 09/26/14
 [C++ Programing Example](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/C%2B%2B%20Programing%20Example)
 ## DATA STRUCTURES AND ALGORITHM ANALYSIS 06/18/15
