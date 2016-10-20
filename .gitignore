@@ -12,3 +12,6 @@ Debug
 *.pch
 *.pdb
 *.idb
+*.idea
+*.class
+
