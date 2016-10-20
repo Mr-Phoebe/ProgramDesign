@@ -33,3 +33,5 @@ My program designs for some courses.
 ## DATABASE SYSTEM CONCEPTS PROGRAM DESIGN 07/14/16
 <br>[Student Score Manage System(Django Python 2016)](https://github.com/Mr-Phoebe/StuSys)</br>
 <br>[Student Score Manage System(Django Python 2015)](https://github.com/Mr-Phoebe/StuGra)</br>
+## COMPREHENSIVE DESIGN AND EXPERIMENT OF DIGITAL MEDIA CONTENT 10/20/16
+<br>[Image editor](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Comprehensive%20Design%20and%20Experiment%20of%20Digital%20Media%20Content/edit_image)</br> 
