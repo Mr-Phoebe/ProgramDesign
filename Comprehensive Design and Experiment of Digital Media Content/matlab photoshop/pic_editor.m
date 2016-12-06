@@ -2,7 +2,7 @@ function varargout = pic_editor(varargin)
 % PIC_EDITOR M-file for pic_editor.fig
 %      PIC_EDITOR, by itself, creates a new PIC_EDITOR or raises the existing
 %      singleton*.
-%
+% 
 %      H = PIC_EDITOR returns the handle to a new PIC_EDITOR or the handle to
 %      the existing singleton*.
 %
@@ -22,7 +22,7 @@ function varargout = pic_editor(varargin)
 
 % Edit the above text to modify the response to help pic_editor
 
-% Last Modified by GUIDE v2.5 05-Dec-2016 10:35:43
+% Last Modified by GUIDE v2.5 06-Dec-2016 10:35:43
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -258,7 +258,7 @@ global image  %sobel±ßÔµ¼ì²â
 global A
 imsize = size(image);
 if numel(imsize) > 2
-    a=rgb2gray(image)
+    a=rgb2gray(image);
 else
     a=image;
 end
@@ -276,7 +276,7 @@ global image    %prewitt±ßÔµ¼ì²â
 global A
 imsize = size(image);
 if numel(imsize) > 2
-    a=rgb2gray(image)
+    a=rgb2gray(image);
 else
     a=image;
 end
@@ -294,7 +294,7 @@ global image    %canny±ßÔµ¼ì²â
 global A
 imsize = size(image);
 if numel(imsize) > 2
-    a=rgb2gray(image)
+    a=rgb2gray(image);
 else
     a=image;
 end
@@ -951,6 +951,7 @@ function pushbutton7_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton7 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global image
 zoom off
 
 % --- Executes on button press in pushbutton8.
@@ -958,6 +959,7 @@ function pushbutton8_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton8 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global image
 zoom out
 
 
