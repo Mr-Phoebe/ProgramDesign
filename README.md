@@ -35,3 +35,6 @@ My program designs for some courses.
 <br>[Student Score Manage System(Django Python 2015)](https://github.com/Mr-Phoebe/StuGra)</br>
 ## COMPREHENSIVE DESIGN AND EXPERIMENT OF DIGITAL MEDIA CONTENT 10/20/16
 <br>[Image editor](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Comprehensive%20Design%20and%20Experiment%20of%20Digital%20Media%20Content/edit_image)</br> 
+## DEEP LEARNING
+<br>[Theano](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Deep%20Learning/Theano)</br>
+<br>[Lasagne](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Deep%20Learning/Lasagne)</br>
