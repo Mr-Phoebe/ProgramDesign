@@ -3,6 +3,7 @@
 # Tarrega, 150611.
 
 import lasagne
+import theano
 from lasagne import layers
 from lasagne.updates import nesterov_momentum
 from nolearn.lasagne import NeuralNet
@@ -15,6 +16,22 @@ from matplotlib import pyplot
 
 DATA_URL = 'http://deeplearning.net/data/mnist/mnist.pkl.gz'
 DATA_FILENAME = './data/mnist.pkl.gz'
+
+def float32(k):
+    return np.cast['float32'](k)
+
+class AdjustVariable(object):
+    def __init__(self, name, start = 0.03, stop = 0.001):
+        self.name = name
+        self.start, self.stop = start, stop
+        self.ls = None
+    def __call__(self, nn, train_history):
+        if self.ls is None:
+            self.ls = np.linspace(self.start, self.stop, nn.max_epochs)
+        epoch = train_history[-1]['epoch']
+        new_value = float32(self.ls[epoch - 1])
+        getattr(nn, self.name).set_value(new_value)
+
 
 def pickle_load(f, encoding):
     return pickle.load(f)
@@ -40,7 +57,6 @@ def load():
     print 'size:',X_train.shape, y_train.shape, X_train.dtype, y_train.dtype
     return X_train,y_train
 
-
 net1 = NeuralNet(
     layers=[  # three layers: one hidden layer
         ('input', layers.InputLayer),
@@ -63,11 +79,43 @@ net1 = NeuralNet(
     verbose=1,
     )
 
+net3 = NeuralNet(
+    layers=[  # three layers: one hidden layer
+        ('input', layers.InputLayer),
+        ('hidden', layers.DenseLayer),
+        ('output', layers.DenseLayer),
+        ],
+    # layer parameters:
+    input_shape=(None, 28*28),  # 28x28 input pixels per batch
+    hidden_num_units=200,  # number of units in hidden layer
+    output_nonlinearity=lasagne.nonlinearities.softmax,  # output layer
+    output_num_units=10,  # 10 target values
+
+    # optimization method:
+    update=nesterov_momentum,
+    update_learning_rate=theano.shared(float32(0.03)),
+    update_momentum=theano.shared(float32(0.9)),
+
+    regression=False,
+    # batch_iterator_train=FlipBatchIterator(batch_size=128),
+    on_epoch_finished=[
+        AdjustVariable('update_learning_rate', start=0.03, stop=0.0001),
+        AdjustVariable('update_momentum', start=0.9, stop=0.999),
+        ],
+    max_epochs=400,
+    verbose=1,
+    )
+
 X, y = load()
 net1.fit(X, y)
+net3.fit(X, y)
 
-train_loss = np.array([i["train_loss"] for i in net1.train_history_])
-valid_loss = np.array([i["valid_loss"] for i in net1.train_history_])
+train_loss = np.array([i["net1_train_loss"] for i in net1.train_history_])
+valid_loss = np.array([i["net1_valid_loss"] for i in net1.train_history_])
+pyplot.plot(train_loss, linewidth=3, label="train")
+pyplot.plot(valid_loss, linewidth=3, label="valid")
+train_loss = np.array([i["net3_train_loss"] for i in net3.train_history_])
+valid_loss = np.array([i["net3_valid_loss"] for i in net3.train_history_])
 pyplot.plot(train_loss, linewidth=3, label="train")
 pyplot.plot(valid_loss, linewidth=3, label="valid")
 pyplot.grid()
