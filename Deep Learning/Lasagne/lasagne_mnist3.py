@@ -57,37 +57,18 @@ def load():
     print 'size:',X_train.shape, y_train.shape, X_train.dtype, y_train.dtype
     return X_train,y_train
 
-net1 = NeuralNet(
-    layers=[  # three layers: one hidden layer
-        ('input', layers.InputLayer),
-        ('hidden', layers.DenseLayer),
-        ('output', layers.DenseLayer),
-        ],
-    # layer parameters:
-    input_shape=(None, 28*28),  # 28x28 input pixels per batch
-    hidden_num_units=200,  # number of units in hidden layer
-    output_nonlinearity=lasagne.nonlinearities.softmax,  # output layer
-    output_num_units=10,  # 10 target values
-
-    # optimization method:
-    update=nesterov_momentum,
-    update_learning_rate=0.01,
-    update_momentum=0.9,
-
-    regression=False,  # flag to indicate we're dealing with regression problem
-    max_epochs=300,  # we want to train this many epochs
-    verbose=1,
-    )
 
 net3 = NeuralNet(
     layers=[  # three layers: one hidden layer
         ('input', layers.InputLayer),
-        ('hidden', layers.DenseLayer),
+        ('hidden1', layers.DenseLayer),
+        ('hidden2', layers.DenseLayer),
         ('output', layers.DenseLayer),
         ],
     # layer parameters:
     input_shape=(None, 28*28),  # 28x28 input pixels per batch
-    hidden_num_units=200,  # number of units in hidden layer
+    hidden1_num_units=200,  # number of units in hidden layer
+    hidden2_num_units=200,  # number of units in hidden layer
     output_nonlinearity=lasagne.nonlinearities.softmax,  # output layer
     output_num_units=10,  # 10 target values
 
@@ -107,13 +88,8 @@ net3 = NeuralNet(
     )
 
 X, y = load()
-net1.fit(X, y)
 net3.fit(X, y)
 
-train_loss = np.array([i["train_loss"] for i in net1.train_history_])
-valid_loss = np.array([i["valid_loss"] for i in net1.train_history_])
-pyplot.plot(train_loss, linewidth=3, label="net1_train")
-pyplot.plot(valid_loss, linewidth=3, label="net1_valid")
 train_loss = np.array([i["train_loss"] for i in net3.train_history_])
 valid_loss = np.array([i["valid_loss"] for i in net3.train_history_])
 pyplot.plot(train_loss, linewidth=3, label="net3_train")
