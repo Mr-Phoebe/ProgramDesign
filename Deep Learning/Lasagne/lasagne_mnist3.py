@@ -75,7 +75,7 @@ net1 = NeuralNet(
     update_momentum=0.9,
 
     regression=False,  # flag to indicate we're dealing with regression problem
-    max_epochs=400,  # we want to train this many epochs
+    max_epochs=300,  # we want to train this many epochs
     verbose=1,
     )
 
@@ -102,7 +102,7 @@ net3 = NeuralNet(
         AdjustVariable('update_learning_rate', start=0.03, stop=0.0001),
         AdjustVariable('update_momentum', start=0.9, stop=0.999),
         ],
-    max_epochs=400,
+    max_epochs=300,
     verbose=1,
     )
 
@@ -110,18 +110,18 @@ X, y = load()
 net1.fit(X, y)
 net3.fit(X, y)
 
-train_loss = np.array([i["net1_train_loss"] for i in net1.train_history_])
-valid_loss = np.array([i["net1_valid_loss"] for i in net1.train_history_])
-pyplot.plot(train_loss, linewidth=3, label="train")
-pyplot.plot(valid_loss, linewidth=3, label="valid")
-train_loss = np.array([i["net3_train_loss"] for i in net3.train_history_])
-valid_loss = np.array([i["net3_valid_loss"] for i in net3.train_history_])
-pyplot.plot(train_loss, linewidth=3, label="train")
-pyplot.plot(valid_loss, linewidth=3, label="valid")
+train_loss = np.array([i["train_loss"] for i in net1.train_history_])
+valid_loss = np.array([i["valid_loss"] for i in net1.train_history_])
+pyplot.plot(train_loss, linewidth=3, label="net1_train")
+pyplot.plot(valid_loss, linewidth=3, label="net1_valid")
+train_loss = np.array([i["train_loss"] for i in net3.train_history_])
+valid_loss = np.array([i["valid_loss"] for i in net3.train_history_])
+pyplot.plot(train_loss, linewidth=3, label="net3_train")
+pyplot.plot(valid_loss, linewidth=3, label="net3_valid")
 pyplot.grid()
 pyplot.legend()
 pyplot.xlabel("epoch")
 pyplot.ylabel("loss")
-pyplot.ylim(1e-3, 1e-2)
+pyplot.ylim(1e-3, 1)
 pyplot.yscale("log")
 pyplot.show()
