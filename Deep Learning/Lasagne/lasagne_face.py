@@ -45,12 +45,12 @@ def load(test=False, cols=None):
 
 
 X, y = load()
-'''
+
 print("X.shape == {}; X.min == {:.3f}; X.max == {:.3f}".format(
     X.shape, X.min(), X.max()))
 print("y.shape == {}; y.min == {:.3f}; y.max == {:.3f}".format(
     y.shape, y.min(), y.max()))
-'''
+
 net1 = NeuralNet(
     layers=[  # three layers: one hidden layer
         ('input', layers.InputLayer),
@@ -74,4 +74,4 @@ net1 = NeuralNet(
     )
 
 X, y = load()
-net1.fit(X, y)
+# net1.fit(X, y)

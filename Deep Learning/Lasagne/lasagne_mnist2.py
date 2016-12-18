@@ -85,20 +85,19 @@ net2 = NeuralNet(
     update_learning_rate=theano.shared(float32(0.03)),
     update_momentum=theano.shared(float32(0.9)),
 
-    regression=False,
     on_epoch_finished=[
         AdjustVariable('update_learning_rate', start=0.03, stop=0.0001),
         AdjustVariable('update_momentum', start=0.9, stop=0.999),
         ],
 
     regression=False,
-    max_epochs=10,
+    max_epochs=400,
     verbose=1,
     )
 
 X, y = load2d()  # load 2-d data
 net2.fit(X, y)
-'''
+
 # Training for 1000 epochs will take a while.  We'll pickle the
 # trained model so that we can load it back later:
 import cPickle as pickle
@@ -116,4 +115,3 @@ pyplot.ylabel("loss")
 pyplot.ylim(0, 1)
 pyplot.yscale("log")
 pyplot.show()
-'''

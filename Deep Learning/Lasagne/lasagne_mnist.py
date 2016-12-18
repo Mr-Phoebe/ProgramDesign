@@ -1,6 +1,6 @@
 # Using lasagne to fit mnist.
 # show how to use NeuralNet
-# Tarrega, 150611.
+# HaonanWu, 12/17/15.
 
 import lasagne
 from lasagne import layers

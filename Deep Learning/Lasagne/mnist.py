@@ -8,7 +8,6 @@ More in-depth examples and reproductions of paper results are maintained in
 a separate repository: https://github.com/Lasagne/Recipes
 """
 
-from __future__ import print_function
 
 import sys
 import os
@@ -33,7 +32,7 @@ def load_dataset():
         from urllib.request import urlretrieve
 
     def download(filename, source='http://yann.lecun.com/exdb/mnist/'):
-        print("Downloading %s" % filename)
+        print "Downloading %s", filename
         urlretrieve(source + filename, 'data/' + filename)
 
     # We then define functions for loading MNIST images and labels.
@@ -231,8 +230,14 @@ def iterate_minibatches(inputs, targets, batchsize, shuffle=False):
 
 def main(model='mlp', num_epochs=500):
     # Load the dataset
-    print("Loading data...")
+    print 'Loading data...'
     X_train, y_train, X_val, y_val, X_test, y_test = load_dataset()
+
+    print 'size :'
+    print X_train.shape
+    print y_train.shape
+    print X_val.shape
+    print y_val.shape
 
     # Prepare Theano variables for inputs and targets
     input_var = T.tensor4('inputs')

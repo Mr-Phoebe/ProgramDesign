@@ -1,6 +1,6 @@
 # Using lasagne to fit mnist.
 # show how to use NeuralNet
-# Tarrega, 150611.
+# HaonanWu, 12/16/16.
 
 import lasagne
 import theano
@@ -61,16 +61,17 @@ def load():
 net3 = NeuralNet(
     layers=[  # three layers: one hidden layer
         ('input', layers.InputLayer),
+        ('dropout1', layers.DropoutLayer),
         ('hidden1', layers.DenseLayer),
-        ('hidden2', layers.DenseLayer),
         ('output', layers.DenseLayer),
         ],
     # layer parameters:
     input_shape=(None, 28*28),  # 28x28 input pixels per batch
     hidden1_num_units=200,  # number of units in hidden layer
-    hidden2_num_units=200,  # number of units in hidden layer
     output_nonlinearity=lasagne.nonlinearities.softmax,  # output layer
     output_num_units=10,  # 10 target values
+
+    dropout1_p=0.1,
 
     # optimization method:
     update=nesterov_momentum,
@@ -78,17 +79,19 @@ net3 = NeuralNet(
     update_momentum=theano.shared(float32(0.9)),
 
     regression=False,
-    # batch_iterator_train=FlipBatchIterator(batch_size=128),
     on_epoch_finished=[
         AdjustVariable('update_learning_rate', start=0.03, stop=0.0001),
         AdjustVariable('update_momentum', start=0.9, stop=0.999),
         ],
-    max_epochs=300,
+    max_epochs=1000,
     verbose=1,
     )
 
 X, y = load()
 net3.fit(X, y)
+
+with open('net3.pickle', 'wb') as f:
+    pickle.dump(net3, f, -1)
 
 train_loss = np.array([i["train_loss"] for i in net3.train_history_])
 valid_loss = np.array([i["valid_loss"] for i in net3.train_history_])
