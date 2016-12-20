@@ -5,7 +5,6 @@
 import lasagne
 import theano
 from lasagne import layers
-from lasagne.updates import nesterov_momentum
 from nolearn.lasagne import NeuralNet
 import os
 from urllib import urlretrieve
@@ -81,13 +80,13 @@ net2 = NeuralNet(
     hidden4_num_units=500, hidden5_num_units=500,
     output_num_units=10, output_nonlinearity=lasagne.nonlinearities.softmax,
 
-	update=nesterov_momentum,
+	update=lasagne.updates.adadelta,
     update_learning_rate=theano.shared(float32(0.03)),
-    update_momentum=theano.shared(float32(0.9)),
+    # update_momentum=theano.shared(float32(0.9)),
 
     on_epoch_finished=[
-        AdjustVariable('update_learning_rate', start=0.03, stop=0.0001),
-        AdjustVariable('update_momentum', start=0.9, stop=0.999),
+        AdjustVariable('update_learning_rate', start=0.04, stop=0.0001),
+        # AdjustVariable('update_momentum', start=0.9, stop=0.999),
         ],
 
     regression=False,
@@ -112,6 +111,6 @@ pyplot.grid()
 pyplot.legend()
 pyplot.xlabel("epoch")
 pyplot.ylabel("loss")
-pyplot.ylim(0, 1)
+pyplot.ylim(1e-5, 1)
 pyplot.yscale("log")
 pyplot.show()
