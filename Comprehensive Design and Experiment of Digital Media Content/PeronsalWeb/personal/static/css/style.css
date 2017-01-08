@@ -1,0 +1,471 @@
+/*--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+--*/
+/*--reset--*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+ol,ul{list-style:none;margin:0px;padding:0px;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+/*--start editing from here--*/
+a{text-decoration:none;}
+.txt-rt{text-align:right;}/* text align right */
+.txt-lt{text-align:left;}/* text align left */
+.txt-center{text-align:center;}/* text align center */
+.float-rt{float:right;}/* float right */
+.float-lt{float:left;}/* float left */
+.clear{clear:both;}/* clear float */
+.pos-relative{position:relative;}/* Position Relative */
+.pos-absolute{position:absolute;}/* Position Absolute */
+.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
+.vertical-top{	vertical-align:top;}/* vertical align top */
+nav.vertical ul li{	display:block;}/* vertical menu */
+nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
+img{max-width:100%;}
+/*--end reset--*/
+body{
+	font-family: 'Nunito', sans-serif;
+	background: #c2e6e0;
+	background-size:cover;
+	background-attachment: fixed;
+}
+/*-- main --*/
+.main {
+    padding: 3.5em 0 2em;
+}
+h1 {
+    font-size: 3em;
+    text-align: center;
+    color: #404452;
+}
+.account{
+    margin: 3em auto 0;
+    width: 43%;
+	background-color: #fff;
+	position: relative;
+}
+.account-info {
+    border-right: 1px solid #E2E2E2;
+	width: 50%;
+}
+.account-top {
+    padding: 2em;
+}
+.account-top img{
+    border-radius: 50%;
+}
+.account-top-left {
+    float: left;
+}
+.account-top-right {
+    float: right;
+	padding-top: 0.5em;
+}
+.account-top  h2 {
+    color: #171a21;
+    font-size: 1.5em;
+}
+.account-top p {
+    color: #868b98;
+    font-size: 0.9em;
+    margin-top: 0.2em;
+}
+.account span {
+    background: url(../images/img-sprite.png) no-repeat 0px 0px;
+    width: 17px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.account-info span.icon1 {
+    background-position: -24px 0px;
+}
+.account-info span.icon2 {
+    background-position: -46px 0px;
+}
+.account-info span.icon3 {
+    background-position: -68px -1px;
+}
+.account-info span.icon4 {
+    background-position: -96px 0px;
+}
+.text-right h4 {
+    font-size: 1.1em;
+    color: #171a21;
+    margin-bottom: 0.3em;
+	display: inline-block;
+}
+.text-right h4 a{
+    color: #171a21;
+}
+.text-right h4 a:hover{
+    color: #41CCB4;
+}
+.text-right label {
+    float: right;
+    font-size: 0.8em;
+    color: #868b98;
+}
+.text-right p {
+    font-size: .85em;
+    color: #868b98;
+    line-height: 1.6em;
+}
+.text-right p.from {
+    display: inline-block;
+}
+.text-right h6 {
+    font-size: 0.9em;
+    color: #02a3c6;
+	display: inline-block;
+}
+.text {
+    padding: 1em;
+    border-bottom: 1px solid #E2E2E2;
+}
+.text-left {
+    float: left;
+}
+.text-right {
+    float: left;
+    width: 92%;
+}
+/*--tabs--*/
+.tabs nav {
+    background: #fff;
+    color: #171a21;
+}
+.tabs nav a {
+    padding: 1em 2em;
+    text-align: left;
+    display: block;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+.tabs nav a  i{
+    background-color: #41ccb4;
+    font-size: 0.8em;
+	color: #fff;
+    padding: 2px 7px;
+    border-radius: 68%;
+    float: right;
+}
+.tabs nav a:hover, .tabs nav a.selected {
+    background: #404452;
+    color: #FFFFFF;
+}
+.tabs nav a.selected i{
+    color: #404452;
+}
+.tabs nav a:hover span, .tabs nav a.selected  span{
+    background-position: 0px -24px;
+}
+.tabs nav a:hover span.icon1, .tabs nav a.selected  span.icon1{
+    background-position: -24px -24px;
+}
+.tabs nav a:hover span.icon2, .tabs nav a.selected  span.icon2{
+    background-position: -46px -24px;
+}
+.tabs nav a:hover span.icon3, .tabs nav a.selected  span.icon3{
+    background-position: -69px -24px;
+}
+.tabs nav a:hover span.icon4, .tabs nav a.selected  span.icon4{
+    background-position: -96px -24px;
+}
+.account span.star {
+    background-position: -24px -47px;
+    margin-right:10px;
+	width: 14px;
+    height: 14px;
+}
+.account span.star:hover,.account span.star.active {
+    background-position: -41px -47px;  
+}
+.tabs .content {
+  padding: 0;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  color: #6C5D5D;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.1s linear 0s;
+}
+.tabs .content.visible {
+    padding: 0;
+    opacity: 1;
+	width: 50%;
+}
+/*--//tabs--*/
+.options {
+    padding: 1em 2em 2em;
+}
+select.dropdown {
+    border: none;
+    font-size: 0.9em;
+    color: #868b98;
+}
+select.dropdown:focus {
+    outline: none;
+}
+/*--copyright--*/
+.copyright {
+    margin: 2em;
+    text-align: center;
+}
+.copyright p {
+    font-size: 1em;
+    color: #404452;
+}
+.copyright p a{
+    color: #404452;
+}
+.copyright p a:hover{
+    color: #28A08C;
+}
+/*--//copyright--*/
+/*---- responsive-design -----*/
+@media(max-width:1440px){
+.account {
+    width: 48%;
+}
+}
+@media(max-width:1366px){
+.account {
+    width: 50%;
+}
+}
+@media(max-width:1280px){
+.account {
+    width: 54%;
+}
+}
+@media(max-width:1080px){
+.account {
+    width: 65%;
+}
+}
+@media(max-width:1024px){
+.account {
+    width: 67%;
+}
+}
+@media(max-width:991px){
+.account {
+    width: 70%;
+}
+}
+@media(max-width:900px){
+.account {
+    width: 77%;
+}
+}
+@media(max-width:800px){
+.account {
+    width: 85%;
+}
+}
+@media(max-width:768px){
+h1 {
+    font-size: 2.7em;
+}
+.account {
+    width: 80%;
+}
+.account-info {
+    width: 45%;
+}
+.account-top {
+    padding: 1.8em 1em;
+}
+.account-top-left {
+    width: 29%;
+}
+.account-top h2 {
+    font-size: 1.3em;
+}
+.account-top p {
+    font-size: 0.8em;
+}
+.tabs nav a {
+    font-size: 1em;
+}
+.tabs .content.visible {
+    width: 55%;
+}
+.text {
+    padding: 0.9em 1em;
+}
+.text-right {
+    width: 91%;
+}
+.text-right h4 {
+    font-size: 1em;
+}
+.text-right p {
+    line-height: 1.4em;
+}
+}
+@media(max-width:640px){
+h1 {
+    font-size: 2.4em;
+}
+.account {
+    width: 88%;
+}
+.account-top h2 {
+    font-size: 1.2em;
+}
+.options {
+    padding: 1em 2em 7.5em;
+}
+.text {
+    padding: 0.9em 1.5em .9em 0.5em;
+}
+.text-right p {
+    font-size: .8em;
+}
+.options {
+    padding: 1em 2em 2em;
+}
+.copyright p {
+    font-size: 0.9em;
+	line-height: 1.8em;
+}
+}
+@media(max-width:600px){
+.account {
+    width: 94%;
+}
+}
+@media(max-width:480px){
+h1 {
+    font-size: 1.9em;
+}
+.account {
+    width: 95%;
+}
+.account-top-left {
+    width: 100%;
+    float: none;
+    text-align: center;
+}
+.account-top-right {
+    float: none;
+    text-align: center;
+}
+.tabs nav a {
+    font-size: 0.95em;
+    padding: 1em 1.5em;
+}
+.options {
+    padding: 1em 1em 2em;
+}
+.text-right h4 {
+    font-size: 0.9em;
+}
+.text-right label {
+    font-size: 0.7em;
+}
+.account span.star {
+    margin-right: 3px;
+}
+.text {
+    padding: 0.8em 1em .8em 0.5em;
+}
+.text-right p {
+    font-size: .75em;
+}
+.text-right h6 {
+    font-size: 0.8em;
+}
+.tabs nav a i {
+    font-size: 0.7em;
+}
+}
+@media(max-width:320px){
+.main {
+    padding: 2em 0 1em;
+}
+h1 {
+    font-size: 1.5em;
+}
+.account {
+    margin: 2em auto 0;
+}
+.account-info {
+    width: 100%;
+	border: none;
+}
+.account-top {
+    padding: 1em 0;
+}
+.tabs nav {
+    border-top: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+    padding: 0.5em;
+}
+.tabs nav a {
+    font-size: 0.8em;
+    padding: 0.5em .75em;
+    display: inline-block;
+    margin-bottom: 1em;
+}
+.account span {
+    margin-right: 2px;
+}
+.tabs {
+    position: relative;
+    padding-bottom: 25.5em;
+}
+.tabs nav a i {
+    font-size: 0.6em;
+    padding: 1px 4px;
+    margin: 1px 0 0 4px;
+}
+.tabs .content {
+    top: 104px;
+    height: inherit;
+}
+.tabs .content.visible {
+    width: 100%;
+}
+.text {
+    padding: 0.6em 0.5em;
+}
+.text-right h4 {
+    font-size: 0.85em;
+}
+.text-right p {
+    font-size: .7em;
+}
+.text-right h6 {
+    font-size: 0.75em;
+}
+.text-right label {
+    font-size: 0.6em;
+}
+.account span.star {
+    margin-right: 9px;
+}
+select.dropdown {
+    font-size: 0.7em;
+}
+.options {
+    padding: 0em 1em 2em;
+}
+.copyright {
+    margin: 1.5em 1em;
+}
+.copyright p {
+    font-size: 0.8em;
+}
+}
+/*--//responsive-design---*/
