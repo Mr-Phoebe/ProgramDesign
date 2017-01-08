@@ -15,4 +15,5 @@ Debug
 *.idb
 *.idea
 *.class
-
+upload
+*.sqlite3
