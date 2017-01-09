@@ -133,7 +133,7 @@ h1 {
 }
 .text-right {
     float: left;
-    width: 92%;
+    width: 100%;
 }
 /*--tabs--*/
 .tabs nav {
@@ -147,7 +147,7 @@ h1 {
     cursor: pointer;
     font-size: 1.1em;
 }
-.tabs nav a  i{
+.tabs nav a i{
     background-color: #41ccb4;
     font-size: 0.8em;
 	color: #fff;
@@ -162,12 +162,20 @@ h1 {
 .tabs nav a.selected i{
     color: #404452;
 }
-.tabs nav a:hover span, .tabs nav a.selected  span{
+.tabs nav a span{
+    color: #404452;
     background-position: 0px -24px;
 }
+
+.tabs nav a:hover span, .tabs nav a.selected span{
+    color: #fff;
+    background-position: 0px 0px;
+}
+
 .tabs nav a:hover span.icon1, .tabs nav a.selected  span.icon1{
     background-position: -24px -24px;
 }
+
 .tabs nav a:hover span.icon2, .tabs nav a.selected  span.icon2{
     background-position: -46px -24px;
 }
