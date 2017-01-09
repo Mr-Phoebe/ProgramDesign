@@ -28,7 +28,6 @@ nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 /*--end reset--*/
 body{
-	font-family: 'Nunito', sans-serif;
 	background: #F7E967;
 	background-size:cover;
 	background-attachment: fixed;
@@ -45,7 +44,7 @@ h1 {
 }
 .account{
     margin: 3em auto 0;
-    width: 43%;
+    width: 60%;
 	background-color: #fff;
 	position: relative;
 }
@@ -195,7 +194,7 @@ h1 {
   color: #6C5D5D;
   width: 0;
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
   opacity: 0;
   transition: opacity 0.1s linear 0s;
 }
