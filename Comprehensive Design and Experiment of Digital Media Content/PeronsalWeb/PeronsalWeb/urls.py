@@ -18,11 +18,12 @@ from django.contrib import admin
 import os
 from settings import STATICFILES_DIRS, BASE_DIR
 
-from personal import views
+from personal import views as pvs
+from django import views as dvs
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index),
-    url(r'^upload/$', views.upload),
-    url(r'^download/(?P<path>.*)$', 'django.views.static.serve', {'document_root': os.path.join(BASE_DIR, 'upload'), 'show_indexes': True}),
+    url(r'^$', pvs.index),
+    url(r'^upload/$', pvs.upload),
+    url(r'^download/(?P<path>.*)$', dvs.static.serve, {'document_root': os.path.join(BASE_DIR, 'upload'), 'show_indexes': True}),
 ]
