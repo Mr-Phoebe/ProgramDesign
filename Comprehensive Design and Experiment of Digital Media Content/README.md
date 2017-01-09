@@ -15,9 +15,9 @@ The requirement of this project is to design a website which can show the inform
 
 And there are something wrong in the HTML, because I didn't take scroll bars into consideration, so if one upload too much files, some of them won't be seen.  
 
-And the CSS is in a jumble, I am trying to fix it.  
+<s>And the CSS is in a jumble, I am trying to fix it.  </s>
 ## Environment
-Bootstrap == 3.3.5
-Django == 1.9.5
-Python == 2.7
+Bootstrap == 3.3.5  
+Django == 1.9.5  
+Python == 2.7  
 

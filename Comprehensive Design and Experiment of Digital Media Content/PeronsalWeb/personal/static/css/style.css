@@ -29,9 +29,10 @@ img{max-width:100%;}
 /*--end reset--*/
 body{
 	font-family: 'Nunito', sans-serif;
-	background: #c2e6e0;
+	background: #F7E967;
 	background-size:cover;
 	background-attachment: fixed;
+    font-family: Bradley Hand ITC, Vladimir Script, 宋体, 微软雅黑;
 }
 /*-- main --*/
 .main {
