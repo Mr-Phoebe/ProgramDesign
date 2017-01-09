@@ -13,11 +13,11 @@ Personal Website
 ---
 The requirement of this project is to design a website which can show the information of the person and experiments. And others can upload and download the multimedia files in the website.  
 
-And there are something wrong in the HTML, because I didn't take scroll bars into consideration, so if one upload too much files, some of them won't be seen.  
+<s>And there are something wrong in the HTML, because I didn't take scroll bars into consideration, so if one upload too much files, some of them won't be seen.  </s>
 
 <s>And the CSS is in a jumble, I am trying to fix it.  </s>
 ## Environment
 Bootstrap == 3.3.5  
-Django == 1.9.5  
+Django == 1.9.5(1.10)  
 Python == 2.7  
 
