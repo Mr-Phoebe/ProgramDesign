@@ -169,6 +169,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <div class="content">
                                     <br>
                                     <form enctype="multipart/form-data" method="POST" action="/upload/" style="padding: 3.5px 3em;">
+                                        {% csrf_token %}
                                         <input type="file" name="file">
                                         <br>
                                         <textarea id="textArea" cols="30" rows="10">请输入描述</textarea>
