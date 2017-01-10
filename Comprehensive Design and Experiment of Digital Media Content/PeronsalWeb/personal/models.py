@@ -9,10 +9,12 @@ class UploadFile(models.Model):
     upload_time = models.DateTimeField(auto_now=True)
 
 
+
 class UploadFileForm(forms.Form):
     title = forms.CharField(max_length=64)
     fileType = forms.CharField(max_length=32)
     theFile = forms.FileField()
+    description = forms.CharField(max_length=80)
 
 
 
