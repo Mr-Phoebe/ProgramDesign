@@ -4,7 +4,6 @@ import os
 
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponseRedirect
-from django.views.decorators.csrf import csrf_exempt
 
 from models import UploadFile
 # Create your views here.
@@ -16,12 +15,11 @@ def index(request):
     for r in data:
         res = {}
         res['fileName'] = r.file_name
-        res['uploadTime'] = str(r.upload_time)
-        res['uploadPos'] = str(r.file_name)
+        res['uploadTime'] = r.upload_time
+        res['uploadPos'] = r.file_name
         resp.append(res)
     return render(request, 'index.html', {'count': count, 'data': resp})
 
-@csrf_exempt
 def upload(request):
     if request.method == 'POST':
         try:
@@ -40,9 +38,7 @@ def upload(request):
                 destination.close()
             # print "=======================success================="
             return HttpResponseRedirect('/')
-        except Exception, ex:
+        except Exception as ex:
             print ex
             return JsonResponse({'code': 0, 'reason': u'导入数据失败'})
-
-
 
