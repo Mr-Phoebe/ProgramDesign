@@ -170,6 +170,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <form enctype="multipart/form-data" method="POST" action="/upload/" style="padding: 3.5px 3em;">
                                         <input type="file" name="file">
                                         <br>
+                                        <textarea id="textArea" cols="30" rows="10">请输入描述</textarea>
+                                        <p>还剩<span class="" id="textNum" style="background: none; ">0</span>/总共80</p>
+                                        <br>
                                         <input type="submit" class="btn btn-primary" value="上传文件">
                                     </form>
                                 </div>
@@ -190,12 +193,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
             </div>
         </div>
-        
     </div>
     <div class="copyright" style="font-family: 微软雅黑;">
         <p> &copy; 2015 Personal Mail Widget . All rights reserved | Template by <a href="http://w3layouts.com/" target="_blank">W3layouts</a></p>
     </div>
     <script>
+    $('#textArea').on("keyup", function() {
+        $('#textNum').text(80 - $('#textArea').val().length);
+        if ($('#textArea').val().length > 80) {
+            $('#textNum').text(80);
+            alert("至多输入80个字符！");
+            $('#textArea').val($('#textArea').val().substring(0, 80));
+        }
+    })
+    $('#textNum').text(80 - $('#textArea').val().length); 
     $(function() {
         $('.tabs nav a').on('click', function() {
             show_content($(this).index());
