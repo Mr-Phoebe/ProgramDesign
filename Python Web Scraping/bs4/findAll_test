@@ -1,0 +1,36 @@
+# -*- coding: utf-8 -*-
+# @Author: HaonanWu
+# @Date:   2016-12-24 16:18:01
+# @Last Modified by:   HaonanWu
+# @Last Modified time: 2016-12-24 17:25:33
+
+import urllib2
+import json
+import copy
+from bs4 import BeautifulSoup
+
+def get_bs4(url):
+    user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
+    headers = {'User-Agent':user_agent}
+    request = urllib2.Request(url = url, headers = headers)
+    response = urllib2.urlopen(request)
+    return BeautifulSoup(response,"html.parser")
+
+if __name__ == '__main__':
+    url = 'http://blog.csdn.net/u013007900?viewmode=contents'
+    string = u'Github计算contributions'
+    soup_packetpage = get_bs4(url)
+
+
+    dic_test = {"class":["list_item", "list_view"]}
+
+    li = soup_packetpage.findAll("div", dic_test)
+    for item in li:
+        try:
+            print item.div.h1.span.string
+        except:
+            pass
+
+
+
+
