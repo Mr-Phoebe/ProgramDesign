@@ -8,6 +8,18 @@ import urllib2
 import json
 from bs4 import BeautifulSoup
 
+def check_substring(stra, strb):
+    lista = list(stra)
+    listb = list(strb)
+    j = 0
+    l = len(listb)
+    for i in lista:
+        if listb[j] == i:
+            j += 1
+            if j == l:
+                return True
+    return False
+
 def get_bs4(url):
     user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
     headers = {'User-Agent':user_agent}
@@ -22,7 +34,7 @@ def get_pos(now, contain, string):
     except AttributeError as e:
         try:
             tmp = "" + now.string
-            if tmp.strip() == string:
+            if check_substring(tmp.strip(), string):
                 contain.append(now)
         except:
             pass
@@ -37,15 +49,15 @@ def get_parent(now):
             except:
                 pass
 
-def print_tree(now):
+def print_tree(now, num):
     try:
         for child in now.children: 
-            print_tree(child)
+            print_tree(child, num)
     except AttributeError as e:
         try:
             tmp = "" + now.string
             tmp.strip()
-            f1 = open('test.txt','a+')
+            f1 = open('test' + str(num) + '.txt','a+')
             if tmp != '\n':
                 f1.write(tmp+"\n")
             f1.close()
@@ -53,11 +65,11 @@ def print_tree(now):
             pass
         return 
 
-def get_all(now):
+def get_all(now, num):
     li = soup_packetpage.findAll(now.name, now.attrs)
     for item in li:
         try:
-            print_tree(item)
+            print_tree(item, num)
         except:
             pass
 
@@ -73,18 +85,37 @@ if __name__ == '__main__':
     contain = []
     get_pos(soup_packetpage, contain, string)
     
+    label_set = set()
 
     for pos in contain:
         fa = get_parent(pos)
-        get_all(fa)
-        print "********************"
+        f1 = open('test.txt','a+')
+        f1.write(str(fa))
+        f1.write("\n\n***********************\n\n")
+        f1.close()
+        label_set.add(fa)
+        print "*******************"
 
-    # dic_test = {"class":["list_item", "list_view"]}
+    num = 0
+    for fa in label_set:
+        f1 = open('test.txt','a+')
+        f1.write(str(fa))
+        f1.write("***********************")
+        f1.close()
+        get_all(fa, num)
+        num += 1
+        print "+++++++++++++++++++"
 
-    # li = soup_packetpage.findAll("div", dic_test)
+    # dic_test = {"class":["panel_body"]}
+
+    # li = soup_packetpage.findAll("ul", dic_test)
     # for item in li:
     #     try:
-    #         print item.div.h1.span.string
+    #         for child in item.children:
+    #             print_tree(child)
+    #             f1 = open('test.txt','a+')
+    #             f1.write("\n**************************\n")
+    #             f1.close()
     #     except:
     #         pass
 
