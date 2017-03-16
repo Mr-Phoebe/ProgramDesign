@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup
 import requests
+import json
 from dfs_tree import get_pos
 from print_tree import *
 
@@ -16,13 +17,14 @@ def get_bs4(url):
 def get_parent(now):
     for parent in now.parents:
         if parent is None and 'class' in parent.attrs:
-            return parent
+            return (parent.name, parent.attrs)
 
 
 def get_all(bs, now, num):
-    li = bs.findAll(now.name, now.attrs)
+    li = bs.findAll(now[0], now[1])
     for item in li:
-        print_tree(item, num)
+        if now[1] == item.attrs:
+            print_tree(item, num)
 
 
 if __name__ == '__main__':
@@ -35,10 +37,11 @@ if __name__ == '__main__':
 
     for pos in contain:
         fa = get_parent(pos)
-        label_set.add(fa)
+        label_set.add(json.dumps(fa))
 
     num = 0
-    for fa in label_set:
+    for fa_json in label_set:
+        fa = json.loads(fa_json)
         get_all(soup_packetpage, fa, num)
         num += 1
 
