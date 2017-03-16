@@ -45,9 +45,15 @@ def get_parent(now):
         if parent:
             try:
                 if parent.attrs.has_key('class') and parent.attrs['class'] != []:
-                    return parent
+                    return (parent.name, parent.attrs)
             except:
                 pass
+
+def print_temp(fa):
+    f1 = open('test.txt', 'a+')
+    f1.write(str(fa))
+    f1.write("\n\n***********************\n\n")
+    f1.close()
 
 def print_tree(now, num):
     try:
@@ -66,13 +72,10 @@ def print_tree(now, num):
         return 
 
 def get_all(now, num):
-    li = soup_packetpage.findAll(now.name, now.attrs)
+    li = soup_packetpage.findAll(now[0], now[1])
     for item in li:
-        try:
+        if now[1] == item.attrs:
             print_tree(item, num)
-        except:
-            pass
-
 
 
 if __name__ == '__main__':
@@ -89,35 +92,37 @@ if __name__ == '__main__':
 
     for pos in contain:
         fa = get_parent(pos)
-        f1 = open('test.txt','a+')
-        f1.write(str(fa))
-        f1.write("\n\n***********************\n\n")
-        f1.close()
-        label_set.add(fa)
-        print "*******************"
+        print_temp(fa)
+        label_set.add(json.dumps(fa))  
+        print "++++"    
 
     num = 0
-    for fa in label_set:
-        f1 = open('test.txt','a+')
-        f1.write(str(fa))
-        f1.write("***********************")
-        f1.close()
+    for fa_json in label_set:
+        fa = json.loads(fa_json)
+        print "****"
+        print_temp(fa)
         get_all(fa, num)
         num += 1
-        print "+++++++++++++++++++"
 
-    # dic_test = {"class":["panel_body"]}
+    # [u'ul', {u'class': [u'panel_body', u'itemlist']}]
+    # dic_test = {u'class': [u'panel_body', u'itemlist']}
 
     # li = soup_packetpage.findAll("ul", dic_test)
     # for item in li:
-    #     try:
-    #         for child in item.children:
-    #             print_tree(child)
-    #             f1 = open('test.txt','a+')
-    #             f1.write("\n**************************\n")
-    #             f1.close()
-    #     except:
-    #         pass
+    #     if item.attrs == dic_test:
+    #         print str(item)
+    #         f1 = open('test4.txt','a+')
+    #         f1.write(str(item))
+    #         f1.write("\n**************************\n")
+    #         f1.close()
+            # try:
+            #     for child in item.children:
+            #         f1 = open('test50.txt','a+')
+            #         f1.write(str(child))
+            #         f1.write("\n**************************\n")
+            #         f1.close()
+            # except:
+            #     pass
 
 
 
