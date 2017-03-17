@@ -41,7 +41,7 @@ My program designs for some courses.
 <br>[Theano](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Deep%20Learning/Theano)</br>
 <br>[Lasagne](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Deep%20Learning/Lasagne)</br>
 ## PYTHON WEB SCRAPING(Graduation Project) 12/26/16
-[The design and implementation of a tool for crawling turstworthy data](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Python%20Web%20Scraping)
+[The design and implementation of a based on B/S crawler for trustworthy data](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Python%20Web%20Scraping)
 ## PATTERN DISCOVERY IN DATA MINING 23/01/17
 <br>[Data Mining](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Pattern%20Discovery%20in%20Data%20Mining)</br>
 <br>[Apriori](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Pattern%20Discovery%20in%20Data%20Mining/Apriori)</br>
