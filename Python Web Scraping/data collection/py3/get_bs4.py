@@ -18,13 +18,14 @@ def get_bs4(url):
     return BeautifulSoup(r.text, "html.parser")
 
 def get_all_fit(bs, now, num):
-    li = filter(lambda x:x.attrs['class'] == now[1]['class'], bs.findAll(now[0], now[1]))
+    li = filter(lambda x:x.attrs['class'] == now[1], bs.findAll(now[0], {'class':now[1]}))
     for item in li:
+        print_temp(item, '*')
         print_tree(item, num, 0)
 
 if __name__ == '__main__':
-    url = 'http://blog.csdn.net/u013007900?viewmode=contents'
-    string = u'ACM'
+    url = 'http://interbrand.com/best-brands/best-global-brands/2016/ranking/'
+    string = '178,119 $m'
     contain = []
 
     soup_packetpage = get_bs4(url)
@@ -38,12 +39,12 @@ if __name__ == '__main__':
         get_all_fit(soup_packetpage, fa, num)
 
 
-        # dic_test = {"class":["brand-info", "brand-value-change", "brand-col-8 positive"]}
+        # dic_test = {"class":["brand-info", "brand-value-change", "brand-col-8"]}
         #
         # li = soup_packetpage.findAll("div", dic_test)
         # for item in li:
         #     if 'class' in item.attrs \
-        #         and item.attrs['class'] == ["brand-info", "brand-value-change", "brand-col-8 positive"]:
+        #         and item.attrs['class'] == ["brand-info", "brand-value-change", "brand-col-8"]:
         #         print(item)
 
 
