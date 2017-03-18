@@ -29,3 +29,9 @@ def get_pos(now, contain, string):
         except:
             pass
         return
+
+
+def get_parent(now):
+    for parent in now.parents:
+        if parent and 'class' in parent.attrs:
+            return (parent.name, parent.attrs)
