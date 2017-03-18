@@ -5,7 +5,7 @@
 # @Last Modified time: 2017-03-15 11:06:10
 
 import codecs
-import copy
+import csv
 
 def print_temp(fa, flag):
     f1 = codecs.open('testha.txt', 'a+', encoding='utf-8')
@@ -14,9 +14,23 @@ def print_temp(fa, flag):
     f1.write(s+"\n")
     f1.close()
 
-def print_brother(ori, num, dep):
-    cur = ori
+def print_temp_line(line, num, dep):
     f1 = codecs.open('test' + str(num) + '_' + str(dep) + '.txt', 'a+', encoding='utf-8')
+    for i in line:
+        f1.write(str(i)+"\n")
+    f1.write("\n**************\n")
+    f1.close()
+
+def csv_line(line, num, dep):
+    file_path = "C:\\Users\\SuPhoebe\\Desktop\\test\\searchhtml\\data\\"
+    file_name = file_path + 'csv_' + str(num) + '_' + str(dep) + '.csv'
+    csvfile = open(file_name, 'a+', newline='')
+    writer = csv.writer(csvfile, dialect='excel')
+    writer.writerow(line)
+
+def csv_brother(ori, num, dep):
+    cur = ori
+    line = []
     while cur:
         try:
             tmp = "" + cur.string
@@ -25,11 +39,26 @@ def print_brother(ori, num, dep):
             break
         tmp.strip()
         if tmp != '\n':
-            f1.write(tmp + "\n" + "dep:  " + str(dep) + "\n")
-            f1.write("\n++++++++++++++++++++++++\n")
+            line.append(tmp.replace('\n', ''))
+    if line != []:
+        csv_line(line, num, dep)
 
-    f1.write("\n**************************************\n")
-    f1.close()
+
+def print_brother(ori, num, dep):
+    cur = ori
+    line = []
+    while cur:
+        try:
+            tmp = "" + cur.string
+            cur = cur.next_sibling
+        except:
+            break
+        tmp.strip()
+        if tmp != '\n':
+            line.append(tmp.replace('\n', ''))
+    if line != []:
+        print_temp_line(line, num, dep)
+
 
 def print_children(ori, num, dep):
     cur = ori
@@ -55,6 +84,7 @@ def print_tree(now, num, dep):
             print_tree(child, num, dep + 1)
         except AttributeError as e:
             print_brother(child, num, dep)
+            csv_brother(child, num, dep)
 
 
 
