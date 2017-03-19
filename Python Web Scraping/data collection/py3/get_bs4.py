@@ -23,6 +23,15 @@ def get_all_fit(bs, now, num):
         print_temp(item, '*')
         print_tree(item, num, 0)
 
+def test(soup_packetpage):
+    dic_test = {"class":["brand-info", "brand-value-change", "brand-col-8"]}
+
+    li = soup_packetpage.findAll("div", dic_test)
+    for item in li:
+        if 'class' in item.attrs \
+            and item.attrs['class'] == ["brand-info", "brand-value-change", "brand-col-8"]:
+            print(item)
+
 if __name__ == '__main__':
     url = 'http://interbrand.com/best-brands/best-global-brands/2016/ranking/'
     string = '178,119 $m'
@@ -39,13 +48,7 @@ if __name__ == '__main__':
         get_all_fit(soup_packetpage, fa, num)
 
 
-        # dic_test = {"class":["brand-info", "brand-value-change", "brand-col-8"]}
-        #
-        # li = soup_packetpage.findAll("div", dic_test)
-        # for item in li:
-        #     if 'class' in item.attrs \
-        #         and item.attrs['class'] == ["brand-info", "brand-value-change", "brand-col-8"]:
-        #         print(item)
+
 
 
 

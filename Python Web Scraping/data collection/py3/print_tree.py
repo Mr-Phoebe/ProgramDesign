@@ -6,6 +6,7 @@
 
 import codecs
 import csv
+import os
 
 def print_temp(fa, flag):
     f1 = codecs.open('testha.txt', 'a+', encoding='utf-8')
@@ -22,7 +23,9 @@ def print_temp_line(line, num, dep):
     f1.close()
 
 def csv_line(line, num, dep):
-    file_path = "C:\\Users\\SuPhoebe\\Desktop\\test\\searchhtml\\data\\"
+    file_path = "data\\"
+    if not os.path.exists(file_path):
+        os.mkdir(file_path)
     file_name = file_path + 'csv_' + str(num) + '_' + str(dep) + '.csv'
     csvfile = open(file_name, 'a+', newline='')
     writer = csv.writer(csvfile, dialect='excel')
@@ -88,9 +91,3 @@ def print_tree(now, num, dep):
 
 
 
-            # tmp = "" + now.string
-            # tmp.strip()
-            # f1 = codecs.open('test' + str(num) + '.txt', 'a+', encoding='utf-8')
-            # if tmp != '\n':
-            #     f1.write(tmp + "\n" + "dep:  " + str(dep) + "\n")
-            # f1.close()
