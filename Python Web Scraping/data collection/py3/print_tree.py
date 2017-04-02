@@ -9,10 +9,10 @@ import csv
 import os
 
 def print_temp(fa, flag):
-    f1 = codecs.open('testha.txt', 'a+', encoding='utf-8')
+    f1 = codecs.open('test'+str(flag)+'.txt', 'a+', encoding='utf-8')
     f1.write(str(fa))
-    s = flag * 10
-    f1.write(s+"\n")
+    s = str(flag) * 10
+    f1.write("\n"+s+"\n")
     f1.close()
 
 def print_temp_line(line, num, dep):
@@ -40,8 +40,8 @@ def csv_brother(ori, num, dep):
             cur = cur.next_sibling
         except:
             break
-        tmp.strip()
-        if tmp != '\n':
+        tmp = tmp.strip()
+        if tmp != '\n' and tmp != '':
             line.append(tmp.replace('\n', ''))
     if line != []:
         csv_line(line, num, dep)
@@ -61,7 +61,6 @@ def print_brother(ori, num, dep):
             line.append(tmp.replace('\n', ''))
     if line != []:
         print_temp_line(line, num, dep)
-
 
 def print_children(ori, num, dep):
     cur = ori
@@ -85,9 +84,7 @@ def print_tree(now, num, dep):
         try:
             child.children             # 有儿子，则继续
             print_tree(child, num, dep + 1)
-        except AttributeError as e:
+        except Exception as e:
             print_brother(child, num, dep)
             csv_brother(child, num, dep)
-
-
 
