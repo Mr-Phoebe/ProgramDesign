@@ -14,9 +14,9 @@ My program designs for some courses.
 [Notepad](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Notepad)  
 ## INTELLIGENT MANGAEMENT 11/20/15
 [Gobang-AI](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Intelligent%20management-gobang-AI)  
-##OBJECT-ORIENTED PROGRAMMING:Java 12/18/15  
+## OBJECT-ORIENTED PROGRAMMING:Java 12/18/15  
 [E-commerce platform(books)](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/E-commerce%20platform(books))  
-##COMPOLERS:PRINCIPLES,TECHNIQUES AND TOOLS 12/18/15  
+## COMPOLERS:PRINCIPLES,TECHNIQUES AND TOOLS 12/18/15  
 [lexical analysis](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Compilers%20Principles%20Techniques%20and%20Tools/lexical%20analysis)  
 [syntax parsing](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Compilers%20Principles%20Techniques%20and%20Tools/syntax%20parsing)  
 ## MICROCOMPUTER INTERFACE TECHNOLOGY 12/27/15  
