@@ -43,13 +43,18 @@ def load(test=False, cols=None):
 
     return X, y
 
-
-X, y = load()
-
-print("X.shape == {}; X.min == {:.3f}; X.max == {:.3f}".format(
-    X.shape, X.min(), X.max()))
-print("y.shape == {}; y.min == {:.3f}; y.max == {:.3f}".format(
-    y.shape, y.min(), y.max()))
+def history(net): 
+    train_loss = np.array([i["train_loss"] for i in net.train_history_])
+    valid_loss = np.array([i["valid_loss"] for i in net.train_history_])
+    pyplot.plot(train_loss, linewidth=3, label="train")
+    pyplot.plot(valid_loss, linewidth=3, label="valid")
+    pyplot.grid()
+    pyplot.legend()
+    pyplot.xlabel("epoch")
+    pyplot.ylabel("loss")
+    pyplot.ylim(1e-3, 1e-2)
+    pyplot.yscale("log")
+    pyplot.show()
 
 net1 = NeuralNet(
     layers=[  # three layers: one hidden layer
@@ -74,4 +79,11 @@ net1 = NeuralNet(
     )
 
 X, y = load()
-# net1.fit(X, y)
+net1.fit(X, y)
+history(net1)
+'''
+print("X.shape == {}; X.min == {:.3f}; X.max == {:.3f}".format(
+    X.shape, X.min(), X.max()))
+print("y.shape == {}; y.min == {:.3f}; y.max == {:.3f}".format(
+    y.shape, y.min(), y.max()))
+'''
