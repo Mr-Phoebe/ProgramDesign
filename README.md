@@ -46,3 +46,8 @@ My program designs for some courses.
 <br>[Data Mining](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Pattern%20Discovery%20in%20Data%20Mining)</br>
 <br>[Apriori](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Pattern%20Discovery%20in%20Data%20Mining/Apriori)</br>
 <br>[FPGrowth](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Pattern%20Discovery%20in%20Data%20Mining/FPGrowth)</br>
+
+-------
+
+### DISTRIBUTED SYSTEM   7/09/17    
+<br>[Introduction to MapReduce](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Distributed%20System)</br>
