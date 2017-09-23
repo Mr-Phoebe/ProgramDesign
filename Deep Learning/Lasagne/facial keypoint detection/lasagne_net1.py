@@ -2,6 +2,7 @@
 import os
 
 import numpy as np
+from matplotlib import pyplot
 from pandas.io.parsers import read_csv
 from sklearn.utils import shuffle
 from lasagne import layers
