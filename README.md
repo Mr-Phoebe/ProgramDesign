@@ -51,3 +51,6 @@ My program designs for some courses.
 
 ### DISTRIBUTED SYSTEM   7/09/17    
 <br>[Introduction to MapReduce](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Distributed%20System)</br>
+
+### COMP VISION/SCENE ANAL 6/11/17
+<br>[Image Parallelogram Delection](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Image%20Parallelogram%20Delection)</br>
