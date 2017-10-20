@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 def print_item(input):
     print(input.shape[0], input.shape[1], input)
@@ -16,11 +17,9 @@ def getLength(startPoint,secondPoint):
     """
     :Return the length between two points
     """
-
-
     v1x = secondPoint[0] - startPoint[0]
     v1y = secondPoint[1] - startPoint[1]
-    lenv = np.sqrt(v1x*v1x + v1y*v1y)
+    lenv = math.sqrt(v1x*v1x + v1y*v1y)
     return lenv
     
 def unique(a):

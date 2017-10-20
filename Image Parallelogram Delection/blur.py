@@ -1,6 +1,11 @@
 from operation import convolve
 import numpy as np
 
+def blurImage(image_gray):
+    kernel = np.ones((3,3),np.float32)/9
+    res = convolve(image_gray, kernel)
+    return np.round(res).astype(np.uint8)
+
 def gaussian_kernel(sigma, truncate=4.0):
     """
     Return Gaussian that truncates at the given number of standard deviations. 

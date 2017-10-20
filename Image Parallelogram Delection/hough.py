@@ -18,7 +18,7 @@ def houghLines(edged,rho_res,theta_res,thresholdVotes,filterMultiple,thresholdPi
     
     #Here we populate houghMatrix
     for rowId in range(rows):                               
-        for colId in range(columns):              
+        for colId in range(columns):               
           if edged[rowId, colId]>thresholdPixels:           #edged has values 0 or 255 in our case
             #for each theta we calculate rhoVal, then locate it in Hough space plane
             for thId in range(len(theta)):
