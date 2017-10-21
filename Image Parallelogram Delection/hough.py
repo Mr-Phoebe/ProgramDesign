@@ -3,69 +3,68 @@ import numpy as np
 import scipy.signal as sp
 import operation
 
-def houghLines(edged,rho_res,theta_res,thresholdVotes,filterMultiple,thresholdPixels=0):
-    
+def houghLines(edged,rho_step,theta_step,thresholdVotes,filterMultiple,thresholdPixels=0):
     rows, columns = edged.shape
-    theta = np.linspace(-90.0, 0.0, np.ceil(90.0/theta_res) + 1.0)
+    theta = np.linspace(-90.0, 0.0, np.ceil(90.0/theta_step) + 1.0)
     theta = np.concatenate((theta, -theta[len(theta)-2::-1]))
-    
-    #defining empty Matrix in Hough space, where x is for theta and y is x*cos(theta)+y*sin(theta)
+    theta = theta*np.pi/180.0
+   
     diagonal = np.sqrt((rows - 1)**2 + (columns - 1)**2)
-    q = np.ceil(diagonal/rho_res)
+    q = np.ceil(diagonal/rho_step)
     nrho = 2*q + 1
-    rho = np.linspace(-q*rho_res, q*rho_res, nrho)
+    rho = np.linspace(-q*rho_step, q*rho_step, nrho) 
+    # defining empty Matrix in Hough space, where x is for theta and y is x*cos(theta)+y*sin(theta)
     houghMatrix = np.zeros((len(rho), len(theta)))
     
-    #Here we populate houghMatrix
-    for rowId in range(rows):                               
-        for colId in range(columns):               
-          if edged[rowId, colId]>thresholdPixels:           #edged has values 0 or 255 in our case
-            #for each theta we calculate rhoVal, then locate it in Hough space plane
-            for thId in range(len(theta)):
-              rhoVal = colId*np.cos(theta[thId]*np.pi/180.0) + \
-                  rowId*np.sin(theta[thId]*np.pi/180)
-              rhoIdx = np.nonzero(np.abs(rho-rhoVal) == np.min(np.abs(rho-rhoVal)))[0]
-              houghMatrix[rhoIdx[0], thId] += 1  
+    # Here we populate houghMatrix
+    y_idxs, x_idxs = np.nonzero(edged > thresholdPixels)  # (row, col) indexes to edges
+    cos_t = np.cos(theta)
+    sin_t = np.sin(theta)
+    for i in range(len(x_idxs)):
+        colId = x_idxs[i]
+        rowId = y_idxs[i]
+        for thId in range(len(theta)):
+            rhoVal = colId*cos_t[thId] + rowId*sin_t[thId]
+            diff = np.abs(rho-rhoVal)
+            rhoIdx = np.nonzero(diff == np.min(diff))[0]            
+            houghMatrix[rhoIdx[0], thId] += 1  
             
    
-   #cluster and filter multiple dots in Houghs plane
-    if filterMultiple>0:
-        clusterDiameter=filterMultiple
-        values=np.transpose(np.array(np.nonzero(houghMatrix>thresholdVotes)))
-        filterArray=[]
-        filterArray.append(0)
+    # cluster and filter multiple dots in Houghs plane
+    if filterMultiple > 0:
+        clusterDiameter = filterMultiple
+        values = np.transpose(np.array(np.nonzero(houghMatrix>thresholdVotes)))
+        filterTable={}
         totalArray=[]
         for i in range (0, len(values)):
-            if i in filterArray[1::]:
+            if i in filterTable:
                 continue
             tempArray=[i]
             for j in range (i+1, len(values)):
-                if j in filterArray[1::]:
+                if j in filterTable:
                     continue
                 for k in range (0, len(tempArray)):
                     if operation.getLength(values[tempArray[k]],values[j])<clusterDiameter:
-                        filterArray.append(j)
+                        filterTable[j] = 1
                         tempArray.append(j)
                         break
             totalArray.append(tempArray)
         
-        #leave the highest value in each cluster
-        for i in range (0, len(totalArray)):
-             for j in range (0, len(totalArray[i])):
-                 if j==0:
-                     highest=houghMatrix[values[totalArray[i][j]][0],values[totalArray[i][j]][1]]
-                     ii=i
-                     jj=j
-                 else:
-                     if houghMatrix[values[totalArray[i][j]][0],values[totalArray[i][j]][1]]>=highest:
-                         highest=houghMatrix[values[totalArray[i][j]][0],values[totalArray[i][j]][1]]
-                         houghMatrix[values[totalArray[ii][jj]][0],values[totalArray[ii][jj]][1]]=0
-                         ii=i
-                         jj=j
-                     else:
-                         houghMatrix[values[totalArray[i][j]][0],values[totalArray[i][j]][1]]=0
-                    
-    return (np.where(houghMatrix>thresholdVotes)[0]-q)*rho_res, theta[np.where(houghMatrix>thresholdVotes)[1]]*np.pi/180.0
+    # leave the highest value in each cluster
+    for i in range(len(totalArray)):
+        ii = i
+        jj = 0
+        highest = houghMatrix[values[totalArray[i][0]][0],values[totalArray[i][0]][1]]
+        for j in range(1, len(totalArray[i])):
+            if houghMatrix[values[totalArray[i][j]][0],values[totalArray[i][j]][1]] > highest:
+                highest = houghMatrix[values[totalArray[i][j]][0],values[totalArray[i][j]][1]]
+                houghMatrix[values[totalArray[ii][jj]][0],values[totalArray[ii][jj]][1]] = 0
+                ii = i
+                jj = j
+            else:
+                houghMatrix[values[totalArray[i][j]][0],values[totalArray[i][j]][1]] = 0
+        
+    return (np.where(houghMatrix>thresholdVotes)[0]-q)*rho_step, theta[np.where(houghMatrix>thresholdVotes)[1]]
     
 
     
