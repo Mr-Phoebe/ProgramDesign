@@ -15,12 +15,12 @@ endtime = time.clock()
 print "import %f\n" % (endtime - starttime)
 starttime = endtime
 
-image_rgb = mpimg.imread('parallelograms/test3.jpg')    #Reading image to array
+image_rgb = mpimg.imread('parallelograms/test9.jpg')    #Reading image to array
 image_gray = operation.rgb2gray(image_rgb)               #Converting rgb to gray
 
 # image_gray = blur.gaussianblur(image_gray)               #Smooth the image using Gaussian Filter
 # image_gray = blur.blurImage(image_gray)                 #Smooth the image using Mean Filter
-image_gray = cv2.GaussianBlur(image_gray,(5,5),0)
+image_gray = cv2.blur(image_gray,(5,5),0)
 
 endtime = time.clock()
 print "blur %f\n" % (endtime - starttime)
@@ -32,7 +32,7 @@ ax1.set_axis_off()
 ax1.imshow(image_gray, cmap="bone")
 fig.savefig("tmp/smooth.jpg")
 
-edged = cv2.Canny(image_gray, 30, 130)                   #Finding edges, This is the only place we use OpenCV
+edged = cv2.Canny(image_gray, 30, 100)                   #Finding edges, This is the only place we use OpenCV
 
 
 # Sometimes images have unnecessary lines at the edges and we don't whant to find them
@@ -62,11 +62,11 @@ rho,theta = hough.houghLines(edged,
                                        rho_step=1,
                                        theta_step=1,
                                        thresholdVotes=30,
-                                       filterMultiple=5,
+                                       filterMultiple=3,
                                        thresholdPixels=0)
                               
 
-# hough.plotHoughLines(rho,theta,image_rgb)
+hough.plotHoughLines(rho,theta,image_rgb)
 
 endtime = time.clock()
 print "hough %f\n" % (endtime - starttime)
@@ -83,31 +83,32 @@ for i in range (0, len(theta)):
         if abs(theta[i] - theta[j]) < difference and abs(rho[i] - rho[j]) > differenceRho:
             accumParallel.append([i,j])
 
-fourLines=[]
 
 print("accumParallel", len(accumParallel))
 
+fourLines = []
+
 #find perpendicular pairs for parallel pairs
-for i in range (0, len(accumParallel)):
-    for j in range (i+1, len(accumParallel)):
+for i in range(len(accumParallel)):
+    for j in range(i+1, len(accumParallel)):
         if (abs(theta[accumParallel[j][0]] - theta[accumParallel[i][0]]) > 10*difference) \
             and (abs(theta[accumParallel[j][0]] - theta[accumParallel[i][1]]) > 10*difference) \
             and (abs(theta[accumParallel[j][1]] - theta[accumParallel[i][0]]) > 10*difference) \
             and (abs(theta[accumParallel[j][1]] - theta[accumParallel[i][1]]) > 10*difference):
             fourLines.append(np.concatenate([accumParallel[i],accumParallel[j]]))
 
-print("fourline", len(fourLines))
 
-fourLines = operation.unique(fourLines)
+# fourLines = operation.unique(fourLines)
+
 
 
 #solve 4 of equations for 4 corners
 #rho_j = x cos(theta_j) + y sin(theta_j)
 #rho_k = x cos(theta_k) + y sin(theta_k)
-corners=[]
+corners = []
 for quads in range (0, len(fourLines)):
     flag = True
-    cornersTemp=[]
+    cornersTemp = []
     for lines in range (0,4):
         if lines <= 1:
             linesi = lines
@@ -151,15 +152,15 @@ if len(corners) > 0:
         xlin2 = np.array(np.linspace(corners[i][1][0],corners[i][3][0],20)).astype(int)
         ylin2 = np.array(np.linspace(corners[i][1][1],corners[i][3][1],20)).astype(int)
     
-        #remove wrong parallelogram if std
+        # remove wrong parallelogram if std
         try:
-            std = np.std(np.concatenate([image_gray[(ylin[2:-2]),(xlin[2:-2])],image_gray[(ylin2[2:-2]),(xlin2[2:-2])]]))
-            if std>7:
+            std = np.std(np.concatenate([image_gray[ylin[2:-2],xlin[2:-2]],image_gray[ylin2[2:-2],xlin2[2:-2]]]))
+            if std > 7:
                 stdd += 1
                 del corners[i]
                 continue
         except:
-        #remove wrong parallelogram if out of image
+        # remove wrong parallelogram if out of image
             out += 1
             del corners[i]
             continue
@@ -178,7 +179,6 @@ if len(corners) > 0:
             del corners[i]
             continue
         
-        
         #remove wrongs if brighter
         averageInside = np.average(np.concatenate([image_gray[(ylin[2:-2]),(xlin[2:-2])],image_gray[(ylin2[2:-2]),(xlin2[2:-2])]]))
         corners[i].append(corners[i][0])
@@ -190,8 +190,8 @@ if len(corners) > 0:
                                                           (np.array(corners[i][j+1])+np.array(corners[i][j]))/2-middlePoint,False))
             x = pixelsFromBorder*np.cos(operation.getAngle([0,0],[1,0.01],
                                                           (np.array(corners[i][j+1])+np.array(corners[i][j]))/2-middlePoint,False))
-            a = (np.array(corners[i][j+1])+np.array(corners[i][j]))/2+[int(x),int(y)]
             try:
+                a = (np.array(corners[i][j+1])+np.array(corners[i][j]))/2+[int(x),int(y)]            
                 if image_gray[a[1],a[0]] - averageInside < 5:
                     delete = True
                     break
@@ -207,8 +207,8 @@ print("out ", out, " std ", stdd, " brighter ", bri, " small", small)
 print(len(corners))
 
 if len(corners) > 0:        
-    #Removing duplicates
-    #Here we remove duplicate parallelograms by finding the overlapping ones
+    # Removing duplicates
+    # Here we remove duplicate parallelograms by finding the overlapping ones
     sumi = np.zeros(len(corners))
     middlePoint = np.zeros((len(corners),2))
     for i in range (len(corners)-1,-1,-1):
@@ -225,14 +225,14 @@ if len(corners) > 0:
                 x = np.linspace(np.min([x1,x2]),np.min([np.max([x1,x2]),edged.shape[1]-5]),np.absolute(x2-x1)+1)
                 y = m*x+q
             else:
-                y = np.linspace(np.min([y1,y2]),np.min([np.max([y1,y2]),edged.shape[0]-5]),np.max([y1,y2])-np.min([y1,y2])+1)
+                y = np.linspace(np.min([y1,y2]),np.min([np.max([y1,y2]),edged.shape[1]-5]),np.max([y1,y2])-np.min([y1,y2])+1)
                 x = x1*np.ones(len(y))
             sumi[i] += np.sum(edged[np.round(y).astype(int),np.round(x).astype(int)])/255.0
     maxDistance = 10
     corners2 = []
     corners2.append(len(corners)-1)
     for i in range(len(corners)-2,-1,-1):
-        found=0
+        found = 0
         for j in range (len(corners2)-1,-1,-1):
             if operation.getLength(middlePoint[corners2[j]],middlePoint[i])<=maxDistance:
                 found = 1

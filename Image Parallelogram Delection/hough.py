@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scipy.signal as sp
 import operation
-
+    
 def houghLines(edged,rho_step,theta_step,thresholdVotes,filterMultiple,thresholdPixels=0):
     rows, columns = edged.shape
     theta = np.linspace(-90.0, 0.0, np.ceil(90.0/theta_step) + 1.0)
@@ -25,44 +25,44 @@ def houghLines(edged,rho_step,theta_step,thresholdVotes,filterMultiple,threshold
         rowId = y_idxs[i]
         for thId in range(len(theta)):
             rhoVal = colId*cos_t[thId] + rowId*sin_t[thId]
-            diff = np.abs(rho-rhoVal)
-            rhoIdx = np.nonzero(diff == np.min(diff))[0]            
-            houghMatrix[rhoIdx[0], thId] += 1  
-            
-   
+            rhoId = np.searchsorted(rho, rhoVal)
+            if rhoId != 0 and rho[rhoId] + rho[rhoId-1] > rhoVal*2:
+                rhoId -= 1
+            houghMatrix[rhoId, thId] += 1  
+
     # cluster and filter multiple dots in Houghs plane
     if filterMultiple > 0:
         clusterDiameter = filterMultiple
-        values = np.transpose(np.array(np.nonzero(houghMatrix>thresholdVotes)))
-        filterTable={}
-        totalArray=[]
-        for i in range (0, len(values)):
+        lineValue = np.transpose(np.array(np.nonzero(houghMatrix>thresholdVotes)))
+        filterTable = {}
+        totalArray = []
+        for i in range(len(lineValue)):
             if i in filterTable:
                 continue
-            tempArray=[i]
-            for j in range (i+1, len(values)):
+            tempArray = [i]
+            for j in range (i+1, len(lineValue)):
                 if j in filterTable:
                     continue
-                for k in range (0, len(tempArray)):
-                    if operation.getLength(values[tempArray[k]],values[j])<clusterDiameter:
+                for k in range(len(tempArray)):
+                    if operation.getLength(lineValue[tempArray[k]],lineValue[j])<clusterDiameter:
                         filterTable[j] = 1
                         tempArray.append(j)
                         break
             totalArray.append(tempArray)
         
-    # leave the highest value in each cluster
-    for i in range(len(totalArray)):
-        ii = i
-        jj = 0
-        highest = houghMatrix[values[totalArray[i][0]][0],values[totalArray[i][0]][1]]
-        for j in range(1, len(totalArray[i])):
-            if houghMatrix[values[totalArray[i][j]][0],values[totalArray[i][j]][1]] > highest:
-                highest = houghMatrix[values[totalArray[i][j]][0],values[totalArray[i][j]][1]]
-                houghMatrix[values[totalArray[ii][jj]][0],values[totalArray[ii][jj]][1]] = 0
-                ii = i
-                jj = j
-            else:
-                houghMatrix[values[totalArray[i][j]][0],values[totalArray[i][j]][1]] = 0
+        # leave the highest value in each cluster
+        for i in range(len(totalArray)):
+            ii = i
+            jj = 0
+            highest = houghMatrix[lineValue[totalArray[i][0]][0],lineValue[totalArray[i][0]][1]]
+            for j in range(1, len(totalArray[i])):
+                if houghMatrix[lineValue[totalArray[i][j]][0],lineValue[totalArray[i][j]][1]] > highest:
+                    highest = houghMatrix[lineValue[totalArray[i][j]][0],lineValue[totalArray[i][j]][1]]
+                    houghMatrix[lineValue[totalArray[ii][jj]][0],lineValue[totalArray[ii][jj]][1]] = 0
+                    ii = i
+                    jj = j
+                else:
+                    houghMatrix[lineValue[totalArray[i][j]][0],lineValue[totalArray[i][j]][1]] = 0
         
     return (np.where(houghMatrix>thresholdVotes)[0]-q)*rho_step, theta[np.where(houghMatrix>thresholdVotes)[1]]
     

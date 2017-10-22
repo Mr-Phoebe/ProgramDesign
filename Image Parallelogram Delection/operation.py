@@ -49,60 +49,44 @@ def unique(a):
     return b[ui]
     
 def reorderPoints(corners):
-    ##Inputs:
-    #corners - list of corners (look at example)
-
-    ##Outputs:
-    #array - reordered corners array
-
-    #Example
-    #corenrs=[[153, 104], [255, 98], [178, 144], [231, 58]]
-    #array -> [[153, 104], [178, 144], [255, 98], [231, 58]]
-    
-    array=[]
-    for i in range (0, len(corners)):
-        tempArray=[]
-        length1=getLength(corners[i][0],corners[i][1])
-        length2=getLength(corners[i][0],corners[i][2])
-        length3=getLength(corners[i][0],corners[i][3])
-        lenArr=np.array([length1,length2,length3])
-        tempArray.append(corners[i][0])
-        tempArray.append(corners[i][1+np.where(np.array(lenArr)==np.min(lenArr))[0][0]])
-        lenArr[np.where(np.array(lenArr)==np.min(lenArr))[0][0]]+=-0.00001 #n case of rectangle
-        tempArray.append(corners[i][1+np.where(np.array(lenArr)==np.max(lenArr))[0][0]])
-        tempArray.append(corners[i][1+np.where(np.array(lenArr)==np.median(lenArr))[0][0]])
-        array.append(tempArray)
-    return array
+    """
+        Return reordered corners array
+    """
+    reordered = []
+    for i in range(len(corners)):
+        pointArray=[]
+        length1 = getLength(corners[i][0],corners[i][1])
+        length2 = getLength(corners[i][0],corners[i][2])
+        length3 = getLength(corners[i][0],corners[i][3])
+        lenArr = np.array([length1,length2,length3])
+        lenArr[np.where(np.array(lenArr)==np.min(lenArr))[0][0]] -= 10     # get minimun one
+        pointArray.append(corners[i][0])
+        pointArray.append(corners[i][1+np.where(np.array(lenArr)==np.min(lenArr))[0][0]])
+        pointArray.append(corners[i][1+np.where(np.array(lenArr)==np.max(lenArr))[0][0]])
+        pointArray.append(corners[i][1+np.where(np.array(lenArr)==np.median(lenArr))[0][0]])
+        reordered.append(pointArray)
+    return reordered
     
 def getAngle(startPoint,secondPoint,thirdPoint, absol=True):
-    #Gets angle between vectors (startPoint,secondPoint) and vector
-    #(secondPoint,thirdPoint)
+    """
+    Return angle between vector(startPoint,secondPoint) and vector(secondPoint,thirdPoint)
+    """
+    v1x = secondPoint[0] - startPoint[0]
+    v1y = secondPoint[1] - startPoint[1]
+    v2x = thirdPoint[0] - startPoint[0]
+    v2y = thirdPoint[1] - startPoint[1]
     
-    ##Inputs:
-    #startPoint - [x,y]
-    #secondPoint - [x,y]
-    #thirdPoint - [x,y]
-
-    ##Outputs:
-    #angle - angle between two vectors
-
+    lenv1 = np.sqrt(v1x*v1x+v1y*v1y)
+    lenv2 = np.sqrt(v2x*v2x+v2y*v2y)
     
-    v1x=secondPoint[0]-startPoint[0]
-    v1y=secondPoint[1]-startPoint[1]
-    v2x=thirdPoint[0]-startPoint[0]
-    v2y=thirdPoint[1]-startPoint[1]
+    angle = np.arccos((v1x*v2x+v1y*v2y)/(lenv1*lenv2))
     
-    lenv1=np.sqrt(v1x*v1x+v1y*v1y)
-    lenv2=np.sqrt(v2x*v2x+v2y*v2y)
-    
-    angle=np.arccos((v1x*v2x+v1y*v2y)/(lenv1*lenv2))
-    
-    a=1
-    if absol==False:
+    a = 1
+    if not absol:
         a = np.sign((v1x) * (v2y) - (v1y) * (v2x))
     
     if np.absolute(angle) < 0.02:
-        angle=0
+        angle = 0
     return a*angle
 
 def extended_boundary(input):
@@ -175,8 +159,7 @@ def convolve(input, weights):
          
             # Find the part of the tiled_input array that overlaps with the
             # weights array.
-            overlapping = tiled_input[i - hw_row:i + hw_row + 1,
-                                        j - hw_col:j + hw_col + 1]
+            overlapping = tiled_input[i - hw_row:i + hw_row + 1, j - hw_col:j + hw_col + 1]
             assert(overlapping.shape == weights.shape)
 
             tmp_weights = weights
