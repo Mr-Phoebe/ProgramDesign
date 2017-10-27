@@ -4,6 +4,14 @@ import math
 def print_item(input):
     print(input.shape[0], input.shape[1], input)
 
+def cross(p1, p2, q1, q2):
+    return (q2[1] - q1[1])*(p2[0] - p1[0]) - (q2[0] - q1[0])*(p2[1] - p1[1]);    
+
+def cmp(a, b):
+    origin = np.array([0, 0])
+    return int(cross(origin,b,origin,a))
+
+
 def rgb2gray(image_rgb):
     """
     Return the gray image from the rgb image.
@@ -15,55 +23,34 @@ def rgb2gray(image_rgb):
 
 def getLength(startPoint,secondPoint):
     """
-    :Return the length between two points
+    Return the length between two points
     """
     v1x = secondPoint[0] - startPoint[0]
     v1y = secondPoint[1] - startPoint[1]
     lenv = math.sqrt(v1x*v1x + v1y*v1y)
     return lenv
     
-def unique(a):
-    ##Inputs:
-    #a - list of 1xN arrays
-
-    ##Outputs:
-    #b - filtered array
-
-    #Example
-    # a=[array([ 1,  3, 12, 17]),
-    #    array([ 1,  3, 17, 12]),
-    #    array([ 1,  3, 18, 20])]
-    # b -> [array([ 1,  3, 12, 17]),
-    #       array([ 1,  3, 18, 20])]
-
-    if a == []:
-        return []
-    b = np.array(a)
-    a = np.sort(np.array(a))
-    order = np.lexsort(a.T)
-    a = a[order]
-    b = b[order]
-    diff = np.diff(a, axis=0)
-    ui = np.ones(len(a), 'bool')
-    ui[1:] = (diff != 0).any(axis=1) 
-    return b[ui]
-    
-def reorderPoints(corners):
+def reorderPoints(corners, x, y):
     """
-        Return reordered corners array
+    Return reordered corners array
+    And also delete the corners which is out of the image
     """
     reordered = []
     for i in range(len(corners)):
-        pointArray=[]
-        length1 = getLength(corners[i][0],corners[i][1])
-        length2 = getLength(corners[i][0],corners[i][2])
-        length3 = getLength(corners[i][0],corners[i][3])
-        lenArr = np.array([length1,length2,length3])
-        lenArr[np.where(np.array(lenArr)==np.min(lenArr))[0][0]] -= 10     # get minimun one
-        pointArray.append(corners[i][0])
-        pointArray.append(corners[i][1+np.where(np.array(lenArr)==np.min(lenArr))[0][0]])
-        pointArray.append(corners[i][1+np.where(np.array(lenArr)==np.max(lenArr))[0][0]])
-        pointArray.append(corners[i][1+np.where(np.array(lenArr)==np.median(lenArr))[0][0]])
+        flag = True
+        for j in range(4):
+            if corners[i][j][0] > x-5 or corners[i][j][0] < 0 or corners[i][j][1] > y-5 or corners[i][j][1] < 0:
+                flag = False
+                break
+        if not flag:
+            continue
+        vectorArray = [np.array(corners[i][1]) - np.array(corners[i][0]), 
+                       np.array(corners[i][2]) - np.array(corners[i][0]), 
+                       np.array(corners[i][3]) - np.array(corners[i][0])]
+        pointArray = [corners[i][0]]
+        vectorArray.sort(cmp)
+        for vec in vectorArray:
+            pointArray.append([vec[0]+corners[i][0][0], vec[1]+corners[i][0][1]])
         reordered.append(pointArray)
     return reordered
     
@@ -146,8 +133,8 @@ def convolve(input, weights):
     cols = input.shape[1]
 
     # Stands for half weights row. 
-    hw_row = weights.shape[0] / 2
-    hw_col = weights.shape[1] / 2
+    hw_row = int(weights.shape[0] / 2)
+    hw_col = int(weights.shape[1] / 2)
 
     # Now do convolution on central array.
     # Iterate over tiled_input. 

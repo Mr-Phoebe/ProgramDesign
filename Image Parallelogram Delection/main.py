@@ -9,18 +9,19 @@ import numpy as np                 #Basic calculations library
 
 import hough
 import operation
+import edgedetector
 import blur
 
 endtime = time.clock()
 print "import %f\n" % (endtime - starttime)
 starttime = endtime
 
-image_rgb = mpimg.imread('parallelograms/test9.jpg')    #Reading image to array
+image_rgb = mpimg.imread('test/TestImage2c.jpg')    #Reading image to array
 image_gray = operation.rgb2gray(image_rgb)               #Converting rgb to gray
 
 # image_gray = blur.gaussianblur(image_gray)               #Smooth the image using Gaussian Filter
 # image_gray = blur.blurImage(image_gray)                 #Smooth the image using Mean Filter
-image_gray = cv2.blur(image_gray,(5,5),0)
+image_gray =  cv2.GaussianBlur(image_gray,(9,9),0)
 
 endtime = time.clock()
 print "blur %f\n" % (endtime - starttime)
@@ -32,8 +33,10 @@ ax1.set_axis_off()
 ax1.imshow(image_gray, cmap="bone")
 fig.savefig("tmp/smooth.jpg")
 
-edged = cv2.Canny(image_gray, 30, 100)                   #Finding edges, This is the only place we use OpenCV
+# edged = cv2.Canny(image_gray, 30, 65)                   #Finding edges, This is the only place we use OpenCV
 
+# edged = edgedetector.sobel(image_gray, 300)
+edged = edgedetector.CannyEdgeDetector(image_gray, 30, 65)
 
 # Sometimes images have unnecessary lines at the edges and we don't whant to find them
 
@@ -45,7 +48,7 @@ edged[lenx-borderLen:lenx,0:leny] = 0
 edged[0:lenx,0:borderLen] = 0
 edged[0:lenx,leny-borderLen:leny] = 0
 
-# plt.imshow(edged)                     #Take a look at the edged picture
+plt.imshow(edged)                     #Take a look at the edged picture
 
 ##Save edged picture to jpg
 fig, ax1 = plt.subplots(ncols=1, nrows=1, figsize=(8, 4))
@@ -61,12 +64,12 @@ starttime = endtime
 rho,theta = hough.houghLines(edged,
                                        rho_step=1,
                                        theta_step=1,
-                                       thresholdVotes=30,
-                                       filterMultiple=3,
+                                       thresholdVotes=45,
+                                       filterMultiple=6,
                                        thresholdPixels=0)
                               
 
-hough.plotHoughLines(rho,theta,image_rgb)
+# hough.plotHoughLines(rho,theta,image_rgb)
 
 endtime = time.clock()
 print "hough %f\n" % (endtime - starttime)
@@ -74,13 +77,13 @@ starttime = endtime
 
 ##Parameters for finding parallel lines
 difference = np.pi/90
-differenceRho = 2
+differenceRho = 5
 
 #find parallel pairs
 accumParallel=[]
-for i in range (0, len(theta)):
-    for j in range (i+1, len(theta)):
-        if abs(theta[i] - theta[j]) < difference and abs(rho[i] - rho[j]) > differenceRho:
+for i in range(len(theta)):
+    for j in range(i+1, len(theta)):
+        if abs(theta[i] - theta[j]) < 2.5*difference and abs(rho[i] - rho[j]) > differenceRho:
             accumParallel.append([i,j])
 
 
@@ -100,16 +103,17 @@ for i in range(len(accumParallel)):
 
 # fourLines = operation.unique(fourLines)
 
+print("fourLines ", len(fourLines))
 
 
 #solve 4 of equations for 4 corners
 #rho_j = x cos(theta_j) + y sin(theta_j)
 #rho_k = x cos(theta_k) + y sin(theta_k)
 corners = []
-for quads in range (0, len(fourLines)):
-    flag = True
+for quads in range(len(fourLines)):
+    # flag = True
     cornersTemp = []
-    for lines in range (0,4):
+    for lines in range(4):
         if lines <= 1:
             linesi = lines
             nexti = 2
@@ -132,11 +136,11 @@ for quads in range (0, len(fourLines)):
         #    break
         ans = np.linalg.solve(a, b)
         cornersTemp.append([int(ans[0]),int(ans[1])])
-    if flag:
-        corners.append(cornersTemp)
+    # if flag:
+    corners.append(cornersTemp)
 
 #reorder corners
-corners = operation.reorderPoints(corners)
+corners = operation.reorderPoints(corners, lenx, leny)
 
 print len(corners)
 out = 0
@@ -146,6 +150,7 @@ stdd = 0
 
 if len(corners) > 0:
     #check if valid parallelograms
+
     for i in range (len(corners)-1,-1,-1):
         xlin = np.array(np.linspace(corners[i][0][0],corners[i][2][0],20)).astype(int)
         ylin = np.array(np.linspace(corners[i][0][1],corners[i][2][1],20)).astype(int)
@@ -164,7 +169,8 @@ if len(corners) > 0:
             out += 1
             del corners[i]
             continue
-        
+        corners[i].append(corners[i][0])
+
         minx = np.min(np.array(corners[i])[:,0])
         maxx = np.max(np.array(corners[i])[:,0])
         miny = np.min(np.array(corners[i])[:,1])
@@ -174,14 +180,14 @@ if len(corners) > 0:
         width = operation.getLength(corners[i][2],corners[i][1])
     
         #remove wrongs parallelogram if small
-        if height < 20 or width < 20 or maxy-miny < 10 or maxx-minx < 10:
+        if height < 25 or width < 25 or maxy-miny < 15 or maxx-minx < 15:
             small += 1
             del corners[i]
             continue
-        
+"""  
         #remove wrongs if brighter
         averageInside = np.average(np.concatenate([image_gray[(ylin[2:-2]),(xlin[2:-2])],image_gray[(ylin2[2:-2]),(xlin2[2:-2])]]))
-        corners[i].append(corners[i][0])
+        
         delete = False
         pixelsFromBorder = 5
         middlePoint = np.array([(corners[i][0][0]+corners[i][2][0])/2,(corners[i][0][1]+corners[i][2][1])/2])
@@ -202,7 +208,7 @@ if len(corners) > 0:
             bri += 1
             del corners[i]
             continue
-
+"""
 print("out ", out, " std ", stdd, " brighter ", bri, " small", small)
 print(len(corners))
 
@@ -213,7 +219,7 @@ if len(corners) > 0:
     middlePoint = np.zeros((len(corners),2))
     for i in range (len(corners)-1,-1,-1):
         middlePoint[i] = np.array([(corners[i][0][0]+corners[i][2][0])/2,(corners[i][0][1]+corners[i][2][1])/2])
-        #check for edges
+        # check for edges
         for j in range (0,4):
             x1 = corners[i][j][0]
             x2 = corners[i][j+1][0]
@@ -222,19 +228,27 @@ if len(corners) > 0:
             if x1 != x2:
                 m = (y2-y1)/(1.0*(x2-x1))
                 q = y2-m*x2
-                x = np.linspace(np.min([x1,x2]),np.min([np.max([x1,x2]),edged.shape[1]-5]),np.absolute(x2-x1)+1)
+                l = np.min([x1,x2])
+                r = np.min([np.max([x1,x2]),edged.shape[0]-5])
+                x = np.linspace(l, r, abs(r-l)+1)
                 y = m*x+q
+                for k in range(len(y)):
+                    if y[k] > edged.shape[0]-5:
+                        y[k] = edged.shape[0]-5
             else:
-                y = np.linspace(np.min([y1,y2]),np.min([np.max([y1,y2]),edged.shape[1]-5]),np.max([y1,y2])-np.min([y1,y2])+1)
+                l = np.min([y1,y2])
+                r = np.min([np.max([y1,y2]),edged.shape[1]-5])
+                y = np.linspace(l, r, abs(r-l)+1)
                 x = x1*np.ones(len(y))
-            sumi[i] += np.sum(edged[np.round(y).astype(int),np.round(x).astype(int)])/255.0
-    maxDistance = 10
+            sumi[i] += np.sum(edged[np.round(x).astype(int),np.round(y).astype(int)])/255.0
+    maxDistance = 50
     corners2 = []
     corners2.append(len(corners)-1)
     for i in range(len(corners)-2,-1,-1):
         found = 0
-        for j in range (len(corners2)-1,-1,-1):
-            if operation.getLength(middlePoint[corners2[j]],middlePoint[i])<=maxDistance:
+        for j in range(len(corners2)-1,-1,-1):
+            #if operation.getLength(middlePoint[corners2[j]],middlePoint[i]) <= maxDistance:
+            if operation.getLength(middlePoint[corners2[j]],middlePoint[i]) <= operation.getLength(corners[i][0], corners[i][1]) + operation.getLength(corners[corners2[j]][0], corners[corners2[j]][1]):
                 found = 1
                 if sumi[i] > sumi[corners2[j]]:
                     corners2[j] = i
@@ -242,17 +256,25 @@ if len(corners) > 0:
             corners2.append(i)
 
 if len(corners) > 0:
-            
+    a = file("ha.txt", "w")
     fig2, ax1 = plt.subplots(ncols=1, nrows=1, figsize=(8, 4))
     ax1.imshow(image_rgb)
     ax1.set_axis_off()
     for i in corners2:
-        for j in range (0,4):
-            ax1.plot( [corners[i][j][0],corners[i][j+1][0]],[corners[i][j][1],corners[i][j+1][1]], 'xb-',linewidth=3)
+        for j in range(0,4):
+            if j == 0:
+                ax1.plot([corners[i][j][0],corners[i][j+1][0]],[corners[i][j][1],corners[i][j+1][1]], 'xb-',linewidth=2)
+            elif j == 1:
+                ax1.plot([corners[i][j][0],corners[i][j+1][0]],[corners[i][j][1],corners[i][j+1][1]], 'xr-',linewidth=2)
+            elif j == 2:
+                ax1.plot([corners[i][j][0],corners[i][j+1][0]],[corners[i][j][1],corners[i][j+1][1]], 'xb-',linewidth=3)
+            else:
+                ax1.plot([corners[i][j][0],corners[i][j+1][0]],[corners[i][j][1],corners[i][j+1][1]], 'xg-',linewidth=2)
+
     ax1.set_ylim([image_gray.shape[0],0])
     ax1.set_xlim([0,image_gray.shape[1]])
     fig2.savefig("tmp/output.jpg")
-    # plt.show()
+    plt.show()
 else:
     print ('No parallelograms were found')
 

@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scipy.signal as sp
 import operation
+import math
     
 def houghLines(edged,rho_step,theta_step,thresholdVotes,filterMultiple,thresholdPixels=0):
     rows, columns = edged.shape
@@ -18,6 +19,8 @@ def houghLines(edged,rho_step,theta_step,thresholdVotes,filterMultiple,threshold
     
     # Here we populate houghMatrix
     y_idxs, x_idxs = np.nonzero(edged > thresholdPixels)  # (row, col) indexes to edges
+    print(len(x_idxs))
+    # print("take ", len(x_idxs)*len(theta)*int(math.log(len(rho), 2)))
     cos_t = np.cos(theta)
     sin_t = np.sin(theta)
     for i in range(len(x_idxs)):
@@ -36,6 +39,7 @@ def houghLines(edged,rho_step,theta_step,thresholdVotes,filterMultiple,threshold
         lineValue = np.transpose(np.array(np.nonzero(houghMatrix>thresholdVotes)))
         filterTable = {}
         totalArray = []
+        print(len(lineValue))
         for i in range(len(lineValue)):
             if i in filterTable:
                 continue
@@ -78,7 +82,7 @@ def plotHoughLines(rho,theta,image):
     fig2, ax1 = plt.subplots(ncols=1, nrows=1)
     ax1.imshow(image)
     
-    for i in range (0, len(rho)):   
+    for i in range(len(rho)):   
         ax1.plot( [x0[i] + 1000*(-b[i]), x0[i] - 1000*(-b[i])],
                   [y0[i] + 1000*(a[i]), y0[i] - 1000*(a[i])], 
                   'xb-',linewidth=3)

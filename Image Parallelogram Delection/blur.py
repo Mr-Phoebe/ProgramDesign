@@ -14,7 +14,6 @@ def gaussian_kernel(sigma, truncate=4.0):
 
     sigma = float(sigma)
     radius = int((truncate * sigma + 0.5)/2)
-    print(radius)
     x, y = np.mgrid[-radius:radius+1, -radius:radius+1]
     sigma = sigma**2
 
