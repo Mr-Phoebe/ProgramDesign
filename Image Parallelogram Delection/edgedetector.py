@@ -104,4 +104,4 @@ def CannyEdgeDetector(im, lowThreshold = 31, highThreshold = 91):
                         finalEdges[r2, c2] = 1
         currentPixels = newPix
  
-    return finalEdges
+    return grad, finalEdges

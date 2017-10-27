@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import scipy.signal as sp
 import operation
 import math
     
@@ -19,8 +18,8 @@ def houghLines(edged,rho_step,theta_step,thresholdVotes,filterMultiple,threshold
     
     # Here we populate houghMatrix
     y_idxs, x_idxs = np.nonzero(edged > thresholdPixels)  # (row, col) indexes to edges
-    print(len(x_idxs))
-    # print("take ", len(x_idxs)*len(theta)*int(math.log(len(rho), 2)))
+    #print(len(x_idxs))
+    print("take ", len(x_idxs)*len(theta)*int(math.log(len(rho), 2)))
     cos_t = np.cos(theta)
     sin_t = np.sin(theta)
     for i in range(len(x_idxs)):
