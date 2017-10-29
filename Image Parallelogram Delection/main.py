@@ -16,7 +16,7 @@ endtime = time.clock()
 print "import %f\n" % (endtime - starttime)
 starttime = endtime
 
-image_rgb = mpimg.imread('test/TestImage2c.jpg')    #Reading image to array
+image_rgb = mpimg.imread('test/TestImage3c.jpg')    #Reading image to array
 image_gray = operation.rgb2gray(image_rgb)               #Converting rgb to gray
 
 image_gray = blur.gaussianblur(image_gray, sigma=0.7)               #Smooth the image using Gaussian Filter
@@ -37,9 +37,9 @@ fig.savefig("tmp/smooth.jpg")
 # edged = edgedetector.sobel(image_gray, 300)
 grad, edged = edgedetector.CannyEdgeDetector(image_gray, 35, 65)
 
-# Sometimes images have unnecessary lines at the edges and we don't whant to find them
-
-## Zero out the border 5px
+#Sometimes images have unnecessary lines at the edges 
+#and we don't whant to find them
+#Zero out the border 5px
 borderLen = 5                         #The width to zero out the borders, counted in pixels
 lenx, leny = edged.shape
 edged[0:borderLen,0:leny] = 0
@@ -49,7 +49,6 @@ edged[0:lenx,leny-borderLen:leny] = 0
 
 plt.imshow(grad)                     #Take a look at the edged picture
 
-##Save edged picture to jpg
 fig, ax1 = plt.subplots(ncols=1, nrows=1, figsize=(8, 4))
 ax1.set_axis_off()
 ax1.imshow(edged, cmap="bone")
@@ -74,7 +73,7 @@ endtime = time.clock()
 print "hough %f\n" % (endtime - starttime)
 starttime = endtime
 
-##Parameters for finding parallel lines
+#Parameters for finding parallel lines
 difference = np.pi/90
 differenceRho = 5
 
@@ -227,8 +226,11 @@ if len(corners) > 0:
     fig2, ax1 = plt.subplots(ncols=1, nrows=1, figsize=(8, 4))
     ax1.imshow(image_rgb)
     ax1.set_axis_off()
+    corners2 = np.unique(corners2)
     for i in corners2:
+        print(i, "-----")
         for j in range(4):
+            print("x : ", corners[i][j][0], "y : ", corners[i][j][1])
             ax1.plot([corners[i][j][0],corners[i][j+1][0]],[corners[i][j][1],corners[i][j+1][1]], 'xb-',linewidth=2)
 
     ax1.set_ylim([image_gray.shape[0],0])

@@ -38,8 +38,9 @@ def CannyEdgeDetector(img, lowThreshold = 31, highThreshold = 91):
     #Get gradient and direction
     grad = np.power(np.power(sobelx, 2.0) + np.power(sobely, 2.0), 0.5)
     theta = np.arctan2(sobely, sobelx)
-    thetaQ = (np.round(theta * (4.0 / np.pi)) + 4) % 4
- 
+    #thetaQ = (np.round(theta * (4.0 / np.pi)) + 4) % 4
+    thetaQ = (np.round(theta * (5.0 / np.pi)) + 5) % 5
+
     #Non-maximum suppression
     lenx, leny = img.shape
     gradSup = grad.copy()
@@ -49,7 +50,7 @@ def CannyEdgeDetector(img, lowThreshold = 31, highThreshold = 91):
             if r == 0 or r == lenx-1 or c == 0 or c == leny - 1:
                 gradSup[r, c] = 0
                 continue
-            tq = thetaQ[r, c]
+            tq = thetaQ[r, c] % 4
  
             if tq == 0:
                 if grad[r, c] <= grad[r, c-1] or grad[r, c] <= grad[r, c+1]:

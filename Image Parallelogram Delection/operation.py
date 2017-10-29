@@ -8,6 +8,9 @@ def cross(p1, p2, q1, q2):
     return (q2[1] - q1[1])*(p2[0] - p1[0]) - (q2[0] - q1[0])*(p2[1] - p1[1]);    
 
 def cmp(a, b):
+    """
+    Polar angle sort comparison function.
+    """
     origin = np.array([0, 0])
     return int(cross(origin,b,origin,a))
 
@@ -56,7 +59,8 @@ def reorderPoints(corners, x, y):
     
 def getAngle(startPoint,secondPoint,thirdPoint, absol=True):
     """
-    Return angle between vector(startPoint,secondPoint) and vector(secondPoint,thirdPoint)
+    Return angle between vector(startPoint,secondPoint) 
+    and vector(secondPoint,thirdPoint)
     """
     v1x = secondPoint[0] - startPoint[0]
     v1y = secondPoint[1] - startPoint[1]
@@ -123,8 +127,6 @@ def convolve(input, weights):
 
     assert(len(input.shape) == 2)
     assert(len(weights.shape) == 2)    
-    assert(weights.shape[0] < input.shape[0] + 1)
-    assert(weights.shape[1] < input.shape[1] + 1)
     
     output = np.copy(input)
     tiled_input = extended_boundary(input)
