@@ -16,7 +16,7 @@ endtime = time.clock()
 print "import %f\n" % (endtime - starttime)
 starttime = endtime
 
-image_rgb = mpimg.imread('test/TestImage1c.jpg')    #Reading image to array
+image_rgb = mpimg.imread('test/TestImage2c.jpg')    #Reading image to array
 image_gray = operation.rgb2gray(image_rgb)               #Converting rgb to gray
 
 image_gray = blur.gaussianblur(image_gray, sigma=0.7)               #Smooth the image using Gaussian Filter

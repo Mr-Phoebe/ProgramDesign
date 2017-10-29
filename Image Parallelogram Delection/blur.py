@@ -2,6 +2,9 @@ from operation import convolve
 import numpy as np
 
 def blurImage(image_gray):
+    """
+    Return Image convolved with 3x3 Mean filter
+    """
     kernel = np.ones((3,3),np.float32)/9
     res = convolve(image_gray, kernel)
     return np.round(res).astype(np.uint8)
@@ -14,7 +17,7 @@ def gaussian_kernel(sigma, truncate=4.0):
 
     sigma = float(sigma)
     radius = int((truncate * sigma + 0.5)/2)
-    print(radius+radius+1)
+    # print(radius+radius+1)
     x, y = np.mgrid[-radius:radius+1, -radius:radius+1]
     sigma = sigma**2
 
