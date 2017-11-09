@@ -12,14 +12,15 @@ import operation
 import edgedetector
 import blur
 
+import pickle
+
 endtime = time.clock()
 print "import %f\n" % (endtime - starttime)
 starttime = endtime
 
 image_rgb = mpimg.imread('test/TestImage3c.jpg')    #Reading image to array
 image_gray = operation.rgb2gray(image_rgb)               #Converting rgb to gray
-
-image_gray = blur.gaussianblur(image_gray, sigma=0.7)               #Smooth the image using Gaussian Filter
+image_gray = blur.gaussianblur(image_gray, sigma=0.6)               #Smooth the image using Gaussian Filter
 #image_gray = blur.blurImage(image_gray)                 #Smooth the image using Mean Filter
 #image_gray =  cv2.GaussianBlur(image_gray,(5,5),0)
 
@@ -42,18 +43,24 @@ grad, edged = edgedetector.CannyEdgeDetector(image_gray, 35, 65)
 #Zero out the border 5px
 borderLen = 5                         #The width to zero out the borders, counted in pixels
 lenx, leny = edged.shape
+
 edged[0:borderLen,0:leny] = 0
 edged[lenx-borderLen:lenx,0:leny] = 0
 edged[0:lenx,0:borderLen] = 0
 edged[0:lenx,leny-borderLen:leny] = 0
 
-plt.imshow(grad)                     #Take a look at the edged picture
+plt.imshow(grad)
+plt.imshow(edged)                     #Take a look at the edged picture
 
 fig, ax1 = plt.subplots(ncols=1, nrows=1, figsize=(8, 4))
 ax1.set_axis_off()
 ax1.imshow(edged, cmap="bone")
 fig.savefig("tmp/parallelograms_edged.jpg")
 
+fig, ax1 = plt.subplots(ncols=1, nrows=1, figsize=(8, 4))
+ax1.set_axis_off()
+ax1.imshow(grad, cmap="bone")
+fig.savefig("tmp/parallelograms_grad.jpg")
 
 endtime = time.clock()
 print "edge %f\n" % (endtime - starttime)
@@ -62,7 +69,7 @@ starttime = endtime
 rho,theta = hough.houghLines(edged,
                                        rho_step=1,
                                        theta_step=1,
-                                       thresholdVotes=55,
+                                       thresholdVotes=50,
                                        filterMultiple=7,
                                        thresholdPixels=0)
                               
@@ -81,9 +88,9 @@ differenceRho = 5
 accumParallel=[]
 for i in range(len(theta)):
     for j in range(i+1, len(theta)):
-        if abs(theta[i] - theta[j]) < 2.5*difference and abs(rho[i] - rho[j]) > differenceRho:
+        if abs(theta[i] - theta[j]) - np.around(abs(theta[i] - theta[j])/np.pi)*np.pi < 2.5*difference \
+            and abs(rho[i] - rho[j]) > differenceRho:
             accumParallel.append([i,j])
-
 
 print("accumParallel", len(accumParallel))
 
@@ -106,7 +113,6 @@ print("fourLines ", len(fourLines))
 #rho_k = x cos(theta_k) + y sin(theta_k)
 corners = []
 for quads in range(len(fourLines)):
-    # flag = True
     cornersTemp = []
     for lines in range(4):
         if lines <= 1:
@@ -128,17 +134,16 @@ for quads in range(len(fourLines)):
     corners.append(cornersTemp)
 
 #reorder corners
-corners = operation.reorderPoints(corners, lenx, leny)
+corners = operation.reorderPoints(corners, edged.shape[1], edged.shape[0])
 
 print("corners ", len(corners))
-out = 0
 small = 0
 stdd = 0
 
 if len(corners) > 0:
     #check if valid parallelograms
 
-    for i in range (len(corners)-1,-1,-1):
+    for i in range(len(corners)-1,-1,-1):
 
         minx = np.min(np.array(corners[i])[:,0])
         maxx = np.max(np.array(corners[i])[:,0])
@@ -160,30 +165,29 @@ if len(corners) > 0:
         ylin2 = np.array(np.linspace(corners[i][1][1],corners[i][3][1],20)).astype(int)
     
         # remove wrong parallelogram if std
-        try:
-            std = np.std(np.concatenate([image_gray[ylin[2:-2],xlin[2:-2]],image_gray[ylin2[2:-2],xlin2[2:-2]]]))
-            if std > 9:
-                stdd += 1
-                del corners[i]
-                continue
-        except:
-        # remove wrong parallelogram if out of image
-            out += 1
+        std = np.std(np.concatenate([image_gray[ylin[2:-2],xlin[2:-2]],image_gray[ylin2[2:-2],xlin2[2:-2]]]))
+        if std > 17:
+            stdd += 1
             del corners[i]
             continue
+
         corners[i].append(corners[i][0])
 
 
-print("out ", out, " std ", stdd, " small", small)
+print(" std ", stdd, " small", small)
 print(len(corners))
 
+
 if len(corners) > 0:        
-    # Removing duplicates
-    # Here we remove duplicate parallelograms by finding the overlapping ones
+    #Removing duplicates
+    #Here we remove duplicate parallelograms by finding the overlapping ones
     sumi = np.zeros(len(corners))
     middlePoint = np.zeros((len(corners),2))
+    corners1 = []
     for i in range(len(corners)-1,-1,-1):
         middlePoint[i] = np.array([(corners[i][0][0]+corners[i][2][0])/2,(corners[i][0][1]+corners[i][2][1])/2])
+        sumn = 0.0
+        summ = 0.0
         # check for edges
         for j in range(4):
             x1 = corners[i][j][0]
@@ -194,35 +198,46 @@ if len(corners) > 0:
                 m = (y2-y1)/(1.0*(x2-x1))
                 q = y2-m*x2
                 l = min(x1,x2)
-                r = min(max(x1,x2),edged.shape[0]-5)
+                r = min(max(x1,x2),edged.shape[1]-5)
                 x = np.linspace(l, r, abs(r-l)+1)
                 y = m*x+q
                 for k in range(len(y)):
-                    if y[k] > edged.shape[1]-5:
-                        y[k] = edged.shape[1]-5
+                    if y[k] > edged.shape[0]-5:
+                        y[k] = edged.shape[0]-5
             else:
                 l = np.min([y1,y2])
-                r = np.min([np.max([y1,y2]),edged.shape[1]-5])
+                r = np.min([np.max([y1,y2]),edged.shape[0]-5])
                 y = np.linspace(l, r, abs(r-l)+1)
                 x = x1*np.ones(len(y))
-            sumi[i] += np.sum(grad[np.round(x).astype(int),np.round(y).astype(int)])/255.0
+            tmp = grad[np.round(y).astype(int),np.round(x).astype(int)]
+            edgepoint = tmp[np.where(tmp > 1)]
+            sumi[i] += np.sum(tmp)/255.0
+            sumn += len(edgepoint)*1.0
+            summ += 1.0*len(x)
+        if sumn/summ >= 0.9:
+            corners1.append(i)
+
+if len(corners) > 0 and len(corners1) > 0:
     maxDistance = 10
     corners2 = []
-    corners2.append(len(corners)-1)
-    for i in range(len(corners)-2,-1,-1):
+    corners2.append(corners1[0])
+    for i in range(1, len(corners1)):
         found = 0
         for j in range(len(corners2)-1,-1,-1):
             #if operation.getLength(middlePoint[corners2[j]],middlePoint[i]) <= maxDistance:
-            line1 = min(operation.getLength(corners[i][0], corners[i][1]), operation.getLength(corners[i][0], corners[i][3]))
-            line2 = min(operation.getLength(corners[corners2[j]][0], corners[corners2[j]][1]), operation.getLength(corners[corners2[j]][0], corners[corners2[j]][3]))
-            if 2*operation.getLength(middlePoint[corners2[j]],middlePoint[i]) <= line1 + line2:
-                found = 1
-                if sumi[i] > sumi[corners2[j]]:
-                    corners2[j] = i
+            line1 = min(operation.getLength(corners[corners1[i]][0], corners[corners1[i]][1]), 
+                        operation.getLength(corners[corners1[i]][0], corners[corners1[i]][3]))
+            line2 = min(operation.getLength(corners[corners2[j]][0], corners[corners2[j]][1]), 
+                        operation.getLength(corners[corners2[j]][0], corners[corners2[j]][3]))
+            dis = operation.getLength(middlePoint[corners2[j]],middlePoint[corners1[i]])
+            if 3*dis <= line1 + line2:
+                found = 1           
+                if sumi[corners1[i]] > sumi[corners2[j]]:
+                    corners2[j] = corners1[i]
         if found == 0:
-            corners2.append(i)
+            corners2.append(corners1[i])
 
-if len(corners) > 0:
+if len(corners) > 0 and len(corners1) > 0 and len(corners2) > 0:
     fig2, ax1 = plt.subplots(ncols=1, nrows=1, figsize=(8, 4))
     ax1.imshow(image_rgb)
     ax1.set_axis_off()

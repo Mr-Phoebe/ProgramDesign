@@ -81,10 +81,11 @@ def plotHoughLines(rho,theta,image):
     fig2, ax1 = plt.subplots(ncols=1, nrows=1)
     ax1.imshow(image)
     
+    n = len(rho)
     for i in range(len(rho)):   
         ax1.plot( [x0[i] + 1000*(-b[i]), x0[i] - 1000*(-b[i])],
-                  [y0[i] + 1000*(a[i]), y0[i] - 1000*(a[i])], 
-                  'xb-',linewidth=3)
+                [y0[i] + 1000*(a[i]), y0[i] - 1000*(a[i])], 
+                'xb-',linewidth=3)
     
     ax1.set_ylim([image.shape[0],0])
     ax1.set_xlim([0,image.shape[1]])

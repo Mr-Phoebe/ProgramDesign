@@ -102,4 +102,12 @@ def CannyEdgeDetector(img, lowThreshold = 31, highThreshold = 91):
                         finalEdges[r2, c2] = 1
         currentPixels = newPix
  
-    return grad, finalEdges
+    gradthr = grad
+    lenx, leny = gradthr.shape
+    for i in range(lenx):
+        for j in range(leny):
+            if gradthr[i, j] > lowThreshold:
+                gradthr[i, j] = 255
+            else:
+                gradthr[i, j] = 0
+    return gradthr, finalEdges
