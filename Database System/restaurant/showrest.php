@@ -24,16 +24,19 @@ if(!empty($keyword)) {
                 )";
 
 } else {
-    $sqlrest = "select * from restaurant where description like '%{$keyword}%' 
+    $sqlrest = "select * from restaurant, booking where description like '%{$keyword}%' 
                 and {$number} <= restaurant.capacity
-                and rid not in (
+                and restaurant.rid = booking.rid and restaurant.rid not in (
                   select rid from restaurant as res natural join booking
                   where btime='{$btime}'
                   group by booking.rid
                   having sum(booking.quantity) + {$number} > restaurant.capacity
-                )";
+                )
+                GROUP BY restaurant.rid
+                ";
 }
-echo $sqlrest;
+
+#echo $sqlrest;
 
 ?>
 
@@ -71,7 +74,13 @@ echo $sqlrest;
         }
         foreach($rows as $row)
         {
-            $remain = $row['capacity'] - $row['nowsum'];
+
+            $sqlsum = "select *, sum(booking.quantity) as nowsum from booking where btime='{$btime}' and rid='{$row['rid']}'";
+            $tmp = $pdo->query($sqlsum);
+            $sum = $tmp->fetch();
+            $remain = $row['capacity'] - $sum['nowsum'];
+            #echo $sum;
+            #echo $sqlsum;
             echo "<tr>";
             echo "<td>{$row['rname']}</td>";
             echo "<td>{$row['description']}</td>";
