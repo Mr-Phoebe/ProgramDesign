@@ -17,19 +17,14 @@ and the rest 40% as a test set, including 85% of the energy.
 Additionally, we use a small set of celebrity images to
 find the best AT&T matches to them.
 
-Example Call:
-    $> python2.7 eigenfaces.py att_faces celebrity_faces
-
 Algorithm Reference:
     http://docs.opencv.org/modules/contrib/doc/facerec/facerec_tutorial.html
 """
 class Eigenfaces(object):
     
-    """
-    number of labels
-    directory path to the AT&T faces
-    """
+    # number of labels
     faces_count = 40
+    # directory path to the AT&T faces
     faces_dir = '.'
 
     train_faces_count = 6
@@ -52,46 +47,60 @@ class Eigenfaces(object):
 
         self.faces_dir = _faces_dir
         self.energy = _energy
-        self.training_ids = []                                                  # train image id's for every at&t face
+        self.training_ids = []
 
-        L = np.empty(shape=(self.mn, self.l), dtype='float64')                  # each row of L represents one train image
+        L = np.empty(shape=(self.mn, self.l), dtype='float64')
 
         cur_img = 0
         for face_id in xrange(1, self.faces_count + 1):
 
-            training_ids = random.sample(range(1, 11), self.train_faces_count)  # the id's of the 6 random training images
-            self.training_ids.append(training_ids)                              # remembering the training id's for later
+            training_ids = random.sample(range(1, 11), self.train_faces_count)
+            self.training_ids.append(training_ids)
 
             for training_id in training_ids:
                 path_to_img = os.path.join(self.faces_dir,
-                        's' + str(face_id), str(training_id) + '.pgm')          # relative path
+                        's' + str(face_id), str(training_id) + '.pgm')
                 #print '> reading file: ' + path_to_img
-                img = cv2.imread(path_to_img, 0)                                # read a grayscale image         
+                img = cv2.imread(path_to_img, 0)
 
-                img_col = np.array(img, dtype='float64').flatten()              # flatten the 2d image into 1d
+                img_col = np.array(img, dtype='float64').flatten()
 
-                L[:, cur_img] = img_col[:]                                      # set the cur_img-th column to the current training image
+                L[:, cur_img] = img_col[:]
                 cur_img += 1
 
-        self.mean_img_col = np.sum(L, axis=1) / self.l                          # get the mean of all images / over the rows of L
-
-        for j in xrange(0, self.l):                                             # subtract from all training images
+        # get the mean of all images / over the rows of L
+        self.mean_img_col = np.sum(L, axis=1) / self.l
+        # subtract from all training images
+        for j in xrange(0, self.l):                                             
             L[:, j] -= self.mean_img_col[:]
 
-        C = np.matrix(L.transpose()) * np.matrix(L)                             # instead of computing the covariance matrix as
-        C /= self.l                                                             # L*L^T, we set C = L^T*L, and end up with way
-                                                                                # smaller and computentionally inexpensive one
-                                                                                # we also need to divide by the number of training
-                                                                                # images
+        """
+        instead of computing the covariance matrix as
+        L*L^T, we set C = L^T*L, and end up with way
+        smaller and computentionally inexpensive one
+        we also need to divide by the number of training
+        images
+        """
+        C = np.matrix(L.transpose()) * np.matrix(L)                             
+        C /= self.l                                                             
+                                                                                
 
+        """
+        eigenvectors/values of the covariance matrix
+        getting their correct order - decreasing
+        puttin the evalues in that order
+        same for the evectors
+        """
 
-        self.evalues, self.evectors = np.linalg.eig(C)                          # eigenvectors/values of the covariance matrix
-        sort_indices = self.evalues.argsort()[::-1]                             # getting their correct order - decreasing
-        self.evalues = self.evalues[sort_indices]                               # puttin the evalues in that order
-        self.evectors = self.evectors[sort_indices]                             # same for the evectors
+        self.evalues, self.evectors = np.linalg.eig(C)                          
+        sort_indices = self.evalues.argsort()[::-1]                             
+        self.evalues = self.evalues[sort_indices]                               
+        self.evectors = self.evectors[sort_indices]                             
 
-        evalues_sum = sum(self.evalues[:])                                      # include only the first k evectors/values so
-        evalues_count = 0                                                       # that they include approx. 85% of the energy
+        # include only the first k evectors/values so
+        # that they include approx. 85% of the energy
+        evalues_sum = sum(self.evalues[:])                                      
+        evalues_count = 0                                                       
         evalues_energy = 0.0
         for evalue in self.evalues:
             evalues_count += 1
@@ -100,13 +109,19 @@ class Eigenfaces(object):
             if evalues_energy >= self.energy:
                 break
 
-        self.evalues = self.evalues[0:evalues_count]                            # reduce the number of eigenvectors/values to consider
+        # reduce the number of eigenvectors/values to consider
+        self.evalues = self.evalues[0:evalues_count]                           
         self.evectors = self.evectors[0:evalues_count]
-
-        self.evectors = self.evectors.transpose()                               # change eigenvectors from rows to columns
-        self.evectors = L * self.evectors                                       # left multiply to get the correct evectors
-        norms = np.linalg.norm(self.evectors, axis=0)                           # find the norm of each eigenvector
-        self.evectors = self.evectors / norms                                   # normalize all eigenvectors
+        """
+        change eigenvectors from rows to columns
+        left multiply to get the correct evectors
+        find the norm of each eigenvector
+        normalize all eigenvectors
+        """
+        self.evectors = self.evectors.transpose()                               
+        self.evectors = L * self.evectors                                       
+        norms = np.linalg.norm(self.evectors, axis=0)                          
+        self.evectors = self.evectors / norms                                   
 
         self.W = self.evectors.transpose() * L                                  # computing the weights
 
@@ -171,25 +186,40 @@ class Eigenfaces(object):
     """
     def evaluate_celebrities(self, celebrity_dir='.'):
         print '> Evaluating celebrity matches started'
-        for img_name in os.listdir(celebrity_dir):                              # go through all the celebrity images in the folder
+        # go through all the celebrity images in the folder
+        for img_name in os.listdir(celebrity_dir):                              
             path_to_img = os.path.join(celebrity_dir, img_name)
-
-            img = cv2.imread(path_to_img, 0)                                    # read as a grayscale image
-            img_col = np.array(img, dtype='float64').flatten()                  # flatten the image
-            img_col -= self.mean_img_col                                        # subract the mean column
-            img_col = np.reshape(img_col, (self.mn, 1))                         # from row vector to col vector
-
-            S = self.evectors.transpose() * img_col                             # projecting the normalized probe onto the
-                                                                                # Eigenspace, to find out the weights
-
-            diff = self.W - S                                                   # finding the min ||W_j - S||
+            """
+            # read as a grayscale image
+            # flatten the image
+            # subract the mean column
+            # from row vector to col vector
+            """
+            img = cv2.imread(path_to_img, 0)                                    
+            img_col = np.array(img, dtype='float64').flatten()                  
+            img_col -= self.mean_img_col                                        
+            img_col = np.reshape(img_col, (self.mn, 1))  
+            """                       
+            # projecting the normalized probe onto the
+            # Eigenspace, to find out the weights
+            """
+            S = self.evectors.transpose() * img_col                             
+                                                                                
+            # finding the min ||W_j - S||
+            diff = self.W - S                                                   
             norms = np.linalg.norm(diff, axis=0)
-            top5_ids = np.argpartition(norms, 5)[:5]                           # first five elements: indices of top 5 matches in AT&T set
+            # first five elements: indices of top 5 matches in AT&T set
+            top5_ids = np.argpartition(norms, 5)[:5]                           
 
-            name_noext = os.path.splitext(img_name)[0]                          # the image file name without extension
-            result_dir = os.path.join('results', name_noext)                    # path to the respective results folder
-            os.makedirs(result_dir)                                             # make a results folder for the respective celebrity
-            result_file = os.path.join(result_dir, 'results.txt')               # the file with the similarity value and id's
+
+            # the image file name without extension
+            # path to the respective results folder
+            # make a results folder for the respective celebrity
+            # the file with the similarity value and id's
+            name_noext = os.path.splitext(img_name)[0]                          
+            result_dir = os.path.join('results', name_noext)                    
+            os.makedirs(result_dir)                                             
+            result_file = os.path.join(result_dir, 'results.txt')               
 
             f = open(result_file, 'w')                                          # open the results file for writing
             for top_id in top5_ids:
@@ -204,7 +234,7 @@ class Eigenfaces(object):
 
                 f.write('id: %3d, score: %.6f\n' % (top_id, norms[top_id]))     # write the id and its score to the results file
 
-            f.close()                                                           # close the results file
+            f.close()
         print '> Evaluating celebrity matches ended'
 
 
@@ -213,15 +243,15 @@ if __name__ == "__main__":
     ATT_DIR  = ".\\att_faces"
     CELE_DIR = ".\\celebrity_faces"
 
-    if not os.path.exists('results'):                                           # create a folder where to store the results
+    if not os.path.exists('results'):
         os.makedirs('results')
     else:
-        shutil.rmtree('results')                                                # clear everything in the results folder
+        shutil.rmtree('results')
         os.makedirs('results')
 
-    efaces = Eigenfaces(str(ATT_DIR), _energy=0.9)                                       # create the Eigenfaces object with the data dir
-    efaces.evaluate()                                                           # evaluate our model
+    efaces = Eigenfaces(str(ATT_DIR), _energy=0.9)                                      
+    efaces.evaluate()
                                                 
     # if we have third argument (celebrity folder)
-    efaces.evaluate_celebrities(str(CELE_DIR))                           # find best matches for the celebrities
+    efaces.evaluate_celebrities(str(CELE_DIR))
 
