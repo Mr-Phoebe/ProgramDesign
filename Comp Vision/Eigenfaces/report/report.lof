@@ -1,0 +1,12 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Label 1}}{5}{subfigure.3.1.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces test image}}{5}{subfigure.3.1.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces result image}}{5}{subfigure.3.1.2}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Label 1}}{5}{subfigure.3.2.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces test image}}{5}{subfigure.3.2.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces result image}}{5}{subfigure.3.2.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Label 1}}{6}{subfigure.3.3.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces test image}}{6}{subfigure.3.3.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces result image}}{6}{subfigure.3.3.2}
