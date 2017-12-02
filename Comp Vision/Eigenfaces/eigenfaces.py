@@ -14,7 +14,6 @@ class Eigenfaces(object):
     
     # number of labels
     faces_count = 9
-    # directory path to the AT&T faces
     faces_dir = '.'
 
     train_faces_count = 1
@@ -34,41 +33,38 @@ class Eigenfaces(object):
     Initializing the Eigenfaces model.
     """
     def __init__(self, _faces_dir = '.', _threshold = 0.85):
-        print '> Initializing started'
+        print '> Training started'
 
         self.faces_dir = _faces_dir
         self.threshold = _threshold
         self.training_ids = []
 
-        L = np.empty(shape=(self.mn, self.l), dtype='float64')
+        L = np.empty(shape=(self.l, self.mn), dtype='float64')
         cur_img = 0
 
         for face_id in self.face_train_ids:
-
             training_ids = [1]
             self.training_ids.append(training_ids)
             for training_id in training_ids:
                 path_to_img = os.path.join(self.faces_dir,
                         's' + str(face_id), str(training_id) + '.jpg')
-                #print '> reading file: ' + path_to_img
                 img = cv2.imread(path_to_img, 0)
                 img_col = np.array(img, dtype='float64').flatten()
-                L[:, cur_img] = img_col[:]
+                L[cur_img] = img_col
                 cur_img += 1
-        # get the mean of all images / over the rows of L
-        self.mean_img_col = np.sum(L, axis=1) / L.shape[1]
-
-        # subtract from all training images
-        for j in xrange(0, self.l):                                             
-            L[:, j] -= self.mean_img_col[:]
 
         """
-        Because L's columns represent the image vector,
-        we set C = L^T*L
+        get the mean of all images / over the rows of L
+        subtract from all training images
         """
-        C = np.matrix(L.transpose()) * np.matrix(L)                             
-        C /= L.shape[1]
-                                                                                
+        self.mean_img_col = np.mean(L, axis=0)
+
+                                          
+        L -= self.mean_img_col
+
+        C = np.matrix(L) * np.matrix(L.transpose())                            
+        C /= L.shape[0]
+
 
         """
         Eigenvectors/values of the covariance matrix.
@@ -103,15 +99,13 @@ class Eigenfaces(object):
         left multiply to get the correct evectors
         find the norm of each eigenvector
         normalize all eigenvectors
-        """
-        self.evectors = self.evectors.transpose()                               
-        self.evectors = L * self.evectors                                       
-        norms = np.linalg.norm(self.evectors, axis=0)                          
-        self.evectors = self.evectors / norms                                   
+        """                         
+        self.evectors = self.evectors * L
+        norms = np.linalg.norm(self.evectors, axis=1)                  
+        self.evectors = self.evectors.transpose() / norms
+        self.W = L * self.evectors
 
-        self.W = self.evectors.transpose() * L
-
-        print '> Initializing ended'
+        print '> Training ended'
 
     """
     Classify an image to one of the eigenfaces.
@@ -120,9 +114,10 @@ class Eigenfaces(object):
         img = cv2.imread(path_to_img, 0)
         img_col = np.array(img, dtype='float64').flatten()
         img_col -= self.mean_img_col
-        img_col = np.reshape(img_col, (self.mn, 1))                             # from row vector to col vector
+        
 
-        S = self.evectors.transpose() * img_col                                 
+        S =  img_col * self.evectors
+
         """
         projecting the normalized probe onto the
         Eigenspace, to find out the weights
@@ -133,22 +128,17 @@ class Eigenfaces(object):
         closest_face_id = np.argmin(norms)                                      # the id [0..240) of the minerror face to the sample
         return self.face_train_ids[(closest_face_id / self.train_faces_count)]
 
-    """
-    Evaluate the model using the 4 test faces left
-    from every different face in the AT&T set.
-    """
     def validate(self):
         print '> Evaluating faces started'
-        results_file = os.path.join('results', 'results.txt')               # filename for writing the evaluating results in
-        f = open(results_file, 'w')                                             # the actual file
+        results_file = os.path.join('results', 'results.txt')
+        f = open(results_file, 'w')
 
-        test_count = self.test_faces_count * self.faces_count                   # number of all AT&T test images/faces
+        test_count = self.test_faces_count * self.faces_count
         test_correct = 0
         for face_id in self.face_train_ids:
             for test_id in xrange(1, self.test_faces_count+1):
-                # if (test_id in self.training_ids[face_id-1]) == False:          # we skip the image if it is part of the training set
                 path_to_img = os.path.join(self.faces_dir,
-                        's' + str(face_id), str(test_id) + '.jpg')          # relative path
+                        's' + str(face_id), str(test_id) + '.jpg')
 
                 result_id = self.classify(path_to_img)
                 result = (result_id == face_id)
@@ -166,12 +156,7 @@ class Eigenfaces(object):
         f.write('Correct: %.2f\n' % (self.accuracy))
         f.close()                                                               # closing the file
 
-    """
-    Evaluate the model for the small celebrity data set.
-    Returning the top 5 matches within the AT&T set.
-    Images should have the same size (92,112) and are
-    located in the celebrity_dir folder.
-    """
+
     def evaluate(self, celebrity_dir='.'):
         print '> Evaluating test data set matches started'
         # go through all the celebrity images in the folder
@@ -185,43 +170,45 @@ class Eigenfaces(object):
             """
             img = cv2.imread(path_to_img, 0)                                    
             img_col = np.array(img, dtype='float64').flatten()                  
-            img_col -= self.mean_img_col                                        
-            img_col = np.reshape(img_col, (self.mn, 1))  
+            img_col -= self.mean_img_col
+                                        
             """                       
             # projecting the normalized probe onto the
             # Eigenspace, to find out the weights
             """
-            S = self.evectors.transpose() * img_col                             
+            S = img_col * self.evectors
                                                                                 
             # finding the min ||W_j - S||
             diff = self.W - S                                                   
-            norms = np.linalg.norm(diff, axis=0)
-            # first five elements: indices of top 5 matches in AT&T set
-            #top5_ids = np.argpartition(norms, 5)[:5]                           
+            norms = np.linalg.norm(diff, axis=1)                      
             top_ids = np.argpartition(norms, 1)[:1]
 
-            # the image file name without extension
-            # path to the respective results folder
-            # make a results folder for the respective celebrity
-            # the file with the similarity value and id's
+            """
+            the image file name without extension
+            path to the respective results folder
+            make a results folder for the respective celebrity
+            the file with the similarity value and id's
+            """
             name_noext = os.path.splitext(img_name)[0]
             result_dir = 'results' #os.path.join('results', name_noext)
             # os.makedirs(result_dir)                                             
             result_file = os.path.join(result_dir, 'results_' + name_noext + '.txt')               
 
-            f = open(result_file, 'w')                                          # open the results file for writing
+            f = open(result_file, 'w')
 
             for top_id in top_ids:
-                face_id = (top_id / self.train_faces_count) + 1                 # getting the face_id of one of the closest matches
-                subface_id = self.training_ids[face_id-1][top_id % self.train_faces_count]           # getting the exact subimage from the face
+                # getting the face_id of one of the closest matches
+                face_id = (top_id / self.train_faces_count) + 1
+                # getting the exact subimage from the face
+                subface_id = self.training_ids[face_id-1][top_id % self.train_faces_count]
                 face_idx = self.face_train_ids[face_id-1]
                 path_to_img = os.path.join(self.faces_dir,
                         's' + str(face_idx), str(subface_id) + '.jpg')           # relative path to the top5 face
 
                 #shutil.copyfile(path_to_img,                                    # copy the top face from source
                 #        os.path.join(result_dir, str(top_id) + '_' + str(face_idx) + '.jpg'))         # to destination                
-                shutil.copyfile(path_to_img,                                    # copy the top face from source
-                        os.path.join(result_dir, 'results_' + name_noext + '.jpg'))         # to destination
+                shutil.copyfile(path_to_img,                                    
+                        os.path.join(result_dir, 'results_' + name_noext + '.jpg'))
 
                 f.write('id: %3d, score: %.6f\n' % (top_id, norms[top_id]))     # write the id and its score to the results file
             f.close()
