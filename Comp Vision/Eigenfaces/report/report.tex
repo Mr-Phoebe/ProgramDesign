@@ -7,14 +7,15 @@
 \usepackage{enumerate}
 \usepackage{tabularx}
 \usepackage{algorithm2e}
-\usepackage{url, cite, graphicx, amsmath, amsfonts, amsthm}
+\usepackage{url, cite, graphicx, amsmath, amsfonts, amsthm, float}
 %\usepackage{url, cite, graphicx, algorithmic, amsmath, amsfonts, amsthm}
 %\usepackage[chapter]{algorithm}
-\usepackage{url}
 \usepackage{multirow}
+\usepackage[titletoc]{appendix}
 \usepackage{pifont}
 \usepackage{color}
 \usepackage{soul}
+\usepackage{pythonhighlight}
 \newtheorem{condition}{Condition}[section]
 \newtheorem{definition}{Definition}[section]
 \newtheorem{theorem}{Theorem}[section]
@@ -39,8 +40,6 @@
     \pagenumbering{arabic}
     \typeout{Dalthesis preface pages completed.}
     }
-
-
 
 %%%%%%%%%%%%%%%%%% for pangolin %%%%%%%%%%%%%
 
@@ -89,7 +88,6 @@
 %%%%%%%%%%%%%%%%%% for pangolin end %%%%%%%%%%%%%
 
 \usepackage[babel=once,english=american,autostyle=tryonce,strict=true]{csquotes}
-
 
 \usepackage[final]{hyperref}%?%hyperfootnotes=false
 \hypersetup{%bookmarks=false,        % show bookmarks bar?
@@ -195,9 +193,15 @@ E.D Wong
   \end{enumerate}
 \end{itemize}
 
+Keep the floder $`train\_data`$, $`test\_data`$ and python file $`eigenfaces.py`$
+in the same floder and simply run
+
+\begin{python}
+python eigenfaces.py
+\end{python}
+
 \chapter{Algorithmic Description}
 \label{ch-2}
-
 
 \begin{enumerate}[step 1]
 \item Let $X = \{ x_{1}, x_{2}, \ldots, x_{n} \}$ be the
@@ -224,33 +228,95 @@ S v_{i} = \lambda_{i} v_{i}, i=1,2,\ldots,n$$
       the projected test image.
 \end{enumerate}
 
-
 \chapter{Result}
 \label{ch-3}
+
+\includegraphics[width=0.4\textwidth]{./image/mean.jpg}
+
+The mean face.
+
+\begin{figure}[htbp]
+  \centering
+  \subfigure[Eigen Faces 0]{
+    \label{fig:ef0} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/0.jpg}}
+  \subfigure[Eigen Faces 1]{
+    \label{fig:ef1} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./image/1.jpg}}
+  \subfigure[Eigen Faces 2]{
+    \label{fig:ef2} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/2.jpg}}
+  \subfigure[Eigen Faces 3]{
+    \label{fig:ef3} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./image/3.jpg}}
+\caption{Eigen Faces}
+  \label{fig:ef} %% label for entire figure
+\end{figure}
+
+\newpage
 
 \begin{figure}[htbp]
   \centering
   \subfigure[test image]{
-    \label{fig:subfig:1.1} %% label for first subfigure
+    \label{fig:test:1.1} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject01_centerlight.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:sub:1.1} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject01_centerlight.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:rec:1.1} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject01_centerlight.jpg}}
   \subfigure[result image]{
-    \label{fig:subfig:1.1} %% label for second subfigure
+    \label{fig:result:1.1} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject01_centerlight.jpg}}
+\caption{Label 1}
+  \label{fig:result 1} %% label for entire figure
+\end{figure}
+
+The distance from the projected test image to its nearest neighbor
+is $6456.452342$.
+
+\begin{figure}[htbp]
+  \centering
   \subfigure[test image]{
     \label{fig:subfig:1.2} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject01_happy.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:subfig:1.2} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject01_happy.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:subfig:1.2} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject01_happy.jpg}}
   \subfigure[result image]{
     \label{fig:subfig:1.2} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject01_happy.jpg}}
+\caption{Label 1}
+  \label{fig:result 1} %% label for entire figure
+\end{figure}
+
+The distance from the projected test image to its nearest neighbor
+is $2991.545346$.
+
+\begin{figure}[H]
+  \centering
   \subfigure[test image]{
     \label{fig:subfig:1.3} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject01_normal.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:subfig:1.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject01_normal.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:subfig:1.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject01_normal.jpg}}
   \subfigure[result image]{
     \label{fig:subfig:1.3} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject01_normal.jpg}}
 \caption{Label 1}
   \label{fig:result 1} %% label for entire figure
 \end{figure}
+
+The distance from the projected test image to its nearest neighbor
+is $0.0$.\\
 
 For the first face, all three test image are detected correctly. But if the threshold
 for the $k$ largest eigenvalues is larger than $0.8$, the centerlight image will
@@ -261,28 +327,47 @@ be detected incorrectly.
 \begin{figure}[htbp]
   \centering
   \subfigure[test image]{
-    \label{fig:subfig:2.1} %% label for first subfigure
+    \label{fig:subfig:2.3} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject02_normal.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:subfig:2.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject02_normal.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:subfig:2.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject02_normal.jpg}}
   \subfigure[result image]{
-    \label{fig:subfig:2.1} %% label for second subfigure
+    \label{fig:subfig:2.3} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject02_normal.jpg}}
-  \caption{Label 2}
-  \label{fig:result 2.1} %% label for entire figure
+\caption{Label 2}
+  \label{fig:result 2} %% label for entire figure
 \end{figure}
 
+The distance from the projected test image to its nearest neighbor
+is $0.0$.\\
+
 For 2nd face, the test image is also the train image, it should be correctly.
+
 
 \begin{figure}[htbp]
   \centering
   \subfigure[test image]{
     \label{fig:subfig:3.1} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject03_normal.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:subfig:3.2} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject03_normal.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:subfig:3.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject03_normal.jpg}}
   \subfigure[result image]{
-    \label{fig:subfig:3.1} %% label for second subfigure
+    \label{fig:subfig:3.4} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject03_normal.jpg}}
-  \caption{Label 3}
-  \label{fig:result 3.1} %% label for entire figure
+\caption{Label 3}
+  \label{fig:result 3} %% label for entire figure
 \end{figure}
+
+The distance from the projected test image to its nearest neighbor
+is $0.0$.\\
 
 For the 3rd face, the test image is also the train image, it should be correctly.
 
@@ -291,38 +376,65 @@ For the 3rd face, the test image is also the train image, it should be correctly
 \begin{figure}[htbp]
   \centering
   \subfigure[test image]{
-    \label{fig:subfig:7.1} %% label for first subfigure
+    \label{fig:test:7.1} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject07_centerlight.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:sub:7.1} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject07_centerlight.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:rec:7.1} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject07_centerlight.jpg}}
   \subfigure[result image]{
-    \label{fig:subfig:7.1} %% label for second subfigure
+    \label{fig:result:7.1} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject07_centerlight.jpg}}
-  \caption{Label 7}
-  \label{fig:result 7.1} %% label for entire figure
+\caption{Label 7}
+  \label{fig:result 7} %% label for entire figure
 \end{figure}
+
+The distance from the projected test image to its nearest neighbor
+is $4341.019721$.
 
 \begin{figure}[htbp]
   \centering
   \subfigure[test image]{
     \label{fig:subfig:7.2} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject07_happy.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:subfig:7.2} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject07_happy.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:subfig:7.2} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject07_happy.jpg}}
   \subfigure[result image]{
     \label{fig:subfig:7.2} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject07_happy.jpg}}
-  \caption{Label 7}
-  \label{fig:result 7.2} %% label for entire figure
+\caption{Label 7}
+  \label{fig:result 7} %% label for entire figure
 \end{figure}
 
-\begin{figure}[htbp]
+The distance from the projected test image to its nearest neighbor
+is $3922.218310$.
+
+\begin{figure}[H]
   \centering
   \subfigure[test image]{
     \label{fig:subfig:7.3} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject07_normal.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:subfig:7.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject07_normal.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:subfig:7.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject07_normal.jpg}}
   \subfigure[result image]{
     \label{fig:subfig:7.3} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject07_normal.jpg}}
-  \caption{Label 7}
-  \label{fig:result 7.3} %% label for entire figure
+\caption{Label 7}
+  \label{fig:result 7} %% label for entire figure
 \end{figure}
+
+The distance from the projected test image to its nearest neighbor
+is $0.0$.\\
 
 For the 7th face, only the training image can be detected. And I have tried
 every possible threshold for truncating $k$ largest eigenvalues. And I can't
@@ -336,14 +448,23 @@ can't be predicted correctly.
 \begin{figure}[htbp]
   \centering
   \subfigure[test image]{
-    \label{fig:subfig:10.1} %% label for first subfigure
+    \label{fig:subfig:10.3} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject10_normal.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:subfig:10.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject10_normal.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:subfig:10.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject10_normal.jpg}}
   \subfigure[result image]{
-    \label{fig:subfig:10.1} %% label for second subfigure
+    \label{fig:subfig:10.3} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject10_normal.jpg}}
-  \caption{Label 10}
-  \label{fig:result 10.1} %% label for entire figure
+\caption{Label 10}
+  \label{fig:result 10} %% label for entire figure
 \end{figure}
+
+The distance from the projected test image to its nearest neighbor
+is $0.0$.\\
 
 The test image is also the train image, it should be correctly.
 
@@ -352,38 +473,65 @@ The test image is also the train image, it should be correctly.
 \begin{figure}[htbp]
   \centering
   \subfigure[test image]{
-    \label{fig:subfig:11.1} %% label for first subfigure
+    \label{fig:test:11.1} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject11_centerlight.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:sub:11.1} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject11_centerlight.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:rec:11.1} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject11_centerlight.jpg}}
   \subfigure[result image]{
-    \label{fig:subfig:11.1} %% label for second subfigure
+    \label{fig:result:11.1} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject11_centerlight.jpg}}
-  \caption{Label 11}
-  \label{fig:result 11.1} %% label for entire figure
+\caption{Label 11}
+  \label{fig:result 11} %% label for entire figure
 \end{figure}
+
+The distance from the projected test image to its nearest neighbor
+is $7256.988907$.
 
 \begin{figure}[htbp]
   \centering
   \subfigure[test image]{
     \label{fig:subfig:11.2} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject11_happy.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:subfig:11.2} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject11_happy.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:subfig:11.2} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject11_happy.jpg}}
   \subfigure[result image]{
     \label{fig:subfig:11.2} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject11_happy.jpg}}
-  \caption{Label 11}
-  \label{fig:result 11.2} %% label for entire figure
+\caption{Label 11}
+  \label{fig:result 11} %% label for entire figure
 \end{figure}
 
-\begin{figure}[htbp]
+The distance from the projected test image to its nearest neighbor
+is $1109.675944$.
+
+\begin{figure}[H]
   \centering
   \subfigure[test image]{
     \label{fig:subfig:11.3} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject11_normal.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:subfig:11.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject11_normal.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:subfig:11.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject11_normal.jpg}}
   \subfigure[result image]{
     \label{fig:subfig:11.3} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject11_normal.jpg}}
-  \caption{Label 11}
-  \label{fig:result 11.3} %% label for entire figure
+\caption{Label 11}
+  \label{fig:result 11} %% label for entire figure
 \end{figure}
+
+The distance from the projected test image to its nearest neighbor
+is $0.0$.\\
 
 For the 11th face, all three test image are detected correctly.
 
@@ -392,34 +540,79 @@ For the 11th face, all three test image are detected correctly.
 \begin{figure}[htbp]
   \centering
   \subfigure[test image]{
-    \label{fig:subfig:12.1} %% label for first subfigure
+    \label{fig:subfig:12.3} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject12_normal.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:subfig:12.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject12_normal.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:subfig:12.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject12_normal.jpg}}
   \subfigure[result image]{
-    \label{fig:subfig:12.1} %% label for second subfigure
+    \label{fig:subfig:12.3} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject12_normal.jpg}}
-  \caption{Label 12}
-  \label{fig:result 12.1} %% label for entire figure
+\caption{Label 12}
+  \label{fig:result 12} %% label for entire figure
 \end{figure}
+
+The distance from the projected test image to its nearest neighbor
+is $0.0$.\\
 
 The test image is also the train image, it should be correctly.
 
 \begin{figure}[htbp]
   \centering
   \subfigure[test image]{
-    \label{fig:subfig:14.1} %% label for first subfigure
+    \label{fig:test:14.1} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject14_sad.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:sub:14.1} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject14_sad.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:rec:14.1} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject14_sad.jpg}}
   \subfigure[result image]{
-    \label{fig:subfig:14.1} %% label for second subfigure
+    \label{fig:result:14.1} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject14_sad.jpg}}
+\caption{Label 14}
+  \label{fig:result 14} %% label for entire figure
+\end{figure}
+
+The distance from the projected test image to its nearest neighbor
+is $1788.380024$.
+
+\begin{figure}[htbp]
+  \centering
   \subfigure[test image]{
     \label{fig:subfig:14.2} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject14_happy.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:subfig:14.2} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject14_happy.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:subfig:14.2} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject14_happy.jpg}}
   \subfigure[result image]{
     \label{fig:subfig:14.2} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject14_happy.jpg}}
+\caption{Label 14}
+  \label{fig:result 14} %% label for entire figure
+\end{figure}
+
+The distance from the projected test image to its nearest neighbor
+is $2401.624066$.
+
+\begin{figure}[H]
+  \centering
   \subfigure[test image]{
     \label{fig:subfig:14.3} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject14_normal.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:subfig:14.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject14_normal.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:subfig:14.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject14_normal.jpg}}
   \subfigure[result image]{
     \label{fig:subfig:14.3} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject14_normal.jpg}}
@@ -427,22 +620,33 @@ The test image is also the train image, it should be correctly.
   \label{fig:result 14} %% label for entire figure
 \end{figure}
 
-For the 11th face, all three test image are detected correctly.
+The distance from the projected test image to its nearest neighbor
+is $0.0$.\\
+
+For the 14th face, all three test image are detected correctly.
 
 \newpage
-
 
 \begin{figure}[htbp]
   \centering
   \subfigure[test image]{
-    \label{fig:subfig:15.1} %% label for first subfigure
+    \label{fig:subfig:15.3} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/subject15_normal.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:subfig:15.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/subject15_normal.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:subfig:15.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/subject15_normal.jpg}}
   \subfigure[result image]{
-    \label{fig:subfig:15.1} %% label for second subfigure
+    \label{fig:subfig:15.3} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_subject15_normal.jpg}}
-  \caption{Label 15}
-  \label{fig:result 15.1} %% label for entire figure
+\caption{Label 15}
+  \label{fig:result 15} %% label for entire figure
 \end{figure}
+
+The distance from the projected test image to its nearest neighbor
+is $0.0$.\\
 
 For the 15th face, the test image is also the train image, it should be correctly.
 
@@ -451,15 +655,40 @@ For the 15th face, the test image is also the train image, it should be correctl
   \subfigure[test image]{
     \label{fig:subfig:0.1} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./test_data/apple1_gray.jpg}}
+  \subfigure[subtracting image]{
+    \label{fig:subfig:0.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/test/apple1_gray.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:subfig:0.3} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/rec/apple1_gray.jpg}}
   \subfigure[result image]{
     \label{fig:subfig:0.1} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./results/results_apple1_gray.jpg}}
-  \caption{Label 0}
+  \caption{Non-face}
   \label{fig:result 0.1} %% label for entire figure
 \end{figure}
 
-The test image is an apple, and I get a result and I don't know what kind of
-result is better.
+The distance from the projected test image to its nearest neighbor
+is $2713.258087$.\\
+
+The test image is an apple, and from the distance, I can't choose any threshold
+to figure out which is non-face and which is a face. Because there are many
+test image whose shortest distance to their projected neighbor is bigger than \
+$2713$.
+
+\newpage
+
+\titleformat{\chapter}[display]
+          {\normalfont\Large\bfseries}{Appendix~\Alph{chapter}}{11pt}{\Large}
+
+\begin{appendices}
+\renewcommand{\thechapter}{\Alph{chapter}.}
+  \chapter{Source Code}
+  \inputpython{../eigenfaces.py}{0}{240}
+\end{appendices}
+
+
+\clearpage
 
 \backmatter
 

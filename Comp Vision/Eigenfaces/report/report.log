@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400) (preloaded format=pdflatex 2017.10.28)  2 DEC 2017 13:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400) (preloaded format=pdflatex 2017.10.28)  2 DEC 2017 17:43
 entering extended mode
 **./report.tex
 (report.tex
@@ -317,12 +317,26 @@ Package: amsthm 2015/03/04 v2.20.2
 \thm@headsep=\skip93
 \dth@everypar=\toks30
 )
+(C:\CTEX\MiKTeX\tex\latex\float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count118
+\float@exts=\toks31
+\float@box=\box37
+\@float@everytoks=\toks32
+\@floatcapt=\box38
+)
 (C:\CTEX\MiKTeX\tex\latex\multirow\multirow.sty
 Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
 \multirow@colwidth=\skip94
-\multirow@cntb=\count118
+\multirow@cntb=\count119
 \multirow@dima=\skip95
 \bigstrutjot=\dimen144
+)
+(C:\CTEX\UserData\tex\latex\appendix\appendix.sty
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count120
+\c@@ppsavesec=\count121
+\c@@ppsaveapp=\count122
 )
 (C:\CTEX\MiKTeX\tex\latex\psnfss\pifont.sty
 Package: pifont 2005/04/12 PSNFSS-v9.2a Pi font support (SPQR) 
@@ -346,35 +360,81 @@ Package color Info: Driver file: pdftex.def on input line 147.
 )
 (C:\CTEX\UserData\tex\latex\soul\soul.sty
 Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
-\SOUL@word=\toks31
-\SOUL@lasttoken=\toks32
-\SOUL@cmds=\toks33
-\SOUL@buffer=\toks34
-\SOUL@token=\toks35
+\SOUL@word=\toks33
+\SOUL@lasttoken=\toks34
+\SOUL@cmds=\toks35
+\SOUL@buffer=\toks36
+\SOUL@token=\toks37
 \SOUL@spaceskip=\skip96
 \SOUL@ttwidth=\dimen145
 \SOUL@uldp=\dimen146
 \SOUL@ulht=\dimen147
+) (pythonhighlight.sty
+Package: pythonhighlight 2011/09/19 python code highlighting; provided by Olivi
+er Verdier <olivier.verdier@gmail.com>
+
+(C:\CTEX\UserData\tex\latex\listings\listings.sty
+\lst@mode=\count123
+\lst@gtempboxa=\box39
+\lst@token=\toks38
+\lst@length=\count124
+\lst@currlwidth=\dimen148
+\lst@column=\count125
+\lst@pos=\count126
+\lst@lostspace=\dimen149
+\lst@width=\dimen150
+\lst@newlines=\count127
+\lst@lineno=\count128
+\lst@maxwidth=\dimen151
+
+(C:\CTEX\UserData\tex\latex\listings\lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count129
+\lst@skipnumbers=\count130
+\lst@framebox=\box40
 )
-\c@condition=\count119
-\c@definition=\count120
-\c@theorem=\count121
-\c@note=\count122
+(C:\CTEX\UserData\tex\latex\listings\listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(C:\CTEX\UserData\tex\latex\xcolor\xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(C:\CTEX\UserData\tex\latex\graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 709.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+))
+\c@condition=\count131
+\c@definition=\count132
+\c@theorem=\count133
+\c@note=\count134
 
 (C:\CTEX\UserData\tex\latex\csquotes\csquotes.sty
 Package: csquotes 2017/03/11 v5.2b context-sensitive quotations (JAW)
 
 (C:\CTEX\MiKTeX\tex\latex\etoolbox\etoolbox.sty
 Package: etoolbox 2017/01/02 v2.4 e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count123
+\etb@tempcnta=\count135
 )
-\csq@reset=\count124
-\csq@gtype=\count125
-\csq@glevel=\count126
-\csq@qlevel=\count127
-\csq@maxlvl=\count128
-\csq@tshold=\count129
-\csq@ltx@everypar=\toks36
+\csq@reset=\count136
+\csq@gtype=\count137
+\csq@glevel=\count138
+\csq@qlevel=\count139
+\csq@maxlvl=\count140
+\csq@tshold=\count141
+\csq@ltx@everypar=\toks39
 
 (C:\CTEX\UserData\tex\latex\csquotes\csquotes.def
 File: csquotes.def 2017/03/11 v5.2b csquotes generic definitions (JAW)
@@ -441,14 +501,14 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 (C:\CTEX\MiKTeX\tex\latex\oberdiek\kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
-\@linkdim=\dimen148
-\Hy@linkcounter=\count130
-\Hy@pagecounter=\count131
+\@linkdim=\dimen152
+\Hy@linkcounter=\count142
+\Hy@pagecounter=\count143
 
 (C:\CTEX\MiKTeX\tex\latex\hyperref\pd1enc.def
 File: pd1enc.def 2017/03/14 v6.85a Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count132
+\Hy@SavedSpaceFactor=\count144
 
 (C:\CTEX\UserData\tex\latex\00miktex\hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -461,12 +521,12 @@ Package hyperref Info: Plain pages OFF on input line 4513.
 Package hyperref Info: Backreferencing OFF on input line 4518.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4751.
-\c@Hy@tempcnt=\count133
+\c@Hy@tempcnt=\count145
 LaTeX Info: Redefining \url on input line 5104.
-\XeTeXLinkMargin=\dimen149
-\Fld@menulength=\count134
-\Field@Width=\dimen150
-\Fld@charsize=\dimen151
+\XeTeXLinkMargin=\dimen153
+\Fld@menulength=\count146
+\Field@Width=\dimen154
+\Fld@charsize=\dimen155
 Package hyperref Info: Hyper figures OFF on input line 6358.
 Package hyperref Info: Link nesting OFF on input line 6363.
 Package hyperref Info: Hyper index ON on input line 6366.
@@ -476,17 +536,17 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6383.
 Package hyperref Info: PDF/A mode OFF on input line 6388.
 LaTeX Info: Redefining \ref on input line 6428.
 LaTeX Info: Redefining \pageref on input line 6432.
-\Hy@abspage=\count135
-\c@Item=\count136
-\c@Hfootnote=\count137
+\Hy@abspage=\count147
+\c@Item=\count148
+\c@Hfootnote=\count149
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (C:\CTEX\MiKTeX\tex\latex\hyperref\hpdftex.def
 File: hpdftex.def 2017/03/14 v6.85a Hyperref driver for pdfTeX
-\Fld@listcount=\count138
-\c@bookmark@seq@number=\count139
+\Fld@listcount=\count150
+\c@bookmark@seq@number=\count151
 
 (C:\CTEX\MiKTeX\tex\latex\oberdiek\rerunfilecheck.sty
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
@@ -495,16 +555,16 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip97
 )
-Package hyperref Info: Option `unicode' set `true' on input line 113.
+Package hyperref Info: Option `unicode' set `true' on input line 111.
 
 (C:\CTEX\MiKTeX\tex\latex\hyperref\puenc.def
 File: puenc.def 2017/03/14 v6.85a Hyperref: PDF Unicode definition (HO)
 )
-Package hyperref Info: Option `pdftoolbar' set `true' on input line 113.
-Package hyperref Info: Option `pdfmenubar' set `true' on input line 113.
-Package hyperref Info: Option `pdffitwindow' set `false' on input line 113.
-Package hyperref Info: Option `pdfnewwindow' set `true' on input line 113.
-Package hyperref Info: Option `colorlinks' set `true' on input line 113.
+Package hyperref Info: Option `pdftoolbar' set `true' on input line 111.
+Package hyperref Info: Option `pdfmenubar' set `true' on input line 111.
+Package hyperref Info: Option `pdffitwindow' set `false' on input line 111.
+Package hyperref Info: Option `pdfnewwindow' set `true' on input line 111.
+Package hyperref Info: Option `colorlinks' set `true' on input line 111.
 
 (C:\CTEX\MiKTeX\tex\generic\oberdiek\hyphsubst.sty
 Package: hyphsubst 2016/05/16 v0.3 Substitute hyphenation patterns (HO)
@@ -534,33 +594,33 @@ Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 )
 (C:\CTEX\UserData\tex\latex\booktabs\booktabs.sty
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
-\heavyrulewidth=\dimen152
-\lightrulewidth=\dimen153
-\cmidrulewidth=\dimen154
-\belowrulesep=\dimen155
-\belowbottomsep=\dimen156
-\aboverulesep=\dimen157
-\abovetopsep=\dimen158
-\cmidrulesep=\dimen159
-\cmidrulekern=\dimen160
-\defaultaddspace=\dimen161
-\@cmidla=\count140
-\@cmidlb=\count141
-\@aboverulesep=\dimen162
-\@belowrulesep=\dimen163
-\@thisruleclass=\count142
-\@lastruleclass=\count143
-\@thisrulewidth=\dimen164
+\heavyrulewidth=\dimen156
+\lightrulewidth=\dimen157
+\cmidrulewidth=\dimen158
+\belowrulesep=\dimen159
+\belowbottomsep=\dimen160
+\aboverulesep=\dimen161
+\abovetopsep=\dimen162
+\cmidrulesep=\dimen163
+\cmidrulekern=\dimen164
+\defaultaddspace=\dimen165
+\@cmidla=\count152
+\@cmidlb=\count153
+\@aboverulesep=\dimen166
+\@belowrulesep=\dimen167
+\@thisruleclass=\count154
+\@lastruleclass=\count155
+\@thisrulewidth=\dimen168
 )
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... none found.
  (report.aux
 (Introduction/Introduction.aux)
 
-LaTeX Warning: Label `fig:subfig:1.1' multiply defined.
+LaTeX Warning: Label `fig:subfig:1.2' multiply defined.
 
 
-LaTeX Warning: Label `sub@fig:subfig:1.1' multiply defined.
+LaTeX Warning: Label `sub@fig:subfig:1.2' multiply defined.
 
 
 LaTeX Warning: Label `fig:subfig:1.2' multiply defined.
@@ -569,28 +629,52 @@ LaTeX Warning: Label `fig:subfig:1.2' multiply defined.
 LaTeX Warning: Label `sub@fig:subfig:1.2' multiply defined.
 
 
+LaTeX Warning: Label `fig:subfig:1.2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:1.2' multiply defined.
+
+
+LaTeX Warning: Label `fig:result 1' multiply defined.
+
+
 LaTeX Warning: Label `fig:subfig:1.3' multiply defined.
 
 
 LaTeX Warning: Label `sub@fig:subfig:1.3' multiply defined.
 
 
-LaTeX Warning: Label `fig:subfig:2.1' multiply defined.
+LaTeX Warning: Label `fig:subfig:1.3' multiply defined.
 
 
-LaTeX Warning: Label `sub@fig:subfig:2.1' multiply defined.
+LaTeX Warning: Label `sub@fig:subfig:1.3' multiply defined.
 
 
-LaTeX Warning: Label `fig:subfig:3.1' multiply defined.
+LaTeX Warning: Label `fig:subfig:1.3' multiply defined.
 
 
-LaTeX Warning: Label `sub@fig:subfig:3.1' multiply defined.
+LaTeX Warning: Label `sub@fig:subfig:1.3' multiply defined.
 
 
-LaTeX Warning: Label `fig:subfig:7.1' multiply defined.
+LaTeX Warning: Label `fig:result 1' multiply defined.
 
 
-LaTeX Warning: Label `sub@fig:subfig:7.1' multiply defined.
+LaTeX Warning: Label `fig:subfig:2.3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:2.3' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:2.3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:2.3' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:2.3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:2.3' multiply defined.
 
 
 LaTeX Warning: Label `fig:subfig:7.2' multiply defined.
@@ -599,22 +683,58 @@ LaTeX Warning: Label `fig:subfig:7.2' multiply defined.
 LaTeX Warning: Label `sub@fig:subfig:7.2' multiply defined.
 
 
+LaTeX Warning: Label `fig:subfig:7.2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:7.2' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:7.2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:7.2' multiply defined.
+
+
+LaTeX Warning: Label `fig:result 7' multiply defined.
+
+
 LaTeX Warning: Label `fig:subfig:7.3' multiply defined.
 
 
 LaTeX Warning: Label `sub@fig:subfig:7.3' multiply defined.
 
 
-LaTeX Warning: Label `fig:subfig:10.1' multiply defined.
+LaTeX Warning: Label `fig:subfig:7.3' multiply defined.
 
 
-LaTeX Warning: Label `sub@fig:subfig:10.1' multiply defined.
+LaTeX Warning: Label `sub@fig:subfig:7.3' multiply defined.
 
 
-LaTeX Warning: Label `fig:subfig:11.1' multiply defined.
+LaTeX Warning: Label `fig:subfig:7.3' multiply defined.
 
 
-LaTeX Warning: Label `sub@fig:subfig:11.1' multiply defined.
+LaTeX Warning: Label `sub@fig:subfig:7.3' multiply defined.
+
+
+LaTeX Warning: Label `fig:result 7' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:10.3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:10.3' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:10.3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:10.3' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:10.3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:10.3' multiply defined.
 
 
 LaTeX Warning: Label `fig:subfig:11.2' multiply defined.
@@ -623,28 +743,58 @@ LaTeX Warning: Label `fig:subfig:11.2' multiply defined.
 LaTeX Warning: Label `sub@fig:subfig:11.2' multiply defined.
 
 
+LaTeX Warning: Label `fig:subfig:11.2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:11.2' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:11.2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:11.2' multiply defined.
+
+
+LaTeX Warning: Label `fig:result 11' multiply defined.
+
+
 LaTeX Warning: Label `fig:subfig:11.3' multiply defined.
 
 
 LaTeX Warning: Label `sub@fig:subfig:11.3' multiply defined.
 
 
-LaTeX Warning: Label `fig:subfig:12.1' multiply defined.
+LaTeX Warning: Label `fig:subfig:11.3' multiply defined.
 
 
-LaTeX Warning: Label `sub@fig:subfig:12.1' multiply defined.
+LaTeX Warning: Label `sub@fig:subfig:11.3' multiply defined.
 
 
-LaTeX Warning: Label `fig:subfig:14.1' multiply defined.
+LaTeX Warning: Label `fig:subfig:11.3' multiply defined.
 
 
-LaTeX Warning: Label `sub@fig:subfig:14.1' multiply defined.
+LaTeX Warning: Label `sub@fig:subfig:11.3' multiply defined.
 
 
-LaTeX Warning: Label `fig:subfig:14.2' multiply defined.
+LaTeX Warning: Label `fig:result 11' multiply defined.
 
 
-LaTeX Warning: Label `sub@fig:subfig:14.2' multiply defined.
+LaTeX Warning: Label `fig:subfig:12.3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:12.3' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:12.3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:12.3' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:12.3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:12.3' multiply defined.
 
 
 LaTeX Warning: Label `fig:subfig:14.3' multiply defined.
@@ -653,10 +803,64 @@ LaTeX Warning: Label `fig:subfig:14.3' multiply defined.
 LaTeX Warning: Label `sub@fig:subfig:14.3' multiply defined.
 
 
-LaTeX Warning: Label `fig:subfig:15.1' multiply defined.
+LaTeX Warning: Label `fig:subfig:14.3' multiply defined.
 
 
-LaTeX Warning: Label `sub@fig:subfig:15.1' multiply defined.
+LaTeX Warning: Label `sub@fig:subfig:14.3' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:14.3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:14.3' multiply defined.
+
+
+LaTeX Warning: Label `fig:result 14' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:14.2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:14.2' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:14.2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:14.2' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:14.2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:14.2' multiply defined.
+
+
+LaTeX Warning: Label `fig:result 14' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:15.3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:15.3' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:15.3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:15.3' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:15.3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:15.3' multiply defined.
+
+
+LaTeX Warning: Label `fig:subfig:0.3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subfig:0.3' multiply defined.
 
 
 LaTeX Warning: Label `fig:subfig:0.1' multiply defined.
@@ -667,22 +871,22 @@ LaTeX Warning: Label `sub@fig:subfig:0.1' multiply defined.
 )
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -724,17 +928,17 @@ Package geometry Warning: The marginal notes overrun the paper.
 
 (C:\CTEX\MiKTeX\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count144
-\scratchdimen=\dimen165
-\scratchbox=\box37
-\nofMPsegments=\count145
-\nofMParguments=\count146
-\everyMPshowfont=\toks37
-\MPscratchCnt=\count147
-\MPscratchDim=\dimen166
-\MPnumerator=\count148
-\makeMPintoPDFobject=\count149
-\everyMPtoPDFconversion=\toks38
+\scratchcounter=\count156
+\scratchdimen=\dimen169
+\scratchbox=\box41
+\nofMPsegments=\count157
+\nofMParguments=\count158
+\everyMPshowfont=\toks40
+\MPscratchCnt=\count159
+\MPscratchDim=\dimen170
+\MPnumerator=\count160
+\makeMPintoPDFobject=\count161
+\everyMPtoPDFconversion=\toks41
 ) (C:\CTEX\MiKTeX\tex\latex\oberdiek\epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -748,8 +952,9 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-\AtBeginShipoutBox=\box38
-Package hyperref Info: Link coloring ON on input line 128.
+\c@lstlisting=\count162
+\AtBeginShipoutBox=\box42
+Package hyperref Info: Link coloring ON on input line 126.
 
 (C:\CTEX\MiKTeX\tex\latex\hyperref\nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -757,18 +962,18 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (C:\CTEX\MiKTeX\tex\generic\oberdiek\gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count150
+\c@section@level=\count163
 )
-LaTeX Info: Redefining \ref on input line 128.
-LaTeX Info: Redefining \pageref on input line 128.
-LaTeX Info: Redefining \nameref on input line 128.
+LaTeX Info: Redefining \ref on input line 126.
+LaTeX Info: Redefining \pageref on input line 126.
+LaTeX Info: Redefining \nameref on input line 126.
  (report.out)
 (report.out)
 \@outlinefile=\write3
 \openout3 = `report.out'.
 
  ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 128.
+LaTeX Info: Redefining \selectfont on input line 126.
  [1
 
 
@@ -796,332 +1001,802 @@ Chapter 1.
 
 ]
 Chapter 2.
-[2
+LaTeX Font Info:    Try loading font information for U+msa on input line 196.
+(C:\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 196.
+
+(C:\CTEX\MiKTeX\tex\latex\amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(C:\CTEX\UserData\tex\latex\listings\lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+) [2
 
 
 ]
 Chapter 3.
-LaTeX Font Info:    Try loading font information for U+msa on input line 203.
-(C:\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 203.
-
-(C:\CTEX\MiKTeX\tex\latex\amsfonts\umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [3
+[3
 
 ] [4]
 Chapter 4.
-<./test_data/subject01_centerlight.jpg, id=71, 195.73125pt x 231.86626pt>
+<./image/mean.jpg, id=79, 289.08pt x 289.08pt>
+File: ./image/mean.jpg Graphic file (type jpg)
+<use ./image/mean.jpg>
+Package pdftex.def Info: ./image/mean.jpg  used on input line 234. on input lin
+e 234.
+Package pdftex.def Info: Requested size: 173.44534pt x 173.44492pt on input lin
+e 234.
+<./image/0.jpg, id=80, 289.08pt x 289.08pt>
+File: ./image/0.jpg Graphic file (type jpg)
+<use ./image/0.jpg>
+Package pdftex.def Info: ./image/0.jpg  used on input line 242. on input line 2
+42.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+242.
+<./image/1.jpg, id=81, 289.08pt x 289.08pt>
+File: ./image/1.jpg Graphic file (type jpg)
+<use ./image/1.jpg>
+Package pdftex.def Info: ./image/1.jpg  used on input line 245. on input line 2
+45.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+245.
+<./image/2.jpg, id=82, 289.08pt x 289.08pt>
+File: ./image/2.jpg Graphic file (type jpg)
+<use ./image/2.jpg>
+Package pdftex.def Info: ./image/2.jpg  used on input line 248. on input line 2
+48.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+248.
+<./image/3.jpg, id=83, 289.08pt x 289.08pt>
+File: ./image/3.jpg Graphic file (type jpg)
+<use ./image/3.jpg>
+Package pdftex.def Info: ./image/3.jpg  used on input line 251. on input line 2
+51.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+251.
+[5
+
+ <./image/mean.jpg> <./image/0.jpg> <./image/1.jpg> <./image/2.jpg> <./image/3.
+jpg>]
+<./test_data/subject01_centerlight.jpg, id=93, 195.73125pt x 231.86626pt>
 File: ./test_data/subject01_centerlight.jpg Graphic file (type jpg)
 <use ./test_data/subject01_centerlight.jpg>
 Package pdftex.def Info: ./test_data/subject01_centerlight.jpg  used on input l
-ine 235. on input line 235.
+ine 262. on input line 262.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 235.
-<./results/results_subject01_centerlight.jpg, id=72, 195.73125pt x 231.86626pt>
+ 262.
+<./image/test/subject01_centerlight.jpg, id=94, 289.08pt x 289.08pt>
+File: ./image/test/subject01_centerlight.jpg Graphic file (type jpg)
+<use ./image/test/subject01_centerlight.jpg>
+Package pdftex.def Info: ./image/test/subject01_centerlight.jpg  used on input 
+line 265. on input line 265.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+265.
+<./image/rec/subject01_centerlight.jpg, id=95, 289.08pt x 289.08pt>
+File: ./image/rec/subject01_centerlight.jpg Graphic file (type jpg)
+<use ./image/rec/subject01_centerlight.jpg>
+Package pdftex.def Info: ./image/rec/subject01_centerlight.jpg  used on input l
+ine 268. on input line 268.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+268.
+
+Underfull \hbox (badness 10000) in paragraph at lines 268--268
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject01_centerlight.jpg, id=96, 195.73125pt x 231.86626pt>
 
 File: ./results/results_subject01_centerlight.jpg Graphic file (type jpg)
 <use ./results/results_subject01_centerlight.jpg>
 Package pdftex.def Info: ./results/results_subject01_centerlight.jpg  used on i
-nput line 238. on input line 238.
+nput line 271. on input line 271.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 238.
-<./test_data/subject01_happy.jpg, id=73, 195.73125pt x 231.86626pt>
+ 271.
+<./test_data/subject01_happy.jpg, id=97, 195.73125pt x 231.86626pt>
 File: ./test_data/subject01_happy.jpg Graphic file (type jpg)
 <use ./test_data/subject01_happy.jpg>
-Package pdftex.def Info: ./test_data/subject01_happy.jpg  used on input line 24
-1. on input line 241.
+Package pdftex.def Info: ./test_data/subject01_happy.jpg  used on input line 28
+3. on input line 283.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 241.
-<./results/results_subject01_happy.jpg, id=74, 195.73125pt x 231.86626pt>
+ 283.
+<./image/test/subject01_happy.jpg, id=98, 289.08pt x 289.08pt>
+File: ./image/test/subject01_happy.jpg Graphic file (type jpg)
+<use ./image/test/subject01_happy.jpg>
+Package pdftex.def Info: ./image/test/subject01_happy.jpg  used on input line 2
+86. on input line 286.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+286.
+<./image/rec/subject01_happy.jpg, id=99, 289.08pt x 289.08pt>
+File: ./image/rec/subject01_happy.jpg Graphic file (type jpg)
+<use ./image/rec/subject01_happy.jpg>
+Package pdftex.def Info: ./image/rec/subject01_happy.jpg  used on input line 28
+9. on input line 289.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+289.
+
+Underfull \hbox (badness 10000) in paragraph at lines 289--289
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject01_happy.jpg, id=100, 195.73125pt x 231.86626pt>
 File: ./results/results_subject01_happy.jpg Graphic file (type jpg)
 <use ./results/results_subject01_happy.jpg>
 Package pdftex.def Info: ./results/results_subject01_happy.jpg  used on input l
-ine 244. on input line 244.
+ine 292. on input line 292.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 244.
-<./test_data/subject01_normal.jpg, id=75, 195.73125pt x 231.86626pt>
+ 292.
+<./test_data/subject01_normal.jpg, id=101, 195.73125pt x 231.86626pt>
 File: ./test_data/subject01_normal.jpg Graphic file (type jpg)
 <use ./test_data/subject01_normal.jpg>
-Package pdftex.def Info: ./test_data/subject01_normal.jpg  used on input line 2
-47. on input line 247.
+Package pdftex.def Info: ./test_data/subject01_normal.jpg  used on input line 3
+04. on input line 304.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 247.
-<./results/results_subject01_normal.jpg, id=76, 195.73125pt x 231.86626pt>
+ 304.
+<./image/test/subject01_normal.jpg, id=102, 289.08pt x 289.08pt>
+File: ./image/test/subject01_normal.jpg Graphic file (type jpg)
+<use ./image/test/subject01_normal.jpg>
+Package pdftex.def Info: ./image/test/subject01_normal.jpg  used on input line 
+307. on input line 307.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+307.
+<./image/rec/subject01_normal.jpg, id=103, 289.08pt x 289.08pt>
+File: ./image/rec/subject01_normal.jpg Graphic file (type jpg)
+<use ./image/rec/subject01_normal.jpg>
+Package pdftex.def Info: ./image/rec/subject01_normal.jpg  used on input line 3
+10. on input line 310.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+310.
+
+Underfull \hbox (badness 10000) in paragraph at lines 310--310
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject01_normal.jpg, id=104, 195.73125pt x 231.86626pt>
 File: ./results/results_subject01_normal.jpg Graphic file (type jpg)
 <use ./results/results_subject01_normal.jpg>
 Package pdftex.def Info: ./results/results_subject01_normal.jpg  used on input 
-line 250. on input line 250.
+line 313. on input line 313.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 250.
-[5
+ 313.
 
- <./test_data/subject01_centerlight.jpg> <./results/results_subject01_centerlig
-ht.jpg> <./test_data/subject01_happy.jpg> <./results/results_subject01_happy.jp
-g> <./test_data/subject01_normal.jpg> <./results/results_subject01_normal.jpg>]
-<./test_data/subject02_normal.jpg, id=88, 195.73125pt x 231.86626pt>
+Underfull \hbox (badness 10000) in paragraph at lines 318--320
+
+ []
+
+[6 <./test_data/subject01_centerlight.jpg> <./image/test/subject01_centerlight.
+jpg> <./image/rec/subject01_centerlight.jpg> <./results/results_subject01_cente
+rlight.jpg> <./test_data/subject01_happy.jpg> <./image/test/subject01_happy.jpg
+> <./image/rec/subject01_happy.jpg> <./results/results_subject01_happy.jpg> <./
+test_data/subject01_normal.jpg> <./image/test/subject01_normal.jpg> <./image/re
+c/subject01_normal.jpg> <./results/results_subject01_normal.jpg>] [7]
+<./test_data/subject02_normal.jpg, id=125, 195.73125pt x 231.86626pt>
 File: ./test_data/subject02_normal.jpg Graphic file (type jpg)
 <use ./test_data/subject02_normal.jpg>
-Package pdftex.def Info: ./test_data/subject02_normal.jpg  used on input line 2
-65. on input line 265.
+Package pdftex.def Info: ./test_data/subject02_normal.jpg  used on input line 3
+31. on input line 331.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 265.
-<./results/results_subject02_normal.jpg, id=89, 195.73125pt x 231.86626pt>
+ 331.
+<./image/test/subject02_normal.jpg, id=126, 289.08pt x 289.08pt>
+File: ./image/test/subject02_normal.jpg Graphic file (type jpg)
+<use ./image/test/subject02_normal.jpg>
+Package pdftex.def Info: ./image/test/subject02_normal.jpg  used on input line 
+334. on input line 334.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+334.
+<./image/rec/subject02_normal.jpg, id=127, 289.08pt x 289.08pt>
+File: ./image/rec/subject02_normal.jpg Graphic file (type jpg)
+<use ./image/rec/subject02_normal.jpg>
+Package pdftex.def Info: ./image/rec/subject02_normal.jpg  used on input line 3
+37. on input line 337.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+337.
+
+Underfull \hbox (badness 10000) in paragraph at lines 337--337
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject02_normal.jpg, id=128, 195.73125pt x 231.86626pt>
 File: ./results/results_subject02_normal.jpg Graphic file (type jpg)
 <use ./results/results_subject02_normal.jpg>
 Package pdftex.def Info: ./results/results_subject02_normal.jpg  used on input 
-line 268. on input line 268.
+line 340. on input line 340.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 268.
-<./test_data/subject03_normal.jpg, id=90, 195.73125pt x 231.86626pt>
+ 340.
+
+Underfull \hbox (badness 10000) in paragraph at lines 345--347
+
+ []
+
+<./test_data/subject03_normal.jpg, id=129, 195.73125pt x 231.86626pt>
 File: ./test_data/subject03_normal.jpg Graphic file (type jpg)
 <use ./test_data/subject03_normal.jpg>
-Package pdftex.def Info: ./test_data/subject03_normal.jpg  used on input line 2
-79. on input line 279.
+Package pdftex.def Info: ./test_data/subject03_normal.jpg  used on input line 3
+55. on input line 355.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 279.
-<./results/results_subject03_normal.jpg, id=91, 195.73125pt x 231.86626pt>
+ 355.
+<./image/test/subject03_normal.jpg, id=130, 289.08pt x 289.08pt>
+File: ./image/test/subject03_normal.jpg Graphic file (type jpg)
+<use ./image/test/subject03_normal.jpg>
+Package pdftex.def Info: ./image/test/subject03_normal.jpg  used on input line 
+358. on input line 358.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+358.
+<./image/rec/subject03_normal.jpg, id=131, 289.08pt x 289.08pt>
+File: ./image/rec/subject03_normal.jpg Graphic file (type jpg)
+<use ./image/rec/subject03_normal.jpg>
+Package pdftex.def Info: ./image/rec/subject03_normal.jpg  used on input line 3
+61. on input line 361.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+361.
+
+Underfull \hbox (badness 10000) in paragraph at lines 361--361
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject03_normal.jpg, id=132, 195.73125pt x 231.86626pt>
 File: ./results/results_subject03_normal.jpg Graphic file (type jpg)
 <use ./results/results_subject03_normal.jpg>
 Package pdftex.def Info: ./results/results_subject03_normal.jpg  used on input 
-line 282. on input line 282.
+line 364. on input line 364.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 282.
- [6 <./test_data/subject02_normal.jpg> <./results/results_subject02_normal.jpg>
- <./test_data/subject03_normal.jpg> <./results/results_subject03_normal.jpg>]
-<./test_data/subject07_centerlight.jpg, id=100, 195.73125pt x 231.86626pt>
+ 364.
+
+Underfull \hbox (badness 10000) in paragraph at lines 369--371
+
+ []
+
+[8 <./test_data/subject02_normal.jpg> <./image/test/subject02_normal.jpg> <./im
+age/rec/subject02_normal.jpg> <./results/results_subject02_normal.jpg> <./test_
+data/subject03_normal.jpg> <./image/test/subject03_normal.jpg> <./image/rec/sub
+ject03_normal.jpg> <./results/results_subject03_normal.jpg>]
+<./test_data/subject07_centerlight.jpg, id=145, 195.73125pt x 231.86626pt>
 File: ./test_data/subject07_centerlight.jpg Graphic file (type jpg)
 <use ./test_data/subject07_centerlight.jpg>
 Package pdftex.def Info: ./test_data/subject07_centerlight.jpg  used on input l
-ine 295. on input line 295.
+ine 380. on input line 380.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 295.
-<./results/results_subject07_centerlight.jpg, id=101, 195.73125pt x 231.86626pt
+ 380.
+<./image/test/subject07_centerlight.jpg, id=146, 289.08pt x 289.08pt>
+File: ./image/test/subject07_centerlight.jpg Graphic file (type jpg)
+<use ./image/test/subject07_centerlight.jpg>
+Package pdftex.def Info: ./image/test/subject07_centerlight.jpg  used on input 
+line 383. on input line 383.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+383.
+<./image/rec/subject07_centerlight.jpg, id=147, 289.08pt x 289.08pt>
+File: ./image/rec/subject07_centerlight.jpg Graphic file (type jpg)
+<use ./image/rec/subject07_centerlight.jpg>
+Package pdftex.def Info: ./image/rec/subject07_centerlight.jpg  used on input l
+ine 386. on input line 386.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+386.
+
+Underfull \hbox (badness 10000) in paragraph at lines 386--386
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject07_centerlight.jpg, id=148, 195.73125pt x 231.86626pt
 >
 File: ./results/results_subject07_centerlight.jpg Graphic file (type jpg)
 <use ./results/results_subject07_centerlight.jpg>
 Package pdftex.def Info: ./results/results_subject07_centerlight.jpg  used on i
-nput line 298. on input line 298.
+nput line 389. on input line 389.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 298.
-<./test_data/subject07_happy.jpg, id=102, 195.73125pt x 231.86626pt>
+ 389.
+<./test_data/subject07_happy.jpg, id=149, 195.73125pt x 231.86626pt>
 File: ./test_data/subject07_happy.jpg Graphic file (type jpg)
 <use ./test_data/subject07_happy.jpg>
-Package pdftex.def Info: ./test_data/subject07_happy.jpg  used on input line 30
-7. on input line 307.
+Package pdftex.def Info: ./test_data/subject07_happy.jpg  used on input line 40
+1. on input line 401.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 307.
-<./results/results_subject07_happy.jpg, id=103, 195.73125pt x 231.86626pt>
+ 401.
+<./image/test/subject07_happy.jpg, id=150, 289.08pt x 289.08pt>
+File: ./image/test/subject07_happy.jpg Graphic file (type jpg)
+<use ./image/test/subject07_happy.jpg>
+Package pdftex.def Info: ./image/test/subject07_happy.jpg  used on input line 4
+04. on input line 404.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+404.
+<./image/rec/subject07_happy.jpg, id=151, 289.08pt x 289.08pt>
+File: ./image/rec/subject07_happy.jpg Graphic file (type jpg)
+<use ./image/rec/subject07_happy.jpg>
+Package pdftex.def Info: ./image/rec/subject07_happy.jpg  used on input line 40
+7. on input line 407.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+407.
+
+Underfull \hbox (badness 10000) in paragraph at lines 407--407
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject07_happy.jpg, id=152, 195.73125pt x 231.86626pt>
 File: ./results/results_subject07_happy.jpg Graphic file (type jpg)
 <use ./results/results_subject07_happy.jpg>
 Package pdftex.def Info: ./results/results_subject07_happy.jpg  used on input l
-ine 310. on input line 310.
+ine 410. on input line 410.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 310.
-<./test_data/subject07_normal.jpg, id=104, 195.73125pt x 231.86626pt>
+ 410.
+<./test_data/subject07_normal.jpg, id=153, 195.73125pt x 231.86626pt>
 File: ./test_data/subject07_normal.jpg Graphic file (type jpg)
 <use ./test_data/subject07_normal.jpg>
-Package pdftex.def Info: ./test_data/subject07_normal.jpg  used on input line 3
-19. on input line 319.
+Package pdftex.def Info: ./test_data/subject07_normal.jpg  used on input line 4
+22. on input line 422.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 319.
-<./results/results_subject07_normal.jpg, id=105, 195.73125pt x 231.86626pt>
+ 422.
+<./image/test/subject07_normal.jpg, id=154, 289.08pt x 289.08pt>
+File: ./image/test/subject07_normal.jpg Graphic file (type jpg)
+<use ./image/test/subject07_normal.jpg>
+Package pdftex.def Info: ./image/test/subject07_normal.jpg  used on input line 
+425. on input line 425.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+425.
+<./image/rec/subject07_normal.jpg, id=155, 289.08pt x 289.08pt>
+File: ./image/rec/subject07_normal.jpg Graphic file (type jpg)
+<use ./image/rec/subject07_normal.jpg>
+Package pdftex.def Info: ./image/rec/subject07_normal.jpg  used on input line 4
+28. on input line 428.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+428.
+
+Underfull \hbox (badness 10000) in paragraph at lines 428--428
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject07_normal.jpg, id=156, 195.73125pt x 231.86626pt>
 File: ./results/results_subject07_normal.jpg Graphic file (type jpg)
 <use ./results/results_subject07_normal.jpg>
 Package pdftex.def Info: ./results/results_subject07_normal.jpg  used on input 
-line 322. on input line 322.
+line 431. on input line 431.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 322.
-[7 <./test_data/subject07_centerlight.jpg> <./results/results_subject07_centerl
-ight.jpg> <./test_data/subject07_happy.jpg> <./results/results_subject07_happy.
-jpg> <./test_data/subject07_normal.jpg> <./results/results_subject07_normal.jpg
->]
-<./test_data/subject10_normal.jpg, id=116, 195.73125pt x 231.86626pt>
+ 431.
+
+Underfull \hbox (badness 10000) in paragraph at lines 436--438
+
+ []
+
+[9 <./test_data/subject07_centerlight.jpg> <./image/test/subject07_centerlight.
+jpg> <./image/rec/subject07_centerlight.jpg> <./results/results_subject07_cente
+rlight.jpg> <./test_data/subject07_happy.jpg> <./image/test/subject07_happy.jpg
+> <./image/rec/subject07_happy.jpg> <./results/results_subject07_happy.jpg> <./
+test_data/subject07_normal.jpg> <./image/test/subject07_normal.jpg> <./image/re
+c/subject07_normal.jpg> <./results/results_subject07_normal.jpg>] [10]
+<./test_data/subject10_normal.jpg, id=178, 195.73125pt x 231.86626pt>
 File: ./test_data/subject10_normal.jpg Graphic file (type jpg)
 <use ./test_data/subject10_normal.jpg>
-Package pdftex.def Info: ./test_data/subject10_normal.jpg  used on input line 3
-40. on input line 340.
+Package pdftex.def Info: ./test_data/subject10_normal.jpg  used on input line 4
+52. on input line 452.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 340.
-<./results/results_subject10_normal.jpg, id=117, 195.73125pt x 231.86626pt>
+ 452.
+<./image/test/subject10_normal.jpg, id=179, 289.08pt x 289.08pt>
+File: ./image/test/subject10_normal.jpg Graphic file (type jpg)
+<use ./image/test/subject10_normal.jpg>
+Package pdftex.def Info: ./image/test/subject10_normal.jpg  used on input line 
+455. on input line 455.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+455.
+<./image/rec/subject10_normal.jpg, id=180, 289.08pt x 289.08pt>
+File: ./image/rec/subject10_normal.jpg Graphic file (type jpg)
+<use ./image/rec/subject10_normal.jpg>
+Package pdftex.def Info: ./image/rec/subject10_normal.jpg  used on input line 4
+58. on input line 458.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+458.
+
+Underfull \hbox (badness 10000) in paragraph at lines 458--458
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject10_normal.jpg, id=181, 195.73125pt x 231.86626pt>
 File: ./results/results_subject10_normal.jpg Graphic file (type jpg)
 <use ./results/results_subject10_normal.jpg>
 Package pdftex.def Info: ./results/results_subject10_normal.jpg  used on input 
-line 343. on input line 343.
+line 461. on input line 461.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 343.
- [8 <./test_data/subject10_normal.jpg> <./results/results_subject10_normal.jpg>
-]
-<./test_data/subject11_centerlight.jpg, id=124, 195.73125pt x 231.86626pt>
+ 461.
+
+Underfull \hbox (badness 10000) in paragraph at lines 466--468
+
+ []
+
+[11 <./test_data/subject10_normal.jpg> <./image/test/subject10_normal.jpg> <./i
+mage/rec/subject10_normal.jpg> <./results/results_subject10_normal.jpg>]
+<./test_data/subject11_centerlight.jpg, id=190, 195.73125pt x 231.86626pt>
 File: ./test_data/subject11_centerlight.jpg Graphic file (type jpg)
 <use ./test_data/subject11_centerlight.jpg>
 Package pdftex.def Info: ./test_data/subject11_centerlight.jpg  used on input l
-ine 356. on input line 356.
+ine 477. on input line 477.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 356.
-<./results/results_subject11_centerlight.jpg, id=125, 195.73125pt x 231.86626pt
+ 477.
+<./image/test/subject11_centerlight.jpg, id=191, 289.08pt x 289.08pt>
+File: ./image/test/subject11_centerlight.jpg Graphic file (type jpg)
+<use ./image/test/subject11_centerlight.jpg>
+Package pdftex.def Info: ./image/test/subject11_centerlight.jpg  used on input 
+line 480. on input line 480.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+480.
+<./image/rec/subject11_centerlight.jpg, id=192, 289.08pt x 289.08pt>
+File: ./image/rec/subject11_centerlight.jpg Graphic file (type jpg)
+<use ./image/rec/subject11_centerlight.jpg>
+Package pdftex.def Info: ./image/rec/subject11_centerlight.jpg  used on input l
+ine 483. on input line 483.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+483.
+
+Underfull \hbox (badness 10000) in paragraph at lines 483--483
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject11_centerlight.jpg, id=193, 195.73125pt x 231.86626pt
 >
 File: ./results/results_subject11_centerlight.jpg Graphic file (type jpg)
 <use ./results/results_subject11_centerlight.jpg>
 Package pdftex.def Info: ./results/results_subject11_centerlight.jpg  used on i
-nput line 359. on input line 359.
+nput line 486. on input line 486.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 359.
-<./test_data/subject11_happy.jpg, id=126, 195.73125pt x 231.86626pt>
+ 486.
+<./test_data/subject11_happy.jpg, id=194, 195.73125pt x 231.86626pt>
 File: ./test_data/subject11_happy.jpg Graphic file (type jpg)
 <use ./test_data/subject11_happy.jpg>
-Package pdftex.def Info: ./test_data/subject11_happy.jpg  used on input line 36
-8. on input line 368.
+Package pdftex.def Info: ./test_data/subject11_happy.jpg  used on input line 49
+8. on input line 498.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 368.
-<./results/results_subject11_happy.jpg, id=127, 195.73125pt x 231.86626pt>
+ 498.
+<./image/test/subject11_happy.jpg, id=195, 289.08pt x 289.08pt>
+File: ./image/test/subject11_happy.jpg Graphic file (type jpg)
+<use ./image/test/subject11_happy.jpg>
+Package pdftex.def Info: ./image/test/subject11_happy.jpg  used on input line 5
+01. on input line 501.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+501.
+<./image/rec/subject11_happy.jpg, id=196, 289.08pt x 289.08pt>
+File: ./image/rec/subject11_happy.jpg Graphic file (type jpg)
+<use ./image/rec/subject11_happy.jpg>
+Package pdftex.def Info: ./image/rec/subject11_happy.jpg  used on input line 50
+4. on input line 504.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+504.
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--504
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject11_happy.jpg, id=197, 195.73125pt x 231.86626pt>
 File: ./results/results_subject11_happy.jpg Graphic file (type jpg)
 <use ./results/results_subject11_happy.jpg>
 Package pdftex.def Info: ./results/results_subject11_happy.jpg  used on input l
-ine 371. on input line 371.
+ine 507. on input line 507.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 371.
-<./test_data/subject11_normal.jpg, id=128, 195.73125pt x 231.86626pt>
+ 507.
+<./test_data/subject11_normal.jpg, id=198, 195.73125pt x 231.86626pt>
 File: ./test_data/subject11_normal.jpg Graphic file (type jpg)
 <use ./test_data/subject11_normal.jpg>
-Package pdftex.def Info: ./test_data/subject11_normal.jpg  used on input line 3
-80. on input line 380.
+Package pdftex.def Info: ./test_data/subject11_normal.jpg  used on input line 5
+19. on input line 519.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 380.
-<./results/results_subject11_normal.jpg, id=129, 195.73125pt x 231.86626pt>
+ 519.
+<./image/test/subject11_normal.jpg, id=199, 289.08pt x 289.08pt>
+File: ./image/test/subject11_normal.jpg Graphic file (type jpg)
+<use ./image/test/subject11_normal.jpg>
+Package pdftex.def Info: ./image/test/subject11_normal.jpg  used on input line 
+522. on input line 522.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+522.
+<./image/rec/subject11_normal.jpg, id=200, 289.08pt x 289.08pt>
+File: ./image/rec/subject11_normal.jpg Graphic file (type jpg)
+<use ./image/rec/subject11_normal.jpg>
+Package pdftex.def Info: ./image/rec/subject11_normal.jpg  used on input line 5
+25. on input line 525.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+525.
+
+Underfull \hbox (badness 10000) in paragraph at lines 525--525
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject11_normal.jpg, id=201, 195.73125pt x 231.86626pt>
 File: ./results/results_subject11_normal.jpg Graphic file (type jpg)
 <use ./results/results_subject11_normal.jpg>
 Package pdftex.def Info: ./results/results_subject11_normal.jpg  used on input 
-line 383. on input line 383.
+line 528. on input line 528.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 383.
- [9 <./test_data/subject11_centerlight.jpg> <./results/results_subject11_center
-light.jpg> <./test_data/subject11_happy.jpg> <./results/results_subject11_happy
-.jpg> <./test_data/subject11_normal.jpg> <./results/results_subject11_normal.jp
-g>]
-<./test_data/subject12_normal.jpg, id=140, 195.73125pt x 231.86626pt>
+ 528.
+
+Underfull \hbox (badness 10000) in paragraph at lines 533--535
+
+ []
+
+[12 <./test_data/subject11_centerlight.jpg> <./image/test/subject11_centerlight
+.jpg> <./image/rec/subject11_centerlight.jpg> <./results/results_subject11_cent
+erlight.jpg> <./test_data/subject11_happy.jpg> <./image/test/subject11_happy.jp
+g> <./image/rec/subject11_happy.jpg> <./results/results_subject11_happy.jpg> <.
+/test_data/subject11_normal.jpg> <./image/test/subject11_normal.jpg> <./image/r
+ec/subject11_normal.jpg> <./results/results_subject11_normal.jpg>] [13]
+<./test_data/subject12_normal.jpg, id=222, 195.73125pt x 231.86626pt>
 File: ./test_data/subject12_normal.jpg Graphic file (type jpg)
 <use ./test_data/subject12_normal.jpg>
-Package pdftex.def Info: ./test_data/subject12_normal.jpg  used on input line 3
-96. on input line 396.
+Package pdftex.def Info: ./test_data/subject12_normal.jpg  used on input line 5
+44. on input line 544.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 396.
-<./results/results_subject12_normal.jpg, id=141, 195.73125pt x 231.86626pt>
+ 544.
+<./image/test/subject12_normal.jpg, id=223, 289.08pt x 289.08pt>
+File: ./image/test/subject12_normal.jpg Graphic file (type jpg)
+<use ./image/test/subject12_normal.jpg>
+Package pdftex.def Info: ./image/test/subject12_normal.jpg  used on input line 
+547. on input line 547.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+547.
+<./image/rec/subject12_normal.jpg, id=224, 289.08pt x 289.08pt>
+File: ./image/rec/subject12_normal.jpg Graphic file (type jpg)
+<use ./image/rec/subject12_normal.jpg>
+Package pdftex.def Info: ./image/rec/subject12_normal.jpg  used on input line 5
+50. on input line 550.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+550.
+
+Underfull \hbox (badness 10000) in paragraph at lines 550--550
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject12_normal.jpg, id=225, 195.73125pt x 231.86626pt>
 File: ./results/results_subject12_normal.jpg Graphic file (type jpg)
 <use ./results/results_subject12_normal.jpg>
 Package pdftex.def Info: ./results/results_subject12_normal.jpg  used on input 
-line 399. on input line 399.
+line 553. on input line 553.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 399.
-<./test_data/subject14_sad.jpg, id=142, 195.73125pt x 231.86626pt>
+ 553.
+
+Underfull \hbox (badness 10000) in paragraph at lines 558--560
+
+ []
+
+<./test_data/subject14_sad.jpg, id=226, 195.73125pt x 231.86626pt>
 File: ./test_data/subject14_sad.jpg Graphic file (type jpg)
 <use ./test_data/subject14_sad.jpg>
-Package pdftex.def Info: ./test_data/subject14_sad.jpg  used on input line 410.
- on input line 410.
+Package pdftex.def Info: ./test_data/subject14_sad.jpg  used on input line 567.
+ on input line 567.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 410.
-<./results/results_subject14_sad.jpg, id=143, 195.73125pt x 231.86626pt>
+ 567.
+<./image/test/subject14_sad.jpg, id=227, 289.08pt x 289.08pt>
+File: ./image/test/subject14_sad.jpg Graphic file (type jpg)
+<use ./image/test/subject14_sad.jpg>
+Package pdftex.def Info: ./image/test/subject14_sad.jpg  used on input line 570
+. on input line 570.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+570.
+<./image/rec/subject14_sad.jpg, id=228, 289.08pt x 289.08pt>
+File: ./image/rec/subject14_sad.jpg Graphic file (type jpg)
+<use ./image/rec/subject14_sad.jpg>
+Package pdftex.def Info: ./image/rec/subject14_sad.jpg  used on input line 573.
+ on input line 573.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+573.
+
+Underfull \hbox (badness 10000) in paragraph at lines 573--573
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject14_sad.jpg, id=229, 195.73125pt x 231.86626pt>
 File: ./results/results_subject14_sad.jpg Graphic file (type jpg)
 <use ./results/results_subject14_sad.jpg>
 Package pdftex.def Info: ./results/results_subject14_sad.jpg  used on input lin
-e 413. on input line 413.
+e 576. on input line 576.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 413.
-<./test_data/subject14_happy.jpg, id=144, 195.73125pt x 231.86626pt>
+ 576.
+<./test_data/subject14_happy.jpg, id=230, 195.73125pt x 231.86626pt>
 File: ./test_data/subject14_happy.jpg Graphic file (type jpg)
 <use ./test_data/subject14_happy.jpg>
-Package pdftex.def Info: ./test_data/subject14_happy.jpg  used on input line 41
-6. on input line 416.
+Package pdftex.def Info: ./test_data/subject14_happy.jpg  used on input line 58
+8. on input line 588.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 416.
-<./results/results_subject14_happy.jpg, id=145, 195.73125pt x 231.86626pt>
+ 588.
+<./image/test/subject14_happy.jpg, id=231, 289.08pt x 289.08pt>
+File: ./image/test/subject14_happy.jpg Graphic file (type jpg)
+<use ./image/test/subject14_happy.jpg>
+Package pdftex.def Info: ./image/test/subject14_happy.jpg  used on input line 5
+91. on input line 591.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+591.
+<./image/rec/subject14_happy.jpg, id=232, 289.08pt x 289.08pt>
+File: ./image/rec/subject14_happy.jpg Graphic file (type jpg)
+<use ./image/rec/subject14_happy.jpg>
+Package pdftex.def Info: ./image/rec/subject14_happy.jpg  used on input line 59
+4. on input line 594.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+594.
+
+Underfull \hbox (badness 10000) in paragraph at lines 594--594
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject14_happy.jpg, id=233, 195.73125pt x 231.86626pt>
 File: ./results/results_subject14_happy.jpg Graphic file (type jpg)
 <use ./results/results_subject14_happy.jpg>
 Package pdftex.def Info: ./results/results_subject14_happy.jpg  used on input l
-ine 419. on input line 419.
+ine 597. on input line 597.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 419.
-<./test_data/subject14_normal.jpg, id=146, 195.73125pt x 231.86626pt>
+ 597.
+<./test_data/subject14_normal.jpg, id=234, 195.73125pt x 231.86626pt>
 File: ./test_data/subject14_normal.jpg Graphic file (type jpg)
 <use ./test_data/subject14_normal.jpg>
-Package pdftex.def Info: ./test_data/subject14_normal.jpg  used on input line 4
-22. on input line 422.
+Package pdftex.def Info: ./test_data/subject14_normal.jpg  used on input line 6
+09. on input line 609.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 422.
-<./results/results_subject14_normal.jpg, id=147, 195.73125pt x 231.86626pt>
+ 609.
+<./image/test/subject14_normal.jpg, id=235, 289.08pt x 289.08pt>
+File: ./image/test/subject14_normal.jpg Graphic file (type jpg)
+<use ./image/test/subject14_normal.jpg>
+Package pdftex.def Info: ./image/test/subject14_normal.jpg  used on input line 
+612. on input line 612.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+612.
+<./image/rec/subject14_normal.jpg, id=236, 289.08pt x 289.08pt>
+File: ./image/rec/subject14_normal.jpg Graphic file (type jpg)
+<use ./image/rec/subject14_normal.jpg>
+Package pdftex.def Info: ./image/rec/subject14_normal.jpg  used on input line 6
+15. on input line 615.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+615.
+
+Underfull \hbox (badness 10000) in paragraph at lines 615--615
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject14_normal.jpg, id=237, 195.73125pt x 231.86626pt>
 File: ./results/results_subject14_normal.jpg Graphic file (type jpg)
 <use ./results/results_subject14_normal.jpg>
 Package pdftex.def Info: ./results/results_subject14_normal.jpg  used on input 
-line 425. on input line 425.
+line 618. on input line 618.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 425.
- [10 <./test_data/subject12_normal.jpg> <./results/results_subject12_normal.jpg
-> <./test_data/subject14_sad.jpg> <./results/results_subject14_sad.jpg> <./test
-_data/subject14_happy.jpg> <./results/results_subject14_happy.jpg> <./test_data
-/subject14_normal.jpg> <./results/results_subject14_normal.jpg>]
-<./test_data/subject15_normal.jpg, id=161, 195.73125pt x 231.86626pt>
+ 618.
+
+Underfull \hbox (badness 10000) in paragraph at lines 623--625
+
+ []
+
+[14 <./test_data/subject12_normal.jpg> <./image/test/subject12_normal.jpg> <./i
+mage/rec/subject12_normal.jpg> <./results/results_subject12_normal.jpg> <./test
+_data/subject14_sad.jpg> <./image/test/subject14_sad.jpg> <./image/rec/subject1
+4_sad.jpg> <./results/results_subject14_sad.jpg> <./test_data/subject14_normal.
+jpg> <./image/test/subject14_normal.jpg> <./image/rec/subject14_normal.jpg> <./
+results/results_subject14_normal.jpg>] [15 <./test_data/subject14_happy.jpg> <.
+/image/test/subject14_happy.jpg> <./image/rec/subject14_happy.jpg> <./results/r
+esults_subject14_happy.jpg>]
+<./test_data/subject15_normal.jpg, id=262, 195.73125pt x 231.86626pt>
 File: ./test_data/subject15_normal.jpg Graphic file (type jpg)
 <use ./test_data/subject15_normal.jpg>
-Package pdftex.def Info: ./test_data/subject15_normal.jpg  used on input line 4
-39. on input line 439.
+Package pdftex.def Info: ./test_data/subject15_normal.jpg  used on input line 6
+34. on input line 634.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 439.
-<./results/results_subject15_normal.jpg, id=162, 195.73125pt x 231.86626pt>
+ 634.
+<./image/test/subject15_normal.jpg, id=263, 289.08pt x 289.08pt>
+File: ./image/test/subject15_normal.jpg Graphic file (type jpg)
+<use ./image/test/subject15_normal.jpg>
+Package pdftex.def Info: ./image/test/subject15_normal.jpg  used on input line 
+637. on input line 637.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+637.
+<./image/rec/subject15_normal.jpg, id=264, 289.08pt x 289.08pt>
+File: ./image/rec/subject15_normal.jpg Graphic file (type jpg)
+<use ./image/rec/subject15_normal.jpg>
+Package pdftex.def Info: ./image/rec/subject15_normal.jpg  used on input line 6
+40. on input line 640.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+640.
+
+Underfull \hbox (badness 10000) in paragraph at lines 640--640
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_subject15_normal.jpg, id=265, 195.73125pt x 231.86626pt>
 File: ./results/results_subject15_normal.jpg Graphic file (type jpg)
 <use ./results/results_subject15_normal.jpg>
 Package pdftex.def Info: ./results/results_subject15_normal.jpg  used on input 
-line 442. on input line 442.
+line 643. on input line 643.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 442.
-<./test_data/apple1_gray.jpg, id=163, 195.73125pt x 231.86626pt>
+ 643.
+
+Underfull \hbox (badness 10000) in paragraph at lines 648--650
+
+ []
+
+<./test_data/apple1_gray.jpg, id=266, 195.73125pt x 231.86626pt>
 File: ./test_data/apple1_gray.jpg Graphic file (type jpg)
 <use ./test_data/apple1_gray.jpg>
-Package pdftex.def Info: ./test_data/apple1_gray.jpg  used on input line 453. o
-n input line 453.
+Package pdftex.def Info: ./test_data/apple1_gray.jpg  used on input line 657. o
+n input line 657.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 453.
-<./results/results_apple1_gray.jpg, id=164, 195.73125pt x 231.86626pt>
+ 657.
+<./image/test/apple1_gray.jpg, id=267, 289.08pt x 289.08pt>
+File: ./image/test/apple1_gray.jpg Graphic file (type jpg)
+<use ./image/test/apple1_gray.jpg>
+Package pdftex.def Info: ./image/test/apple1_gray.jpg  used on input line 660. 
+on input line 660.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+660.
+<./image/rec/apple1_gray.jpg, id=268, 289.08pt x 289.08pt>
+File: ./image/rec/apple1_gray.jpg Graphic file (type jpg)
+<use ./image/rec/apple1_gray.jpg>
+Package pdftex.def Info: ./image/rec/apple1_gray.jpg  used on input line 663. o
+n input line 663.
+Package pdftex.def Info: Requested size: 86.72267pt x 86.72025pt on input line 
+663.
+
+Underfull \hbox (badness 10000) in paragraph at lines 663--663
+[]\OT1/cmr/m/n/9 (c) re-con-structed
+ []
+
+<./results/results_apple1_gray.jpg, id=269, 195.73125pt x 231.86626pt>
 File: ./results/results_apple1_gray.jpg Graphic file (type jpg)
 <use ./results/results_apple1_gray.jpg>
 Package pdftex.def Info: ./results/results_apple1_gray.jpg  used on input line 
-456. on input line 456.
+666. on input line 666.
 Package pdftex.def Info: Requested size: 86.72267pt x 102.73259pt on input line
- 456.
- [11 <./test_data/subject15_normal.jpg> <./results/results_subject15_normal.jpg
-> <./test_data/apple1_gray.jpg> <./results/results_apple1_gray.jpg>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 466.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 466.
- (report.aux
-(Introduction/Introduction.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 466.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 466.
+ 666.
+
+Underfull \hbox (badness 10000) in paragraph at lines 671--673
+
+ []
+
+[16 <./test_data/subject15_normal.jpg> <./image/test/subject15_normal.jpg> <./i
+mage/rec/subject15_normal.jpg> <./results/results_subject15_normal.jpg> <./test
+_data/apple1_gray.jpg> <./image/test/apple1_gray.jpg> <./image/rec/apple1_gray.
+jpg> <./results/results_apple1_gray.jpg>]
+Appendix A..
+(../eigenfaces.py
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 7.
+ [17
+
+] [18] [19] [20]
+Overfull \hbox (134.72893pt too wide) in paragraph at lines 156--157
+[][] 
+ []
+
+
+Overfull \hbox (38.33922pt too wide) in paragraph at lines 159--160
+[][] 
+ []
+
+[21]
+Overfull \hbox (180.08879pt too wide) in paragraph at lines 188--191
+[][] 
+ []
+
+[22] [23]) [24]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 695.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 695.
+ (report.aux (Introduction/Introduction.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 695.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 695.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: ECB99023E93BEAFF297516344CF5B140;502.
+(rerunfilecheck)             Checksum: 03136865A015E0A86BBBCEFB9E41012E;655.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13178 strings out of 493352
- 186555 string characters out of 3145306
- 284648 words of memory out of 3000000
- 16427 multiletter control sequences out of 15000+200000
- 11118 words of font info for 41 fonts, out of 3000000 for 9000
+ 16075 strings out of 493352
+ 228989 string characters out of 3145306
+ 478456 words of memory out of 3000000
+ 18978 multiletter control sequences out of 15000+200000
+ 12227 words of font info for 46 fonts, out of 3000000 for 9000
  1127 hyphenation exceptions out of 8191
- 29i,11n,45p,797b,490s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,12n,48p,797b,2065s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/CTEX/MiKTeX/fon
 ts/type1/public/amsfonts/cm/cmbx12.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmex10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:
 /CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/CTEX/MiKTeX/fonts/typ
 e1/public/amsfonts/cm/cmr10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmr8.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/CTEX/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (14 pages, 519282 bytes).
+X/fonts/type1/public/amsfonts/cm/cmsltt10.pfb><C:/CTEX/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmsy10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.p
+fb>
+Output written on report.pdf (27 pages, 1724138 bytes).
 PDF statistics:
- 218 PDF objects out of 1000 (max. 8388607)
- 65 named destinations out of 1000 (max. 500000)
- 213 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 670 PDF objects out of 1000 (max. 8388607)
+ 362 named destinations out of 1000 (max. 500000)
+ 426 words of extra memory for PDF output out of 10000 (max. 10000000)
 
