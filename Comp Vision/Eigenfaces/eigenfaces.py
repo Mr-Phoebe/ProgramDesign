@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+# @Author: Haonan Wu
+# @Date:   2017-12-02 13:36:23
+# @Last Modified by:   Haonan Wu
+# @Last Modified time: 2017-12-02 14:06:09
+
 import os
 import cv2
 import sys
@@ -49,19 +55,34 @@ class Eigenfaces(object):
                 path_to_img = os.path.join(self.faces_dir,
                         's' + str(face_id), str(training_id) + '.jpg')
                 img = cv2.imread(path_to_img, 0)
-                img_col = np.array(img, dtype='float64').flatten()
-                L[cur_img] = img_col
+                img_row = np.array(img, dtype='float64').flatten()
+                L[cur_img] = img_row
                 cur_img += 1
 
         """
         get the mean of all images / over the rows of L
         subtract from all training images
         """
-        self.mean_img_col = np.mean(L, axis=0)
+        self.mean_img_row = np.mean(L, axis=0)
 
-                                          
-        L -= self.mean_img_col
 
+        # output the mean image
+        fig, ax1 = plt.subplots(frameon=False)
+        ax1.set_axis_off()
+        tmp = np.reshape(self.mean_img_row, (self.n, self.m))
+        ax1.imshow(tmp, cmap="bone")
+        fig.savefig("image/mean.jpg", bbox_inches='tight', pad_inches=0)
+                              
+        L -= self.mean_img_row
+        """
+        print(L.shape)
+        for j in range(len(self.face_train_ids)):
+            fig, ax1 = plt.subplots(ncols=1, nrows=1, figsize=(4, 4))
+            ax1.set_axis_off()
+            tmp = np.reshape(L[j], (self.n, self.m))
+            ax1.imshow(tmp, cmap="bone")
+            fig.savefig("image/train_"+str(self.face_train_ids[j])+".jpg")
+        """
         C = np.matrix(L) * np.matrix(L.transpose())                            
         C /= L.shape[0]
 
@@ -103,6 +124,16 @@ class Eigenfaces(object):
         self.evectors = self.evectors * L
         norms = np.linalg.norm(self.evectors, axis=1)                  
         self.evectors = self.evectors.transpose() / norms
+        """
+        # output the eigen face
+        print(self.evectors.shape)
+        for j in range(self.evectors.shape[1]):
+            fig, ax1 = plt.subplots(ncols=1, nrows=1, figsize=(4, 4))
+            ax1.set_axis_off()
+            tmp = np.reshape(self.evectors[:, j], (self.n, self.m))
+            ax1.imshow(tmp, cmap="bone")
+            fig.savefig("image/"+str(j)+".jpg")
+        """
         self.W = L * self.evectors
 
         print '> Training ended'
@@ -112,11 +143,11 @@ class Eigenfaces(object):
     """
     def classify(self, path_to_img):
         img = cv2.imread(path_to_img, 0)
-        img_col = np.array(img, dtype='float64').flatten()
-        img_col -= self.mean_img_col
+        img_row = np.array(img, dtype='float64').flatten()
+        img_row -= self.mean_img_row
         
 
-        S =  img_col * self.evectors
+        S =  img_row * self.evectors
 
         """
         projecting the normalized probe onto the
@@ -169,14 +200,14 @@ class Eigenfaces(object):
             # from row vector to col vector
             """
             img = cv2.imread(path_to_img, 0)                                    
-            img_col = np.array(img, dtype='float64').flatten()                  
-            img_col -= self.mean_img_col
+            img_row = np.array(img, dtype='float64').flatten()                  
+            img_row -= self.mean_img_row
                                         
             """                       
             # projecting the normalized probe onto the
             # Eigenspace, to find out the weights
             """
-            S = img_col * self.evectors
+            S = img_row * self.evectors
                                                                                 
             # finding the min ||W_j - S||
             diff = self.W - S                                                   
@@ -194,6 +225,20 @@ class Eigenfaces(object):
             # os.makedirs(result_dir)                                             
             result_file = os.path.join(result_dir, 'results_' + name_noext + '.txt')               
 
+            """
+            # output the reconstruction image
+            # and the origin image subtracts the mean image
+            print(S.shape)
+            print(self.W.shape)
+
+            fig, ax1 = plt.subplots(ncols=1, nrows=1, figsize=(4, 4))
+            ax1.set_axis_off()            
+            tmp = S * self.evectors.transpose() + self.mean_img_row
+            tmp = np.reshape(tmp, (self.n, self.m))
+            #tmp = np.reshape(img_row, (self.n, self.m))
+            ax1.imshow(tmp, cmap="bone")
+            fig.savefig("image/"+name_noext+".jpg")
+            """
             f = open(result_file, 'w')
 
             for top_id in top_ids:
