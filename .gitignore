@@ -17,3 +17,4 @@ Debug
 *.class
 upload
 *.sqlite3
+.DS_Store
