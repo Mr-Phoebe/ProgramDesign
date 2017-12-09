@@ -210,23 +210,31 @@ python eigenfaces.py
 \item Compute the mean $$\mu = \frac{1}{n} \sum_{i=1}^{n} x_{i}$$.
 \item Compute the the Covariance Matrix
       $$S = \frac{1}{n} \sum_{i=1}^{n} (x_{i} - \mu) (x_{i} - \mu)^T$$.
-      The size of $S$ in this case is $9\times 9$.
+      The size of $S$ in this case is $8\times 8$.
 \item Compute the eigenvalues $\lambda_{i}$ and eigenvectors $v_{i}$ of $$
 S v_{i} = \lambda_{i} v_{i}, i=1,2,\ldots,n$$
 \item Order the eigenvectors descending by their eigenvalue.
       The $k$ principal components are the eigenvectors corresponding to
       the $k$ largest eigenvalues. \\
-      In this case, instead of using the integer $k$ to truncate the eigenvalue,
-      I use the propotion of $\lambda_i$ in $\sum \lambda_i$ to truncate the
-      eigenvalue. And the threshold is $0.7$. \\
-      In other word, if the sum of kept eigenvalues is larger than $0.7$, we throw
-      the rest one.
-\item The $k$ principal components of the test set $x$ are then given by:
+      In this case, I use $k=5$.
+\item The $5$ principal components of the test set $x$ are then given by:
       $$y = W^{T} (x - \mu)$$
       where $W = (v_{1}, v_{2}, \ldots, v_{k})$.\\
-      Finding the nearest neighbor between the projected training images and
-      the projected test image.
 \end{enumerate}
+
+\begin{enumerate}[step 1]
+  \item For each test image $x$. Subtract mean face from it.
+  \item Compute the projection of it.
+        $$\Omega = W^T(x-\mu)$$
+  \item Reconstruct it from eigenfaces.
+        $$x^\prime = W\Omega$$
+  \item Compute the Manhattan distance between $x$ and $x^\prime$.
+        We use the threshold $1.4\times 10^{14}$ to identify non-face and face.
+  \item Finding the nearest neighbor between the projected training images and
+        the projected test image, using Manhattan distance. We use the threshold
+        $10^9$ to identify unknown face and other faces.
+\end{enumerate}
+
 
 \chapter{Result}
 \label{ch-3}
@@ -234,6 +242,8 @@ S v_{i} = \lambda_{i} v_{i}, i=1,2,\ldots,n$$
 \includegraphics[width=0.4\textwidth]{./image/mean.jpg}
 
 The mean face.
+
+\newpage
 
 \begin{figure}[htbp]
   \centering
@@ -249,7 +259,51 @@ The mean face.
   \subfigure[Eigen Faces 3]{
     \label{fig:ef3} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./image/3.jpg}}
+  \subfigure[Eigen Faces 0]{
+    \label{fig:ef4} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/4.jpg}}
+  \subfigure[Eigen Faces 1]{
+    \label{fig:ef5} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./image/5.jpg}}
+  \subfigure[Eigen Faces 2]{
+    \label{fig:ef6} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/6.jpg}}
+  \subfigure[Eigen Faces 3]{
+    \label{fig:ef7} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./image/7.jpg}}
 \caption{Eigen Faces}
+  \label{fig:ef} %% label for entire figure
+\end{figure}
+
+The eigen space.
+
+\begin{figure}[H]
+  \centering
+  \subfigure[Eigen Faces 0]{
+    \label{fig:ef10} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/train/1.jpg}}
+  \subfigure[Eigen Faces 1]{
+    \label{fig:ef11} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./image/train/2.jpg}}
+  \subfigure[Eigen Faces 2]{
+    \label{fig:ef12} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/train/3.jpg}}
+  \subfigure[Eigen Faces 3]{
+    \label{fig:ef13} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./image/train/4.jpg}}
+  \subfigure[Eigen Faces 0]{
+    \label{fig:ef14} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/train/5.jpg}}
+  \subfigure[Eigen Faces 1]{
+    \label{fig:ef15} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./image/train/6.jpg}}
+  \subfigure[Eigen Faces 2]{
+    \label{fig:ef16} %% label for first subfigure
+    \includegraphics[width=0.2\textwidth]{./image/train/7.jpg}}
+  \subfigure[Eigen Faces 3]{
+    \label{fig:ef17} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./image/train/8.jpg}}
+\caption{Train Face}
   \label{fig:ef} %% label for entire figure
 \end{figure}
 
@@ -274,7 +328,10 @@ The mean face.
 \end{figure}
 
 The distance from the projected test image to its nearest neighbor
-is $6456.452342$.
+is $188439677.034777$.
+
+For the first face, if we use Euclidean Distance, it won't be detected correctly.
+If we use Manhattan Distance, it will be detected correctly.
 
 \begin{figure}[htbp]
   \centering
@@ -295,7 +352,7 @@ is $6456.452342$.
 \end{figure}
 
 The distance from the projected test image to its nearest neighbor
-is $2991.545346$.
+is $106821588.638217$.
 
 \begin{figure}[H]
   \centering
@@ -317,10 +374,6 @@ is $2991.545346$.
 
 The distance from the projected test image to its nearest neighbor
 is $0.0$.\\
-
-For the first face, all three test image are detected correctly. But if the threshold
-for the $k$ largest eigenvalues is larger than $0.8$, the centerlight image will
-be detected incorrectly.
 
 \newpage
 
@@ -384,15 +437,11 @@ For the 3rd face, the test image is also the train image, it should be correctly
   \subfigure[reconstructed image]{
     \label{fig:rec:7.1} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./image/rec/subject07_centerlight.jpg}}
-  \subfigure[result image]{
-    \label{fig:result:7.1} %% label for second subfigure
-    \includegraphics[width=0.2\textwidth]{./results/results_subject07_centerlight.jpg}}
 \caption{Label 7}
   \label{fig:result 7} %% label for entire figure
 \end{figure}
 
-The distance from the projected test image to its nearest neighbor
-is $4341.019721$.
+This image is detected as non-face.
 
 \begin{figure}[htbp]
   \centering
@@ -413,7 +462,7 @@ is $4341.019721$.
 \end{figure}
 
 The distance from the projected test image to its nearest neighbor
-is $3922.218310$.
+is $173336241.992190$.
 
 \begin{figure}[H]
   \centering
@@ -435,13 +484,6 @@ is $3922.218310$.
 
 The distance from the projected test image to its nearest neighbor
 is $0.0$.\\
-
-For the 7th face, only the training image can be detected. And I have tried
-every possible threshold for truncating $k$ largest eigenvalues. And I can't
-predicted correctly. \\
-And I also use the happy image or the centerlight image to train
-the PCA, and only the training image can be detected, and another two of the images
-can't be predicted correctly.
 
 \newpage
 
@@ -489,7 +531,7 @@ The test image is also the train image, it should be correctly.
 \end{figure}
 
 The distance from the projected test image to its nearest neighbor
-is $7256.988907$.
+is $190962100.776104$.
 
 \begin{figure}[htbp]
   \centering
@@ -510,7 +552,7 @@ is $7256.988907$.
 \end{figure}
 
 The distance from the projected test image to its nearest neighbor
-is $1109.675944$.
+is $37711066.350580$.
 
 \begin{figure}[H]
   \centering
@@ -556,9 +598,7 @@ For the 11th face, all three test image are detected correctly.
 \end{figure}
 
 The distance from the projected test image to its nearest neighbor
-is $0.0$.\\
-
-The test image is also the train image, it should be correctly.
+is $172771700.658602$.
 
 \begin{figure}[htbp]
   \centering
@@ -579,7 +619,7 @@ The test image is also the train image, it should be correctly.
 \end{figure}
 
 The distance from the projected test image to its nearest neighbor
-is $1788.380024$.
+is $38834390.761937$.
 
 \begin{figure}[htbp]
   \centering
@@ -600,7 +640,7 @@ is $1788.380024$.
 \end{figure}
 
 The distance from the projected test image to its nearest neighbor
-is $2401.624066$.
+is $44587580.401787$.
 
 \begin{figure}[H]
   \centering
@@ -661,20 +701,11 @@ For the 15th face, the test image is also the train image, it should be correctl
   \subfigure[reconstructed image]{
     \label{fig:subfig:0.3} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./image/rec/apple1_gray.jpg}}
-  \subfigure[result image]{
-    \label{fig:subfig:0.1} %% label for second subfigure
-    \includegraphics[width=0.2\textwidth]{./results/results_apple1_gray.jpg}}
   \caption{Non-face}
   \label{fig:result 0.1} %% label for entire figure
 \end{figure}
 
-The distance from the projected test image to its nearest neighbor
-is $2713.258087$.\\
-
-The test image is an apple, and from the distance, I can't choose any threshold
-to figure out which is non-face and which is a face. Because there are many
-test image whose shortest distance to their projected neighbor is bigger than \
-$2713$.
+This image is detected as non-face.
 
 \newpage
 
@@ -684,7 +715,7 @@ $2713$.
 \begin{appendices}
 \renewcommand{\thechapter}{\Alph{chapter}.}
   \chapter{Source Code}
-  \inputpython{../eigenfaces.py}{0}{240}
+  \inputpython{../eigenfaces.py}{0}{299}
 \end{appendices}
 
 
