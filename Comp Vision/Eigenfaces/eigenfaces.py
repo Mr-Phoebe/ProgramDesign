@@ -6,10 +6,7 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 
-"""
-Algorithm Reference:
-    http://docs.opencv.org/modules/contrib/doc/facerec/facerec_tutorial.html
-"""
+
 class Eigenfaces(object):
     
     # number of labels
@@ -85,7 +82,7 @@ class Eigenfaces(object):
         we set C = L^T*L
         """
         C = np.matrix(L.transpose()) * np.matrix(L)      
-        #C /= L.shape[1]                       
+        C /= L.shape[1]                       
         
         """
         Eigenvectors/values of the covariance matrix.
@@ -120,7 +117,9 @@ class Eigenfaces(object):
         find the norm of each eigenvector
         normalize all eigenvectors
         """                             
-        self.evectors = L * self.evectors                                        
+        self.evectors = L * self.evectors
+        norms = np.linalg.norm(self.evectors, axis=0)
+        self.evectors = self.evectors / norms
 
         """
         # output the eigen face
@@ -218,7 +217,7 @@ class Eigenfaces(object):
             S = self.evectors.transpose() * img_col                             
                                                                      
             reconsturction = self.evectors * S 
-            
+            """
             # output the reconstruction image
             # and the origin image subtracts the mean image
             print(S.shape)
@@ -230,14 +229,16 @@ class Eigenfaces(object):
             #tmp = np.reshape(img_col, (self.n, self.m))
             ax1.imshow(tmp, cmap="bone")
             fig.savefig("image/"+name_noext+".jpg")
-            
+            """
 
             diff = reconsturction - img_col
-            dis0 = np.linalg.norm(diff)
+            dis0 = np.linalg.norm(diff, ord=1)            
+            
             if flag < 0:
                 flag = dis0
             
-            if dis0 <= flag:        
+            if dis0 >= flag:
+                #print(dis0)
                 result_dir = 'results' #os.path.join('results', name_noext)
                 # os.makedirs(result_dir)                                             
                 result_file = os.path.join(result_dir, 'results_no_face_' + name_noext + '.txt')    
@@ -263,7 +264,7 @@ class Eigenfaces(object):
             f = open(result_file, 'w')                                          # open the results file for writing
 
             for top_id in top_ids:
-                if norms[top_id] < 1727717000:
+                if norms[top_id] < 13988:
                     face_id = (top_id / self.train_faces_count) + 1                 # getting the face_id of one of the closest matches
                     subface_id = self.training_ids[face_id-1][top_id % self.train_faces_count]           # getting the exact subimage from the face
                     face_idx = self.face_train_ids[face_id-1]
@@ -276,7 +277,7 @@ class Eigenfaces(object):
                     f.write('id: %3d, score: %.6f\n' % (top_id, norms[top_id]))     # write the id and its score to the results file
                 else:
                     f.write("Unkown Face")
-                #print(name_noext, norms[top_id], mean_dis)
+                    #print(name_noext, norms[top_id], mean_dis)
             f.close()
         print '> Evaluating test data set matches ended'
 

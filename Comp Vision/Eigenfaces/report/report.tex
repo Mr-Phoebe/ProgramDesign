@@ -229,10 +229,10 @@ S v_{i} = \lambda_{i} v_{i}, i=1,2,\ldots,n$$
   \item Reconstruct it from eigenfaces.
         $$x^\prime = W\Omega$$
   \item Compute the Manhattan distance between $x$ and $x^\prime$.
-        We use the threshold $1.4\times 10^{14}$ to identify non-face and face.
+        We use the threshold $2271222$ to identify non-face and face.
   \item Finding the nearest neighbor between the projected training images and
         the projected test image, using Manhattan distance. We use the threshold
-        $10^9$ to identify unknown face and other faces.
+        $13988$ to identify unknown face and other faces.
 \end{enumerate}
 
 
@@ -320,18 +320,17 @@ The eigen space.
   \subfigure[reconstructed image]{
     \label{fig:rec:1.1} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./image/rec/subject01_centerlight.jpg}}
-  \subfigure[result image]{
-    \label{fig:result:1.1} %% label for second subfigure
-    \includegraphics[width=0.2\textwidth]{./results/results_subject01_centerlight.jpg}}
+  % \subfigure[result image]{
+  %   \label{fig:result:1.1} %% label for second subfigure
+  %   \includegraphics[width=0.2\textwidth]{./results/results_subject01_centerlight.jpg}}
 \caption{Label 1}
   \label{fig:result 1} %% label for entire figure
 \end{figure}
 
 The distance from the projected test image to its nearest neighbor
-is $188439677.034777$.
+is $14002.141338$.
 
-For the first face, if we use Euclidean Distance, it won't be detected correctly.
-If we use Manhattan Distance, it will be detected correctly.
+And this distance is larger than threshold2, so it is unknown face.
 
 \begin{figure}[htbp]
   \centering
@@ -352,7 +351,7 @@ If we use Manhattan Distance, it will be detected correctly.
 \end{figure}
 
 The distance from the projected test image to its nearest neighbor
-is $106821588.638217$.
+is $7044.465923$.
 
 \begin{figure}[H]
   \centering
@@ -437,11 +436,15 @@ For the 3rd face, the test image is also the train image, it should be correctly
   \subfigure[reconstructed image]{
     \label{fig:rec:7.1} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./image/rec/subject07_centerlight.jpg}}
+  \subfigure[reconstructed image]{
+    \label{fig:rec:7.1} %% label for second subfigure
+    \includegraphics[width=0.2\textwidth]{./results/results_subject07_centerlight.jpg}}
 \caption{Label 7}
   \label{fig:result 7} %% label for entire figure
 \end{figure}
 
-This image is detected as non-face.
+The distance from the projected test image to its nearest neighbor
+is $12035.314184$.\\
 
 \begin{figure}[htbp]
   \centering
@@ -462,7 +465,7 @@ This image is detected as non-face.
 \end{figure}
 
 The distance from the projected test image to its nearest neighbor
-is $173336241.992190$.
+is $13140.704185$.
 
 \begin{figure}[H]
   \centering
@@ -531,7 +534,7 @@ The test image is also the train image, it should be correctly.
 \end{figure}
 
 The distance from the projected test image to its nearest neighbor
-is $190962100.776104$.
+is $12094.222523$.
 
 \begin{figure}[htbp]
   \centering
@@ -552,7 +555,7 @@ is $190962100.776104$.
 \end{figure}
 
 The distance from the projected test image to its nearest neighbor
-is $37711066.350580$.
+is $2692.597414$.
 
 \begin{figure}[H]
   \centering
@@ -590,15 +593,17 @@ For the 11th face, all three test image are detected correctly.
   \subfigure[reconstructed image]{
     \label{fig:subfig:12.3} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./image/rec/subject12_normal.jpg}}
-  \subfigure[result image]{
-    \label{fig:subfig:12.3} %% label for second subfigure
-    \includegraphics[width=0.2\textwidth]{./results/results_subject12_normal.jpg}}
+  % \subfigure[result image]{
+  %   \label{fig:subfig:12.3} %% label for second subfigure
+  %   \includegraphics[width=0.2\textwidth]{./results/results_subject12_normal.jpg}}
 \caption{Label 12}
   \label{fig:result 12} %% label for entire figure
 \end{figure}
 
 The distance from the projected test image to its nearest neighbor
-is $172771700.658602$.
+is $13988.065146$.
+
+And this distance is larger than threshold2, so it is unknown face.
 
 \begin{figure}[htbp]
   \centering
@@ -619,7 +624,7 @@ is $172771700.658602$.
 \end{figure}
 
 The distance from the projected test image to its nearest neighbor
-is $38834390.761937$.
+is $2296.664520$.
 
 \begin{figure}[htbp]
   \centering
@@ -640,7 +645,7 @@ is $38834390.761937$.
 \end{figure}
 
 The distance from the projected test image to its nearest neighbor
-is $44587580.401787$.
+is $3218.492827$.
 
 \begin{figure}[H]
   \centering
@@ -715,7 +720,7 @@ This image is detected as non-face.
 \begin{appendices}
 \renewcommand{\thechapter}{\Alph{chapter}.}
   \chapter{Source Code}
-  \inputpython{../eigenfaces.py}{0}{299}
+  \inputpython{../eigenfaces.py}{0}{302}
 \end{appendices}
 
 

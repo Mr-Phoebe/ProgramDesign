@@ -314,11 +314,6 @@ INPUT ./image/rec/subject01_centerlight.jpg
 INPUT ./image/rec/subject01_centerlight.jpg
 INPUT ./image/rec/subject01_centerlight.jpg
 INPUT ./image/rec/subject01_centerlight.jpg
-INPUT results/results_subject01_centerlight.jpg
-INPUT ./results/results_subject01_centerlight.jpg
-INPUT ./results/results_subject01_centerlight.jpg
-INPUT ./results/results_subject01_centerlight.jpg
-INPUT ./results/results_subject01_centerlight.jpg
 INPUT test_data/subject01_happy.jpg
 INPUT ./test_data/subject01_happy.jpg
 INPUT ./test_data/subject01_happy.jpg
@@ -414,6 +409,11 @@ INPUT ./image/rec/subject07_centerlight.jpg
 INPUT ./image/rec/subject07_centerlight.jpg
 INPUT ./image/rec/subject07_centerlight.jpg
 INPUT ./image/rec/subject07_centerlight.jpg
+INPUT results/results_subject07_centerlight.jpg
+INPUT ./results/results_subject07_centerlight.jpg
+INPUT ./results/results_subject07_centerlight.jpg
+INPUT ./results/results_subject07_centerlight.jpg
+INPUT ./results/results_subject07_centerlight.jpg
 INPUT test_data/subject07_happy.jpg
 INPUT ./test_data/subject07_happy.jpg
 INPUT ./test_data/subject07_happy.jpg
@@ -549,11 +549,6 @@ INPUT ./image/rec/subject12_normal.jpg
 INPUT ./image/rec/subject12_normal.jpg
 INPUT ./image/rec/subject12_normal.jpg
 INPUT ./image/rec/subject12_normal.jpg
-INPUT results/results_subject12_normal.jpg
-INPUT ./results/results_subject12_normal.jpg
-INPUT ./results/results_subject12_normal.jpg
-INPUT ./results/results_subject12_normal.jpg
-INPUT ./results/results_subject12_normal.jpg
 INPUT test_data/subject14_sad.jpg
 INPUT ./test_data/subject14_sad.jpg
 INPUT ./test_data/subject14_sad.jpg
