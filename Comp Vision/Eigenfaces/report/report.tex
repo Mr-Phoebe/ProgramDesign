@@ -259,16 +259,16 @@ The mean face.
   \subfigure[Eigen Faces 3]{
     \label{fig:ef3} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./image/3.jpg}}
-  \subfigure[Eigen Faces 0]{
+  \subfigure[Eigen Faces 4]{
     \label{fig:ef4} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./image/4.jpg}}
-  \subfigure[Eigen Faces 1]{
+  \subfigure[Eigen Faces 5]{
     \label{fig:ef5} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./image/5.jpg}}
-  \subfigure[Eigen Faces 2]{
+  \subfigure[Eigen Faces 6]{
     \label{fig:ef6} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./image/6.jpg}}
-  \subfigure[Eigen Faces 3]{
+  \subfigure[Eigen Faces 7]{
     \label{fig:ef7} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./image/7.jpg}}
 \caption{Eigen Faces}
@@ -279,33 +279,35 @@ The eigen space.
 
 \begin{figure}[H]
   \centering
-  \subfigure[Eigen Faces 0]{
+  \subfigure[Train Faces 0]{
     \label{fig:ef10} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./image/train/1.jpg}}
-  \subfigure[Eigen Faces 1]{
+  \subfigure[Train Faces 1]{
     \label{fig:ef11} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./image/train/2.jpg}}
-  \subfigure[Eigen Faces 2]{
+  \subfigure[Train Faces 2]{
     \label{fig:ef12} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./image/train/3.jpg}}
-  \subfigure[Eigen Faces 3]{
+  \subfigure[Train Faces 3]{
     \label{fig:ef13} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./image/train/4.jpg}}
-  \subfigure[Eigen Faces 0]{
+  \subfigure[Train Faces 4]{
     \label{fig:ef14} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./image/train/5.jpg}}
-  \subfigure[Eigen Faces 1]{
+  \subfigure[Train Faces 5]{
     \label{fig:ef15} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./image/train/6.jpg}}
-  \subfigure[Eigen Faces 2]{
+  \subfigure[Train Faces 6]{
     \label{fig:ef16} %% label for first subfigure
     \includegraphics[width=0.2\textwidth]{./image/train/7.jpg}}
-  \subfigure[Eigen Faces 3]{
+  \subfigure[Train Faces 7]{
     \label{fig:ef17} %% label for second subfigure
     \includegraphics[width=0.2\textwidth]{./image/train/8.jpg}}
 \caption{Train Face}
   \label{fig:ef} %% label for entire figure
 \end{figure}
+
+Train image substract mean face.
 
 \newpage
 
@@ -373,8 +375,8 @@ is $7044.465923$.
 
 The distance from the projected test image to its nearest neighbor
 is $0.0$.\\
-
-\newpage
+%
+% \newpage
 
 \begin{figure}[htbp]
   \centering
@@ -488,7 +490,7 @@ is $13140.704185$.
 The distance from the projected test image to its nearest neighbor
 is $0.0$.\\
 
-\newpage
+% \newpage
 
 \begin{figure}[htbp]
   \centering
@@ -720,7 +722,7 @@ This image is detected as non-face.
 \begin{appendices}
 \renewcommand{\thechapter}{\Alph{chapter}.}
   \chapter{Source Code}
-  \inputpython{../eigenfaces.py}{0}{302}
+  \inputpython{../eigenfaces.py}{0}{303}
 \end{appendices}
 
 
