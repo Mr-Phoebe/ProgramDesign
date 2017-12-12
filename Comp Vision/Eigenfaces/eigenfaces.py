@@ -220,12 +220,13 @@ class Eigenfaces(object):
             """
             # output the reconstruction image
             # and the origin image subtracts the mean image
-            print(S.shape)
-            print(self.W.shape)
+            print(reconsturction.shape)
+            print(self.mean_img_col.shape)
 
             fig, ax1 = plt.subplots(ncols=1, nrows=1, figsize=(4, 4))
             ax1.set_axis_off()            
-            tmp = np.reshape(reconsturction, (self.n, self.m))
+            tmp = reconsturction+np.reshape(self.mean_img_col, (self.mn, 1))
+            tmp = np.reshape(tmp, (self.n, self.m))
             #tmp = np.reshape(img_col, (self.n, self.m))
             ax1.imshow(tmp, cmap="bone")
             fig.savefig("image/"+name_noext+".jpg")
