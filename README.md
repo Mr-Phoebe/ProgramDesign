@@ -22,7 +22,7 @@ My program designs for some courses.
 ## MICROCOMPUTER INTERFACE TECHNOLOGY 12/27/15  
 [Student achievement management system](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Student%20achievement%20management%20system)
 ## OBJECT-ORIENTED PROGRAMMING:C++ 01/05/16
-[Questions and Answers System](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Question%26Answer2)
+[Questions and Answers System](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Question%26Answer)
 ## THE PRACTICE OF PROGRAMMING 01/14/16
 [ChatRoom](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/ChatRoom)
 ## SOFTWARE ENGINEERING 06/06/16
