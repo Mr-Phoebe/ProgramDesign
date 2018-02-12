@@ -28,7 +28,7 @@ My program designs for some courses.
 ## SOFTWARE ENGINEERING 06/06/16
 <br>[Distributed temperature control system(Qt C++)](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Distributed%20temperature%20control%20system)</br>
 <br>[Distributed temperature control system(Django Python)](https://github.com/Mr-Phoebe/AirSlave)</br>
-## OPERATIONS SYSTEM PROGRAM DESIGN 06/16/16
+## OPERATION SYSTEM PROGRAM DESIGN 06/16/16
 [Operation System Simulation](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Operation%20System%20Simulation)
 ## PRINCIPLES OF ARTIFICIAL INTELLIGENCE 07/01/16
 [Principles of Artificial Intelligence](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Principles%20of%20Artificial%20Intelligence)
@@ -60,5 +60,8 @@ My program designs for some courses.
 <br>[Restaurant Booking Simple Demo](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Database%20System/restaurant)</br>
 <br>[Spotify like Music Manage System](https://github.com/nyu-cs6083-music)</br>
 
-### Big Data 05/02/18
+### BIG DATA 05/02/18
 <br>[MapReduce Lab](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Big%20Data/MapReduce)</br>
+
+### OPERATION SYSTEM LABS 12/02/18
+<br>[Operation System Labs](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Operation%20System%20Labs)</br>
