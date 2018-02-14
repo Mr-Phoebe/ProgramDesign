@@ -15,7 +15,7 @@ My program designs for some courses.
 [Notepad](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Notepad)  
 
 ## INTELLIGENT MANGAEMENT 11/20/15
-[Gobang-AI](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Intelligent%20management-gobang-AI)  
+[Gobang-AI](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Intelligent%20management)  
 
 ## OBJECT-ORIENTED PROGRAMMING:Java 12/18/15  
 [E-commerce platform(books)](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/E-commerce%20platform(books))  
@@ -31,13 +31,9 @@ My program designs for some courses.
 
 ## SOFTWARE ENGINEERING 06/06/16
 <br>[Distributed temperature control system(Qt C++)](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Distributed%20temperature%20control%20system)</br>
-<br>[Distributed temperature control system(Django Python)](https://github.com/Mr-Phoebe/AirSlave)</br>
 
 ## OPERATION SYSTEM PROGRAM DESIGN 06/16/16
 [Operation System Simulation](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Operation%20System%20Simulation)
-
-## PRINCIPLES OF ARTIFICIAL INTELLIGENCE 07/01/16
-[Principles of Artificial Intelligence](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Principles%20of%20Artificial%20Intelligence)
 
 ## DATABASE SYSTEM CONCEPTS PROGRAM DESIGN 07/14/16
 <br>[Student Score Manage System(Django Python 2016)](https://github.com/Mr-Phoebe/StuSys)</br>
