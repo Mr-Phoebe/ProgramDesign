@@ -42,26 +42,6 @@ function postMessages(err, event, othername, callback) {
                 Sender: {S: 'Student'}
             }
         }, function(err) {
-            postReply(err, event.id, othername, callback);
-        });
-    } else {
-        callback(err);
-    }
-}
-
-function postReply(err, id, othername, callback) {
-    if (err === null) {
-        dynamo.putItem({
-            TableName: 'Chat-Messages',
-            Item: {
-                ConversationId: {S: id},
-                Timestamp: {
-                    N: "" + new Date().getTime()
-                },
-                Message: {S: "This is the automatical reply!"},
-                Sender: {S: othername}
-            }
-        }, function(err, data) {
             if(err !== null) {
                 callback(err);
             } else {
