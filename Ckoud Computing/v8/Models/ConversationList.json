@@ -1,0 +1,21 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "participants": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "last": {
+        "type": "number",
+        "format": "utc-millisec"
+      }
+    }
+  }
+}

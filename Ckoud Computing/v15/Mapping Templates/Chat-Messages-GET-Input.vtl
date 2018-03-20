@@ -1,0 +1,5 @@
+#set($inputRoot = $input.path('$'))
+{
+    "cognitoUsername": "$context.authorizer.claims['cognito:username']",
+    "id": "$input.params('id')"
+}

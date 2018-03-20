@@ -1,0 +1,11 @@
+#set($inputRoot = $input.path('$'))
+{
+"cognitoUsername": "Student",
+"users":
+[
+#foreach($elem in $inputRoot)
+ "$elem"
+#if($foreach.hasNext),#end
+#end
+]
+}

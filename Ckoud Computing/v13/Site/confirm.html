@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Serverless Chat</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="css/site.css"/>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Serverless Chat
+            </a>
+
+        </div>
+    </div>
+</nav>
+
+<div class="container center-block">
+    <form>
+        <div class="form-group">
+            <label ref="code">Code:</label>
+            <input id="code" type="text" maxlength="20"/>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="window.ChatApp.confirm()">Confirm</button>
+        <button type="button" class="btn btn-default" onclick="window.ChatApp.resend()">Resend</button>
+    </form>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/aws-cognito-sdk.min.js"></script>
+<script src="js/amazon-cognito-identity.min.js"></script>
+<script src="js/apiGateway-js-sdk/lib/axios/dist/axios.standalone.js"></script>
+<script src="js/apiGateway-js-sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+<script src="js/apiGateway-js-sdk/lib/CryptoJS/rollups/sha256.js"></script>
+<script src="js/apiGateway-js-sdk/lib/CryptoJS/components/hmac.js"></script>
+<script src="js/apiGateway-js-sdk/lib/CryptoJS/components/enc-base64.js"></script>
+<script src="js/apiGateway-js-sdk/lib/url-template/url-template.js"></script>
+<script src="js/apiGateway-js-sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+<script src="js/apiGateway-js-sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+<script src="js/apiGateway-js-sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+<script src="js/apiGateway-js-sdk/lib/apiGatewayCore/utils.js"></script>
+<script src="js/apiGateway-js-sdk/apigClient.js"></script>
+<script src="js/config.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

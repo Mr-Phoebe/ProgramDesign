@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Serverless Chat</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="css/site.css"/>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Serverless Chat
+            </a>
+
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="chats.html">Conversations</a></li>
+                <li><a href="#" onclick="window.ChatApp.logout()">Sign Out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <table class="table">
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/apiGateway-js-sdk/lib/axios/dist/axios.standalone.js"></script>
+<script src="js/apiGateway-js-sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+<script src="js/apiGateway-js-sdk/lib/CryptoJS/rollups/sha256.js"></script>
+<script src="js/apiGateway-js-sdk/lib/CryptoJS/components/hmac.js"></script>
+<script src="js/apiGateway-js-sdk/lib/CryptoJS/components/enc-base64.js"></script>
+<script src="js/apiGateway-js-sdk/lib/url-template/url-template.js"></script>
+<script src="js/apiGateway-js-sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+<script src="js/apiGateway-js-sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+<script src="js/apiGateway-js-sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+<script src="js/apiGateway-js-sdk/lib/apiGatewayCore/utils.js"></script>
+<script src="js/apiGateway-js-sdk/apigClient.js"></script>
+<script src="js/config.js"></script>
+<script src="js/site.js"></script>
+<script type="text/javascript">
+    $(function() {
+        window.ChatApp.populatePeople();
+    });
+</script>
+</body>
+</html>
