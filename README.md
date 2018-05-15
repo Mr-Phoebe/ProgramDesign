@@ -57,5 +57,7 @@ My program designs for some courses.
 
 ## CLOUD COMPUTING 03/01/2018
 
-[Serverlss Chat Room](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Cloud%20Computing/Serverlss%20Chat%20Room)
+<br>[Serverlss Chat Room](https://github.com/Mr-Phoebe/ProgramDesign/tree/master/Cloud%20Computing/Serverlss%20Chat%20Room)</br>
+<br>[Smart Customer Service : Restaurant Recommendation System](https://github.com/Mr-Phoebe/CS-GY-9223)</br>
+<br>[Hotel Recommendation System : Data Mining Based](https://github.com/Mr-Phoebe/hotel-recommendation)</br>
 
